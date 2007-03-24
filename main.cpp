@@ -11,6 +11,7 @@
 #include <assert.h>
 
 #include "CreateStashWizard.h"
+#include "ImportStashWizard.h"
 
 class CryptPoint {
 	private:
@@ -38,6 +39,48 @@ void write_config ();
 static GtkStatusIcon *sico;
 static std::vector<CryptPoint> cryptPoints;
 static CreateStashWizard *create_stash_wizard;
+static ImportStashWizard *import_stash_wizard;
+
+void add_crypt_point (const char *stash_dir, const char *mount_dir)
+{
+	cryptPoints.push_back (CryptPoint (stash_dir, mount_dir));
+	write_config ();
+}
+
+// Fuse & encfs must be installed, the user must be in group 'fuse'.
+void check_requirements ()
+{
+	FILE *f = fopen ("/dev/fuse", "rw");
+	if (f==NULL) {
+		GtkWidget *dialog = 
+			gtk_message_dialog_new (NULL,
+					GTK_DIALOG_MODAL,
+					GTK_MESSAGE_ERROR,
+					GTK_BUTTONS_OK,
+					"Cryptkeeper cannot access fuse and so cannot start.\n"
+					"Check that fuse is installed and that you are a member of the fuse group.");
+		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+		exit (0);
+	}
+	fclose (f);
+
+	struct stat blah;
+	if (stat ("/usr/bin/encfs", &blah) == -1) {
+		GtkWidget *dialog = 
+			gtk_message_dialog_new (NULL,
+					GTK_DIALOG_MODAL,
+					GTK_MESSAGE_ERROR,
+					GTK_BUTTONS_OK,
+					"Cryptkeeper cannot run encfs.\n"
+					"Check that encfs is installed and try again.");
+		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+		exit (0);
+	}
+}
 
 static void spawn_filemanager (const char *dir)
 {
@@ -152,6 +195,11 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 	}
 }
 
+static void on_import_stash_clicked (GtkWidget *blah)
+{
+	import_stash_wizard->Show ();
+}
+
 static void on_create_new_stash_clicked (GtkWidget *blah)
 {
 	create_stash_wizard->Show ();
@@ -190,7 +238,7 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 				GTK_MESSAGE_WARNING,
 				GTK_BUTTONS_YES_NO,
 				"Do you want to permanently erase the stash at:\n%s",
-				cryptPoints[idx].GetMountDir ());
+				cryptPoints[idx].GetCryptDir ());
 		gtk_window_set_title (GTK_WINDOW (dialog), "Confirm");
 		int result = gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
@@ -300,6 +348,10 @@ static void sico_activated (GtkWidget *data)
 	mi = gtk_separator_menu_item_new ();
 	gtk_menu_append (stashes_popup_menu, mi);
 
+	mi = gtk_menu_item_new_with_label ("Import stash");
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_import_stash_clicked), NULL);
+	gtk_menu_append (stashes_popup_menu, mi);
+	
 	mi = gtk_menu_item_new_with_label ("Create new stash");
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_create_new_stash_clicked), NULL);
 	gtk_menu_append (stashes_popup_menu, mi);
@@ -395,8 +447,7 @@ int main (int argc, char *argv[])
 
 	gtk_init (&argc, &argv);
 
-//	GtkWidget *win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-//	gtk_widget_show (win);
+	check_requirements ();
 
 	sico = gtk_status_icon_new_from_stock (GTK_STOCK_DIALOG_AUTHENTICATION);
 
@@ -404,6 +455,7 @@ int main (int argc, char *argv[])
 	g_signal_connect(G_OBJECT(sico), "popup-menu", G_CALLBACK(sico_right_button_activated), NULL);
 
 	create_stash_wizard = new CreateStashWizard ();
+	import_stash_wizard = new ImportStashWizard ();
 
 	gtk_main ();
 	

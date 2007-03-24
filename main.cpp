@@ -182,7 +182,7 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 		mkdir (cp->GetMountDir (), 0700);
 		int pid = fork ();
 		if (pid == 0) {
-			execlp ("encfs", "encfs", "--extpass=./cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
+			execlp ("encfs", "encfs", "--extpass=cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
 			exit (0);
 		}
 		waitpid (pid, NULL, 0);

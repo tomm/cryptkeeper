@@ -1,0 +1,12 @@
+Currently tries to open thunar on successful mounting -
+should be configurable
+
+Option to have thing auto-dismount after time
+
+when importing a stash, the mount directory dialog 
+should start at the parent directory of the chosen
+crypt dir.
+
+add thing to change stash password
+
+debian package: deps: encfs, fuse, zenity

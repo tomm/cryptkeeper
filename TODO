@@ -1,3 +1,6 @@
+on startup should attempt to rmdir mount points, in case
+there was a dirty unmount last time.
+
 Currently tries to open thunar on successful mounting -
 should be configurable
 

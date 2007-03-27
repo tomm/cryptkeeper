@@ -449,6 +449,12 @@ int main (int argc, char *argv[])
 
 	check_requirements ();
 
+	// festering mount points
+	std::vector<CryptPoint>::iterator it;
+	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it) {
+		rmdir ((*it).GetMountDir ());
+	}
+
 	sico = gtk_status_icon_new_from_stock (GTK_STOCK_DIALOG_AUTHENTICATION);
 
 	g_signal_connect(G_OBJECT(sico), "activate", G_CALLBACK(sico_activated), NULL);

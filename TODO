@@ -1,9 +1,3 @@
-on startup should attempt to rmdir mount points, in case
-there was a dirty unmount last time.
-
-Currently tries to open thunar on successful mounting -
-should be configurable
-
 Option to have thing auto-dismount after time
 
 when importing a stash, the mount directory dialog 

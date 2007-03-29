@@ -1,12 +1,12 @@
 
 CXX = g++
-LIBS = -g `pkg-config gtk+-2.0 --libs`
-CFLAGS = -g `pkg-config gtk+-2.0 --cflags` -O2 -Wall
+LIBS = -g `pkg-config --libs gtk+-2.0 gconf-2.0`
+CFLAGS = -g `pkg-config --cflags gtk+-2.0 gconf-2.0` -O2 -Wall
 OPTIONS = 
 
 VERSION="0.1.666"
 
-SRCS = main.cpp CreateStashWizard.cpp ImportStashWizard.cpp
+SRCS = main.cpp CreateStashWizard.cpp ImportStashWizard.cpp ConfigDialog.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

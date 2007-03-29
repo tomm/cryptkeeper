@@ -9,9 +9,12 @@
 #include <string.h>
 #include <vector>
 #include <assert.h>
+#include <gconf/gconf-client.h>
 
+#include "cryptkeeper.h"
 #include "CreateStashWizard.h"
 #include "ImportStashWizard.h"
+#include "ConfigDialog.h"
 
 class CryptPoint {
 	private:
@@ -34,12 +37,14 @@ class CryptPoint {
 	void SetIsAvailable (bool b) { isAvailable = b; }
 };
 
-void write_config ();
-
 static GtkStatusIcon *sico;
 static std::vector<CryptPoint> cryptPoints;
 static CreateStashWizard *create_stash_wizard;
 static ImportStashWizard *import_stash_wizard;
+static ConfigDialog *config_dialog;
+static GConfClient *gconf_client;
+
+char *config_filemanager;
 
 void add_crypt_point (const char *stash_dir, const char *mount_dir)
 {
@@ -85,7 +90,7 @@ void check_requirements ()
 static void spawn_filemanager (const char *dir)
 {
 	char buf[256];
-	snprintf (buf, sizeof (buf), "thunar %s", dir);
+	snprintf (buf, sizeof (buf), "%s %s", config_filemanager, dir);
 	system (buf);
 }
 
@@ -281,7 +286,12 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 
 static const char *author_names[] = { "Tom Morton" };
 
-void open_about_dialog ()
+static void open_config_dialog ()
+{
+	config_dialog->Show ();
+}
+
+static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
 	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.1.666");
@@ -299,7 +309,11 @@ static void sico_right_button_activated ()
 {
 	GtkWidget *menu = gtk_menu_new ();
 
-	GtkWidget *mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT, NULL);
+	GtkWidget *mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_PREFERENCES, NULL);
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_config_dialog), NULL);
+	gtk_menu_append (GTK_MENU (menu), mi);
+
+	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT, NULL);
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_about_dialog), NULL);
 	gtk_menu_append (GTK_MENU (menu), mi);
 
@@ -362,11 +376,14 @@ static void sico_activated (GtkWidget *data)
 			0, gtk_get_current_event_time ());
 }
 
+#define CONF_PATH_FILEMANAGER "/apps/cryptkeeper/filemanager"
 char *config_loc;
 
 void write_config ()
 {
 	char buf[1024];
+	
+	gconf_client_set_string (gconf_client, CONF_PATH_FILEMANAGER, config_filemanager, NULL);
 	
 	snprintf (buf, sizeof (buf), "%s/.config/cryptkeeper/stashes", getenv ("HOME"));
 	FILE *f = fopen (buf, "w");
@@ -390,6 +407,16 @@ void write_config ()
 void read_config ()
 {
 	char buf[1024];
+	
+	config_filemanager = gconf_client_get_string (gconf_client, CONF_PATH_FILEMANAGER, NULL);
+	if (config_filemanager == NULL) {
+		const char *fuck_off = "thunar";
+		config_filemanager = strdup (fuck_off);
+	} else {
+		char *wank = config_filemanager;
+		config_filemanager = strdup (wank);
+		g_free (wank);
+	}
 
 	// make sure these directories exist
 	snprintf (buf, sizeof (buf), "%s/.config", getenv ("HOME"));
@@ -438,14 +465,10 @@ bad:
 
 int main (int argc, char *argv[])
 {
-	read_config ();
-
-	//cryptPoints.push_back (CryptPoint ("/home/tom/one", "/home/tom/two"));
-	//cryptPoints.push_back (CryptPoint ("/home/tom/.crypt", "/home/tom/crypt"));
-	//cryptPoints.push_back (CryptPoint ("/media/usbdisk/.crypt", "/media/usbdisk/crypt"));
-	//cryptPoints.push_back (CryptPoint ("/media/disk/.crypt", "/media/disk/crypt"));
-
 	gtk_init (&argc, &argv);
+	gconf_client = gconf_client_get_default ();
+	
+	read_config ();
 
 	check_requirements ();
 
@@ -462,6 +485,7 @@ int main (int argc, char *argv[])
 
 	create_stash_wizard = new CreateStashWizard ();
 	import_stash_wizard = new ImportStashWizard ();
+	config_dialog = new ConfigDialog ();
 
 	gtk_main ();
 	

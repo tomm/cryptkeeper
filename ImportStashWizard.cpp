@@ -60,6 +60,7 @@ ImportStashWizard::ImportStashWizard ()
 
 void ImportStashWizard::UpdateStageUI ()
 {
+	char *blah, *last_slash;
 	if (m_contents != NULL) gtk_widget_destroy (m_contents);
 
 	m_contents = gtk_vbox_new (FALSE, UI_SPACING);
@@ -81,7 +82,14 @@ void ImportStashWizard::UpdateStageUI ()
 			w = gtk_label_new ("Pick name and location at which to mount the stash");
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			
+			// Start mount point locator in parent of crypt dir, because that
+			// is the sane place to be mounting the thing.
+			blah = strdup (m_crypt_dir);
+			last_slash = strrchr (blah, '/');
+			if (last_slash) *last_slash = '\0';
+
 			m_magic = gtk_file_chooser_widget_new (GTK_FILE_CHOOSER_ACTION_SAVE);
+			gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (m_magic), blah);
 			gtk_box_pack_start (GTK_BOX (m_contents), m_magic, TRUE, TRUE, UI_SPACING);
 
 			break;

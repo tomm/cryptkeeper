@@ -49,6 +49,18 @@ ConfigDialog::ConfigDialog ()
 	gtk_entry_set_text (GTK_ENTRY (m_filemanager_entry), config_filemanager);
 	gtk_box_pack_start (GTK_BOX (hbox), m_filemanager_entry, FALSE, FALSE, UI_SPACING);
 
+	{
+		hbox = gtk_hbox_new (FALSE, UI_SPACING);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, UI_SPACING);
+
+		w = gtk_label_new ("Unmount after idle (minutes)");
+		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
+
+		m_idle_spinbutton = gtk_spin_button_new_with_range (0.0, 60.0, 1.0);
+		gtk_spin_button_set_value (GTK_SPIN_BUTTON (m_idle_spinbutton), config_idletime);
+		gtk_box_pack_start (GTK_BOX (hbox), m_idle_spinbutton, FALSE, FALSE, UI_SPACING);
+	}
+
 	GtkWidget *buttonBox = gtk_hbutton_box_new ();
 	gtk_box_pack_end (GTK_BOX (vbox), buttonBox, FALSE, FALSE, UI_SPACING);
 
@@ -64,6 +76,7 @@ ConfigDialog::~ConfigDialog ()
 
 void ConfigDialog::Hide ()
 {
+	config_idletime = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (m_idle_spinbutton));
 	free (config_filemanager);
 	config_filemanager = strdup (gtk_entry_get_text (GTK_ENTRY (m_filemanager_entry)));
 	write_config ();

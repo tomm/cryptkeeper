@@ -4,7 +4,7 @@ LIBS = -g `pkg-config --libs gtk+-2.0 gconf-2.0`
 CFLAGS = -g `pkg-config --cflags gtk+-2.0 gconf-2.0` -O2 -Wall
 OPTIONS = 
 
-VERSION="0.1.666"
+VERSION="0.2.666"
 
 SRCS = main.cpp CreateStashWizard.cpp ImportStashWizard.cpp ConfigDialog.cpp
 

@@ -1,8 +1,9 @@
-Option to have thing auto-dismount after time
+idle auto-unmount leaves the mount directory festering around
+until the user clicks on cryptkeeper again to get a listing
+of mounted/unmounted stashes (where rmdir <mountpoint> is called)
 
-when importing a stash, the mount directory dialog 
-should start at the parent directory of the chosen
-crypt dir.
+can't remove stashes from cryptkeeper if the directory does
+not currently exist (eg is on removable device)
 
 add thing to change stash password
 

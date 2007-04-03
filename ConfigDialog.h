@@ -12,6 +12,7 @@ class ConfigDialog {
 
 	private:
 	GtkWidget *m_filemanager_entry;
+	GtkWidget *m_idle_spinbutton;
 };
 
 #endif /* _CONFIGDIALOG_H */

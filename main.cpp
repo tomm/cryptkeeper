@@ -45,6 +45,7 @@ static ConfigDialog *config_dialog;
 static GConfClient *gconf_client;
 
 char *config_filemanager;
+int config_idletime;
 
 void add_crypt_point (const char *stash_dir, const char *mount_dir)
 {
@@ -187,7 +188,13 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 		mkdir (cp->GetMountDir (), 0700);
 		int pid = fork ();
 		if (pid == 0) {
-			execlp ("encfs", "encfs", "--extpass=cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
+			if (config_idletime == 0) {
+				execlp ("encfs", "encfs", "--extpass=cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
+			} else {
+				char buf[256];
+				snprintf (buf, sizeof (buf), "--idle=%d", config_idletime);
+				execlp ("encfs", "encfs", buf, "--extpass=cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
+			}
 			exit (0);
 		}
 		waitpid (pid, NULL, 0);
@@ -294,7 +301,7 @@ static void open_config_dialog ()
 static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
-	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.1.666");
+	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.2.666");
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		"This program is free software; you can redistribute it and/or modify it\n"
@@ -344,6 +351,9 @@ static void sico_activated (GtkWidget *data)
 			if (S_ISDIR (s.st_mode)) (*it).SetIsAvailable (true);
 		}
 
+		// to get rid of festering mount points
+		rmdir ((*it).GetMountDir ());
+
 		if (stat ((*it).GetMountDir (), &s) != -1) {
 			if (S_ISDIR (s.st_mode)) (*it).SetIsMounted (true);
 		}
@@ -377,12 +387,14 @@ static void sico_activated (GtkWidget *data)
 }
 
 #define CONF_PATH_FILEMANAGER "/apps/cryptkeeper/filemanager"
+#define CONF_IDLE_TIMEOUT "/apps/cryptkeeper/idletimeout"
 char *config_loc;
 
 void write_config ()
 {
 	char buf[1024];
 	
+	gconf_client_set_int (gconf_client, CONF_IDLE_TIMEOUT, config_idletime, NULL);
 	gconf_client_set_string (gconf_client, CONF_PATH_FILEMANAGER, config_filemanager, NULL);
 	
 	snprintf (buf, sizeof (buf), "%s/.config/cryptkeeper/stashes", getenv ("HOME"));
@@ -408,6 +420,7 @@ void read_config ()
 {
 	char buf[1024];
 	
+	config_idletime = gconf_client_get_int (gconf_client, CONF_IDLE_TIMEOUT, NULL);
 	config_filemanager = gconf_client_get_string (gconf_client, CONF_PATH_FILEMANAGER, NULL);
 	if (config_filemanager == NULL) {
 		const char *fuck_off = "thunar";

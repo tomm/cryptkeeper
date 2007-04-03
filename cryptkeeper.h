@@ -6,5 +6,6 @@ void add_crypt_point (const char *stash_dir, const char *mount_dir);
 void write_config ();
 
 extern char *config_filemanager;
+extern int config_idletime;
 
 #endif /* _CRYPTKEEPER_H */

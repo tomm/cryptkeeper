@@ -23,6 +23,15 @@ clean:
 depends: $(SRCS)
 	$(CXX) -MM $(CFLAGS) $(SRCS) > Makefile.dep
 
+srcball:
+	mkdir cryptkeeper-$(VERSION)
+	cp install.sh cryptkeeper-$(VERSION)
+	cp TODO cryptkeeper-$(VERSION)
+	cp Makefile cryptkeeper-$(VERSION)
+	cp *.cpp *.h cryptkeeper-$(VERSION)
+	tar cvzf cryptkeeper-$(VERSION).tar.gz cryptkeeper-$(VERSION)
+	rm -rf cryptkeeper-$(VERSION)
+
 binball: cryptkeeper
 	mkdir cryptkeeper-$(VERSION)
 	cp install.sh cryptkeeper-$(VERSION)

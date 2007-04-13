@@ -2,9 +2,4 @@ idle auto-unmount leaves the mount directory festering around
 until the user clicks on cryptkeeper again to get a listing
 of mounted/unmounted stashes (where rmdir <mountpoint> is called)
 
-can't remove stashes from cryptkeeper if the directory does
-not currently exist (eg is on removable device)
-
-add thing to change stash password
-
 debian package: deps: encfs, fuse, zenity

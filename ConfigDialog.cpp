@@ -21,6 +21,8 @@ ConfigDialog::ConfigDialog ()
 	GtkWidget *w, *hbox;
 
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
+	gtk_window_set_title (GTK_WINDOW (m_window), "Cryptkeeper Preferences");
 
 	g_signal_connect(G_OBJECT(m_window), "delete-event", G_CALLBACK(on_window_close), this);
 

@@ -30,6 +30,8 @@ static void on_back_clicked (GtkButton *button, ImportStashWizard *wizard)
 ImportStashWizard::ImportStashWizard ()
 {
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
+	gtk_window_set_title (GTK_WINDOW (m_window), "Import Encfs stash");
 
 	g_signal_connect(G_OBJECT(m_window), "delete-event", G_CALLBACK(on_window_close), this);
 

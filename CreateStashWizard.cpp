@@ -4,6 +4,7 @@
 #include "cryptkeeper.h"
 #include <string.h>
 #include <stdlib.h>
+#include "encfs_wrapper.h"
 
 static gboolean on_window_close (GtkWidget *window, GdkEvent *event, CreateStashWizard *wizard)
 {
@@ -29,6 +30,8 @@ static void on_back_clicked (GtkButton *button, CreateStashWizard *wizard)
 CreateStashWizard::CreateStashWizard ()
 {
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
+	gtk_window_set_title (GTK_WINDOW (m_window), "Create new encrypted directory");
 
 	g_signal_connect(G_OBJECT(m_window), "delete-event", G_CALLBACK(on_window_close), this);
 
@@ -175,7 +178,30 @@ void CreateStashWizard::GoForward ()
 	}
 	m_stage++;
 	if (m_stage == WIZ_END) {
-		make_new_encfs_stash (m_mount_dir, gtk_entry_get_text (GTK_ENTRY (m_magic)));
+		char crypt_dir[1024];
+		char *dirname = strdup (m_mount_dir);
+		{
+			char *basename = strrchr (dirname, '/');
+			*basename = '\0';
+			basename++;
+			snprintf (crypt_dir, sizeof (crypt_dir), "%s/.%s_encfs", dirname, basename);
+		}
+		free (dirname);
+		// non-zero indicates a terrible error
+		if (encfs_stash_new (crypt_dir, m_mount_dir, gtk_entry_get_text (GTK_ENTRY (m_magic)))) {
+			GtkWidget *dialog = 
+				gtk_message_dialog_new (GTK_WINDOW (m_window),
+						GTK_DIALOG_MODAL,
+						GTK_MESSAGE_ERROR,
+						GTK_BUTTONS_CANCEL,
+						"Failed to create encfs stash -- SOMETHING went wrong...");
+			gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+			gtk_dialog_run (GTK_DIALOG (dialog));
+			gtk_widget_destroy (dialog);
+		} else {
+			add_crypt_point (crypt_dir, m_mount_dir);
+			spawn_filemanager (m_mount_dir);
+		}
 		g_free (m_mount_dir);
 		m_mount_dir = NULL;
 	

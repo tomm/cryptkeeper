@@ -334,7 +334,7 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 	return TRUE;
 }
 
-static const char *author_names[] = { "Tom Morton" };
+static const char *author_names[] = { "Tom Morton <t-morton@blueyonder.co.uk>" };
 
 static void open_config_dialog ()
 {
@@ -344,7 +344,7 @@ static void open_config_dialog ()
 static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
-	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.3.666");
+	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.4.666");
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		"This program is free software; you can redistribute it and/or modify it\n"
@@ -365,6 +365,10 @@ static void sico_right_button_activated ()
 
 	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT, NULL);
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_about_dialog), NULL);
+	gtk_menu_append (GTK_MENU (menu), mi);
+
+	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (gtk_exit), NULL);
 	gtk_menu_append (GTK_MENU (menu), mi);
 
 	gtk_widget_show_all (menu);

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cryptkeeper
+Exec=cryptkeeper
+Icon=cryptkeeper
+Categories=Application;System;
+Terminal=false
+Type=Application
+StartupNotify=false

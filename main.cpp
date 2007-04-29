@@ -18,6 +18,11 @@
 #include "ConfigDialog.h"
 #include "encfs_wrapper.h"
 
+#if GTK_MINOR_VERSION < 10
+# include "gtkstatusicon.h"
+#endif
+
+
 class CryptPoint {
 	private:
 	char *crypt_dir, *mount_dir;
@@ -344,7 +349,7 @@ static void open_config_dialog ()
 static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
-	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.4.666");
+	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.5.666");
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		"This program is free software; you can redistribute it and/or modify it\n"

@@ -22,10 +22,10 @@ static void on_forward_clicked (GtkButton *button, CreateStashWizard *wizard)
 	wizard->GoForward ();
 }
 
-static void on_back_clicked (GtkButton *button, CreateStashWizard *wizard)
+/*static void on_back_clicked (GtkButton *button, CreateStashWizard *wizard)
 {
 	wizard->GoBack ();
-}
+}*/
 
 CreateStashWizard::CreateStashWizard ()
 {

@@ -4,14 +4,18 @@ LIBS = -g `pkg-config --libs gtk+-2.0 gconf-2.0`
 CFLAGS = -g `pkg-config --cflags gtk+-2.0 gconf-2.0` -O2 -Wall
 OPTIONS = 
 
-VERSION="0.4.666"
+VERSION="0.5.666"
 
 PREFIX=/usr
 
-SRCS = main.cpp CreateStashWizard.cpp ImportStashWizard.cpp ConfigDialog.cpp \
-	PasswordChangeDialog.cpp encfs_wrapper.cpp
+CXXSRCS = main.cpp CreateStashWizard.cpp ImportStashWizard.cpp ConfigDialog.cpp \
+	PasswordChangeDialog.cpp encfs_wrapper.cpp 
 
-OBJS = $(SRCS:.cpp=.o)
+CSRCS = gtkstatusicon.c gtktrayicon-x11.c
+
+SRCS = $(CXXSRCS) $(CSRCS)
+
+OBJS = $(CXXSRCS:.cpp=.o) $(CSRCS:.c=.o)
 
 .cpp.o:
 	$(CXX) $(CFLAGS) $(OPTIONS) -c $<

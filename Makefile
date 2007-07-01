@@ -4,7 +4,7 @@ LIBS = -g `pkg-config --libs gtk+-2.0 gconf-2.0`
 CFLAGS = -g `pkg-config --cflags gtk+-2.0 gconf-2.0` -O2 -Wall
 OPTIONS = 
 
-VERSION="0.5.666"
+VERSION="0.6.666"
 
 PREFIX=/usr
 

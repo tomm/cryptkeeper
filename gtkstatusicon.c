@@ -25,6 +25,9 @@
  *	Tor Lillqvist <tml@novell.com>
  */
 
+
+#include <gtk/gtk.h>
+
 #if GTK_MINOR_VERSION < 10
 
 //#include <config.h>

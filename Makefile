@@ -38,7 +38,7 @@ srcball:
 	cp COPYING cryptkeeper-$(VERSION)
 	cp cryptkeeper.png cryptkeeper-$(VERSION)
 	cp cryptkeeper_password cryptkeeper-$(VERSION)
-	cp *.cpp *.h cryptkeeper-$(VERSION)
+	cp *.c *.cpp *.h cryptkeeper-$(VERSION)
 	tar cvzf cryptkeeper-$(VERSION).tar.gz cryptkeeper-$(VERSION)
 	rm -rf cryptkeeper-$(VERSION)
 

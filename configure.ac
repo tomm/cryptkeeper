@@ -1,0 +1,27 @@
+# Process this file with autoconf to create configure.
+
+AC_INIT([cryptkeeper], [0.6.666], [t-morton@blueyonder.co.uk])
+AC_PREREQ(2.59)
+AC_CONFIG_HEADERS([config.h])
+
+AM_INIT_AUTOMAKE([1.9 foreign])
+
+AC_PROG_CC
+AC_PROG_CXX
+AC_C_CONST
+AC_STDC_HEADERS
+
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.8)
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.2)
+PKG_CHECK_MODULES(GCONF, gconf-2.0)
+#AC_SUBST(GTK_CFLAGS)
+#AC_SUBST(GTK_LIBS)
+
+CFLAGS="-Wall -O2 $GTK_CFLAGS $GLIB_CFLAGS $GCONF_CFLAGS"
+CXXFLAGS="$CFLAGS"
+LIBS="$GTK_LIBS $GLIB_LIBS $GCONF_LIBS"
+
+#AC_PROG_LIBTOOL
+
+AC_CONFIG_FILES([Makefile src/Makefile])
+AC_OUTPUT

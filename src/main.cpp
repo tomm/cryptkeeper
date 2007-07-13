@@ -12,6 +12,10 @@
 #include <assert.h>
 #include <gconf/gconf-client.h>
 
+#include "../config.h"
+#include "../gettext.h"
+#define _(String) gettext (String)
+
 #include "cryptkeeper.h"
 #include "CreateStashWizard.h"
 #include "ImportStashWizard.h"
@@ -441,7 +445,7 @@ static void sico_activated (GtkWidget *data)
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_import_stash_clicked), NULL);
 	gtk_menu_append (stashes_popup_menu, mi);
 	
-	mi = gtk_menu_item_new_with_label ("Create new stash");
+	mi = gtk_menu_item_new_with_label (_("Create new stash"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_create_new_stash_clicked), NULL);
 	gtk_menu_append (stashes_popup_menu, mi);
 	
@@ -559,6 +563,10 @@ static void on_change_conf_stashes (GConfClient *client, guint cnxn_id, GConfEnt
 
 int main (int argc, char *argv[])
 {
+	setlocale (LC_ALL, "");
+	bindtextdomain (PACKAGE, LOCALEDIR);
+	textdomain (PACKAGE);
+
 	signal (SIGCHLD, on_sigchld);
 	
 	gtk_init (&argc, &argv);

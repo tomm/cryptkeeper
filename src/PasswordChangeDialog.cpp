@@ -34,8 +34,8 @@ bool PasswordChangeDialog::Apply ()
 					GTK_DIALOG_MODAL,
 					GTK_MESSAGE_ERROR,
 					GTK_BUTTONS_OK,
-					"The new passwords do not match\nTry again");
-		gtk_window_set_title (GTK_WINDOW (dialog), "Ooops!");
+					_("The new passwords do not match\nTry again"));
+		gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		return false;
@@ -45,13 +45,13 @@ bool PasswordChangeDialog::Apply ()
 	int status = encfs_stash_change_password (m_cryptDir, old_pass, new_pass1, &output);
 	if (status) {
 		char buf2[1024];
-		snprintf (buf2, sizeof (buf2), "Error setting password:\n%s", output);
+		snprintf (buf2, sizeof (buf2), _("Error setting password:\n%s"), output);
 		GtkWidget *dialog = gtk_message_dialog_new (NULL,
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_ERROR,
 				GTK_BUTTONS_CANCEL,
 				buf2);
-		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+		gtk_window_set_title (GTK_WINDOW (dialog), _("Error"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		free (output);
@@ -61,8 +61,8 @@ bool PasswordChangeDialog::Apply ()
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_INFO,
 				GTK_BUTTONS_CLOSE,
-				"Password changed");
-		gtk_window_set_title (GTK_WINDOW (dialog), "Information");
+				_("Password changed"));
+		gtk_window_set_title (GTK_WINDOW (dialog), _("Information"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		free (output);
@@ -76,7 +76,7 @@ PasswordChangeDialog::PasswordChangeDialog (const char *crypt_dir, const char *m
 	m_cryptDir = strdup (crypt_dir);
 
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_title (GTK_WINDOW (m_window), "Change password");
+	gtk_window_set_title (GTK_WINDOW (m_window), _("Change password"));
 	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
 	g_signal_connect (G_OBJECT (m_window), "delete-event", G_CALLBACK (on_window_close), this);
 
@@ -87,7 +87,7 @@ PasswordChangeDialog::PasswordChangeDialog (const char *crypt_dir, const char *m
 	gtk_box_pack_end (GTK_BOX (vbox), buttonBox, FALSE, FALSE, UI_SPACING);
 
 		char buf[512];
-		snprintf (buf, sizeof (buf), "Enter current password for %s:", mount_dir);
+		snprintf (buf, sizeof (buf), _("Enter the current password for %s:"), mount_dir);
 		w = gtk_label_new (buf);
 		gtk_box_pack_start (GTK_BOX (vbox), w, FALSE, FALSE, UI_SPACING);
 		
@@ -95,14 +95,14 @@ PasswordChangeDialog::PasswordChangeDialog (const char *crypt_dir, const char *m
 		gtk_entry_set_visibility (GTK_ENTRY (m_oldPass), FALSE);
 		gtk_box_pack_start (GTK_BOX (vbox), m_oldPass, FALSE, FALSE, UI_SPACING);
 
-		w = gtk_label_new ("Enter new password");
+		w = gtk_label_new (_("Enter a new password"));
 		gtk_box_pack_start (GTK_BOX (vbox), w, FALSE, FALSE, UI_SPACING);
 		
 		m_newPass1 = gtk_entry_new ();
 		gtk_entry_set_visibility (GTK_ENTRY (m_newPass1), FALSE);
 		gtk_box_pack_start (GTK_BOX (vbox), m_newPass1, FALSE, FALSE, UI_SPACING);
 
-		w = gtk_label_new ("Enter new password again to confirm");
+		w = gtk_label_new (_("Enter the new password again to confirm"));
 		gtk_box_pack_start (GTK_BOX (vbox), w, FALSE, FALSE, UI_SPACING);
 		
 		m_newPass2 = gtk_entry_new ();

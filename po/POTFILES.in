@@ -1,2 +1,6 @@
 # List of source files which contain translatable strings.
 src/main.cpp
+src/ConfigDialog.cpp
+src/PasswordChangeDialog.cpp
+src/CreateStashWizard.cpp
+src/ImportStashWizard.cpp

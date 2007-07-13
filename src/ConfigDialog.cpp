@@ -22,7 +22,7 @@ ConfigDialog::ConfigDialog ()
 
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
-	gtk_window_set_title (GTK_WINDOW (m_window), "Cryptkeeper Preferences");
+	gtk_window_set_title (GTK_WINDOW (m_window), _("Cryptkeeper Preferences"));
 
 	g_signal_connect(G_OBJECT(m_window), "delete-event", G_CALLBACK(on_window_close), this);
 
@@ -37,14 +37,14 @@ ConfigDialog::ConfigDialog ()
 		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
 
 		w = gtk_label_new (NULL);
-		gtk_label_set_markup (GTK_LABEL (w), "<span weight=\"bold\" size=\"large\">Cryptkeeper Preferences</span>");
+		gtk_label_set_markup (GTK_LABEL (w), _("<span weight=\"bold\" size=\"large\">Cryptkeeper Preferences</span>"));
 		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
 	}
 
 	hbox = gtk_hbox_new (FALSE, UI_SPACING);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, UI_SPACING);
 
-	GtkWidget *label = gtk_label_new ("File browser:");
+	GtkWidget *label = gtk_label_new (_("File browser:"));
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, UI_SPACING);
 
 	m_filemanager_entry = gtk_entry_new ();
@@ -55,7 +55,7 @@ ConfigDialog::ConfigDialog ()
 		hbox = gtk_hbox_new (FALSE, UI_SPACING);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, UI_SPACING);
 
-		w = gtk_label_new ("Unmount after idle (minutes)");
+		w = gtk_label_new (_("Unmount after idle (minutes)"));
 		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
 
 		m_idle_spinbutton = gtk_spin_button_new_with_range (0.0, 60.0, 1.0);

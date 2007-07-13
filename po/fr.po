@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2007-07-13 03:41+0100\n"
+"POT-Creation-Date: 2007-07-13 04:26+0100\n"
 "PO-Revision-Date: 2007-07-12 19:16+0100\n"
 "Last-Translator: tom <tom@mute.arctic.circle.candy.collective>\n"
 "Language-Team: French\n"
@@ -16,6 +16,212 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:448
+#: src/main.cpp:84
+msgid ""
+"Cryptkeeper cannot access fuse and so cannot start.\n"
+"Check that fuse is installed and that you are a member of the fuse group."
+msgstr ""
+
+#: src/main.cpp:100
+msgid ""
+"Cryptkeeper cannot run encfs.\n"
+"Check that encfs is installed and try again."
+msgstr ""
+
+#: src/main.cpp:102 src/PasswordChangeDialog.cpp:54
+#: src/CreateStashWizard.cpp:198
+msgid "Error"
+msgstr ""
+
+#: src/main.cpp:132
+msgid ""
+"The stash couldn't be unmounted.\n"
+"Perhaps it is in use."
+msgstr ""
+
+#: src/main.cpp:144
+msgid ""
+"The stash couldn't be mounted.\n"
+"Maybe invalid password."
+msgstr ""
+
+#: src/main.cpp:159
+msgid ""
+"This stash is currently not available.\n"
+"It may be located on a removable disk, or has been deleted"
+msgstr ""
+
+#: src/main.cpp:216
+#, c-format
+msgid ""
+"The crypt directory %s does not exist.\n"
+"Perhaps it is on a removable disk, or has been deleted."
+msgstr ""
+
+#: src/main.cpp:240
+#, c-format
+msgid ""
+"Crypt directory: %s\n"
+"Mount directory: %s\n"
+"%s"
+msgstr ""
+
+#: src/main.cpp:278
+#, c-format
+msgid ""
+"Are you sure you want to remove the stash at:\n"
+"%s"
+msgstr ""
+
+#: src/main.cpp:293
+#, c-format
+msgid ""
+"Do you want to permanently erase the stash at:\n"
+"%s"
+msgstr ""
+
+#: src/main.cpp:322 src/PasswordChangeDialog.cpp:65
+msgid "Information"
+msgstr ""
+
+#: src/main.cpp:326 src/PasswordChangeDialog.cpp:79
+msgid "Change password"
+msgstr ""
+
+#: src/main.cpp:330
+msgid "Delete stash"
+msgstr ""
+
+#: src/main.cpp:356
+msgid ""
+"This program is free software; you can redistribute it and/or modify it\n"
+"under the terms of the GNU General Public License version 2, as published\n"
+"by the Free Software Foundation."
+msgstr ""
+
+#: src/main.cpp:392
+msgid "<b>Encrypted stashes:</b>"
+msgstr ""
+
+#: src/main.cpp:440
+msgid "Import stash"
+msgstr ""
+
+#: src/main.cpp:444
 msgid "Create new stash"
+msgstr ""
+
+#: src/ConfigDialog.cpp:25
+msgid "Cryptkeeper Preferences"
+msgstr ""
+
+#: src/ConfigDialog.cpp:40
+msgid "<span weight=\"bold\" size=\"large\">Cryptkeeper Preferences</span>"
+msgstr ""
+
+#: src/ConfigDialog.cpp:47
+msgid "File browser:"
+msgstr ""
+
+#: src/ConfigDialog.cpp:58
+msgid "Unmount after idle (minutes)"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:37
+msgid ""
+"The new passwords do not match\n"
+"Try again"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:38 src/CreateStashWizard.cpp:142
+#: src/CreateStashWizard.cpp:161 src/CreateStashWizard.cpp:173
+#: src/ImportStashWizard.cpp:147 src/ImportStashWizard.cpp:162
+#: src/ImportStashWizard.cpp:179
+msgid "Ooops!"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:48
+#, c-format
+msgid ""
+"Error setting password:\n"
+"%s"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:64
+msgid "Password changed"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:90
+#, c-format
+msgid "Enter the current password for %s:"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:98
+msgid "Enter a new password"
+msgstr ""
+
+#: src/PasswordChangeDialog.cpp:105
+msgid "Enter the new password again to confirm"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:34
+msgid "Create a new encrypted directory"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:73
+msgid "Pick a name and location of your new stash"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:81
+msgid "Enter a password for your new stash"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:88
+msgid "Enter the password again"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:96 src/ImportStashWizard.cpp:99
+msgid "Done!"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:141
+msgid "You need to enter a name"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:160
+msgid ""
+"The passwords do not match\n"
+"Try again"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:172
+msgid "You need to enter a password"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:197
+msgid "Failed to create encfs stash -- SOMETHING went wrong..."
+msgstr ""
+
+#: src/ImportStashWizard.cpp:34
+msgid "Import an Encfs stash"
+msgstr ""
+
+#: src/ImportStashWizard.cpp:75
+msgid "Selecting an existing encrypted stash directory (eg ~/.crypt)"
+msgstr ""
+
+#: src/ImportStashWizard.cpp:84
+msgid "Pick name and location at which to mount the stash"
+msgstr ""
+
+#: src/ImportStashWizard.cpp:146
+msgid "You must select a directory"
+msgstr ""
+
+#: src/ImportStashWizard.cpp:161
+msgid "The selected directory is not an encfs stash"
+msgstr ""
+
+#: src/ImportStashWizard.cpp:178
+msgid "You must enter a name"
 msgstr ""

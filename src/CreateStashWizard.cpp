@@ -31,7 +31,7 @@ CreateStashWizard::CreateStashWizard ()
 {
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
-	gtk_window_set_title (GTK_WINDOW (m_window), "Create new encrypted directory");
+	gtk_window_set_title (GTK_WINDOW (m_window), _("Create a new encrypted directory"));
 
 	g_signal_connect(G_OBJECT(m_window), "delete-event", G_CALLBACK(on_window_close), this);
 
@@ -70,7 +70,7 @@ void CreateStashWizard::UpdateStageUI ()
 
 	switch (m_stage) {
 		case WIZ_START:
-			w = gtk_label_new ("Pick name and location of your new stash");
+			w = gtk_label_new (_("Pick a name and location of your new stash"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			
 			m_magic = gtk_file_chooser_widget_new (GTK_FILE_CHOOSER_ACTION_SAVE);
@@ -78,14 +78,14 @@ void CreateStashWizard::UpdateStageUI ()
 
 			break;
 		case WIZ_PASSWD:
-			w = gtk_label_new ("Enter a password for your new stash");
+			w = gtk_label_new (_("Enter a password for your new stash"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 		
 			m_magic = gtk_entry_new ();
 			gtk_entry_set_visibility (GTK_ENTRY (m_magic), FALSE);
 			gtk_box_pack_start (GTK_BOX (m_contents), m_magic, FALSE, FALSE, UI_SPACING);
 
-			w = gtk_label_new ("Enter the password again");
+			w = gtk_label_new (_("Enter the password again"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 		
 			m_magic2 = gtk_entry_new ();
@@ -93,7 +93,7 @@ void CreateStashWizard::UpdateStageUI ()
 			gtk_box_pack_start (GTK_BOX (m_contents), m_magic2, FALSE, FALSE, UI_SPACING);
 			break;
 		case WIZ_END:
-			w = gtk_label_new ("Done!");
+			w = gtk_label_new (_("Done!"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			break;
 		default:
@@ -138,8 +138,8 @@ void CreateStashWizard::GoForward ()
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
-						"You need to enter a name");
-			gtk_window_set_title (GTK_WINDOW (dialog), "Ooops!");
+						_("You need to enter a name"));
+			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
@@ -157,8 +157,8 @@ void CreateStashWizard::GoForward ()
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
-						"The passwords do not match\nTry again");
-			gtk_window_set_title (GTK_WINDOW (dialog), "Ooops!");
+						_("The passwords do not match\nTry again"));
+			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
@@ -169,8 +169,8 @@ void CreateStashWizard::GoForward ()
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
-						"You need to enter a password");
-			gtk_window_set_title (GTK_WINDOW (dialog), "Ooops!");
+						_("You need to enter a password"));
+			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
@@ -194,8 +194,8 @@ void CreateStashWizard::GoForward ()
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_CANCEL,
-						"Failed to create encfs stash -- SOMETHING went wrong...");
-			gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+						_("Failed to create encfs stash -- SOMETHING went wrong..."));
+			gtk_window_set_title (GTK_WINDOW (dialog), _("Error"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 		} else {

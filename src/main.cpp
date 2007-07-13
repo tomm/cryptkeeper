@@ -12,10 +12,6 @@
 #include <assert.h>
 #include <gconf/gconf-client.h>
 
-#include "../config.h"
-#include "../gettext.h"
-#define _(String) gettext (String)
-
 #include "cryptkeeper.h"
 #include "CreateStashWizard.h"
 #include "ImportStashWizard.h"
@@ -85,8 +81,8 @@ void check_requirements ()
 					GTK_DIALOG_MODAL,
 					GTK_MESSAGE_ERROR,
 					GTK_BUTTONS_OK,
-					"Cryptkeeper cannot access fuse and so cannot start.\n"
-					"Check that fuse is installed and that you are a member of the fuse group.");
+					_("Cryptkeeper cannot access fuse and so cannot start.\n"
+					"Check that fuse is installed and that you are a member of the fuse group."));
 		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
@@ -101,9 +97,9 @@ void check_requirements ()
 					GTK_DIALOG_MODAL,
 					GTK_MESSAGE_ERROR,
 					GTK_BUTTONS_OK,
-					"Cryptkeeper cannot run encfs.\n"
-					"Check that encfs is installed and try again.");
-		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+					_("Cryptkeeper cannot run encfs.\n"
+					"Check that encfs is installed and try again."));
+		gtk_window_set_title (GTK_WINDOW (dialog), _("Error"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		exit (0);
@@ -133,7 +129,7 @@ static void moan_cant_unmount ()
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_ERROR,
 			GTK_BUTTONS_CANCEL,
-			"The stash couldn't be unmounted.\nPerhaps it is in use.");
+			_("The stash couldn't be unmounted.\nPerhaps it is in use."));
 	gtk_window_set_title (GTK_WINDOW (dialog), "Error");
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
@@ -145,7 +141,7 @@ static void moan_cant_mount ()
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_ERROR,
 			GTK_BUTTONS_CANCEL,
-			"The stash couldn't be mounted.\nMaybe invalid password.");
+			_("The stash couldn't be mounted.\nMaybe invalid password."));
 	gtk_window_set_title (GTK_WINDOW (dialog), "Error");
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
@@ -160,8 +156,8 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_ERROR,
 				GTK_BUTTONS_CANCEL,
-				"This stash is currently not available.\n"
-				"It may be located on a removable disk, or has been deleted");
+				_("This stash is currently not available.\n"
+				"It may be located on a removable disk, or has been deleted"));
 		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
@@ -217,8 +213,8 @@ static bool test_crypt_dir_and_moan (const char *crypt_dir)
 	if (isdir (crypt_dir)) return false;
 	else {
 		char buf[1024];
-		snprintf (buf, sizeof (buf), "The crypt directory %s does not exist.\n"
-				"Perhaps it is on a removable disk, or has been deleted.",
+		snprintf (buf, sizeof (buf), _("The crypt directory %s does not exist.\n"
+				"Perhaps it is on a removable disk, or has been deleted."),
 				crypt_dir);
 		GtkWidget *dialog = gtk_message_dialog_new (NULL,
 				GTK_DIALOG_MODAL,
@@ -241,7 +237,7 @@ gboolean on_click_stash_info (GtkMenuItem *mi, gpointer data)
 	encfs_stash_get_info (cryptPoints[idx].GetCryptDir (), &msg);
 	if (msg) {
 		char buf[2048];
-		snprintf (buf, sizeof (buf), "Crypt directory: %s\nMount directory: %s\n%s",
+		snprintf (buf, sizeof (buf), _("Crypt directory: %s\nMount directory: %s\n%s"),
 				cryptPoints[idx].GetCryptDir (), 
 				cryptPoints[idx].GetMountDir (),
 				msg);
@@ -279,7 +275,7 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_QUESTION,
 			GTK_BUTTONS_OK_CANCEL,
-			"Are you sure you want to remove the stash at:\n%s",
+			_("Are you sure you want to remove the stash at:\n%s"),
 			cryptPoints[idx].GetMountDir ());
 	gtk_window_set_title (GTK_WINDOW (dialog), "Confirm");
 	int result = gtk_dialog_run (GTK_DIALOG (dialog));
@@ -294,7 +290,7 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_WARNING,
 				GTK_BUTTONS_YES_NO,
-				"Do you want to permanently erase the stash at:\n%s",
+				_("Do you want to permanently erase the stash at:\n%s"),
 				cryptPoints[idx].GetCryptDir ());
 		gtk_window_set_title (GTK_WINDOW (dialog), "Confirm");
 		int result = gtk_dialog_run (GTK_DIALOG (dialog));
@@ -323,15 +319,15 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 
 	GtkWidget *menu = gtk_menu_new ();
 
-	GtkWidget *mi = gtk_menu_item_new_with_label ("Info");
+	GtkWidget *mi = gtk_menu_item_new_with_label (_("Information"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_click_stash_info), GINT_TO_POINTER (item_no));
 	gtk_menu_append (menu,  mi);
 	
-	mi = gtk_menu_item_new_with_label ("Change password");
+	mi = gtk_menu_item_new_with_label (_("Change password"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_click_change_stash_password), GINT_TO_POINTER (item_no));
 	gtk_menu_append (menu,  mi);
 	
-	mi = gtk_menu_item_new_with_label ("Delete stash");
+	mi = gtk_menu_item_new_with_label (_("Delete stash"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_click_delete_stash), GINT_TO_POINTER (item_no));
 	gtk_menu_append (menu,  mi);
 
@@ -357,9 +353,9 @@ static void open_about_dialog ()
 	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.6.666");
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
-		"This program is free software; you can redistribute it and/or modify it\n"
+		_("This program is free software; you can redistribute it and/or modify it\n"
 		"under the terms of the GNU General Public License version 2, as published\n"
-		"by the Free Software Foundation.");
+		"by the Free Software Foundation."));
 	gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog), "Hasta la victoria siempre!");
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
@@ -393,7 +389,7 @@ static void sico_activated (GtkWidget *data)
 
 	GtkWidget *mi = gtk_menu_item_new ();
 	GtkWidget *w = gtk_label_new (NULL);
-	gtk_label_set_markup (GTK_LABEL (w), "<b>Encrypted stashes:</b>");
+	gtk_label_set_markup (GTK_LABEL (w), _("<b>Encrypted stashes:</b>"));
 	gtk_container_add (GTK_CONTAINER (mi), w);
 	gtk_widget_set_sensitive (mi, FALSE);
 	gtk_menu_append (stashes_popup_menu, mi);
@@ -441,7 +437,7 @@ static void sico_activated (GtkWidget *data)
 	mi = gtk_separator_menu_item_new ();
 	gtk_menu_append (stashes_popup_menu, mi);
 
-	mi = gtk_menu_item_new_with_label ("Import stash");
+	mi = gtk_menu_item_new_with_label (_("Import stash"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_import_stash_clicked), NULL);
 	gtk_menu_append (stashes_popup_menu, mi);
 	

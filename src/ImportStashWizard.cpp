@@ -31,7 +31,7 @@ ImportStashWizard::ImportStashWizard ()
 {
 	m_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_container_set_border_width (GTK_CONTAINER (m_window), UI_WINDOW_BORDER);
-	gtk_window_set_title (GTK_WINDOW (m_window), _("Import an Encfs stash"));
+	gtk_window_set_title (GTK_WINDOW (m_window), _("Import an Encfs encrypted folder"));
 
 	g_signal_connect(G_OBJECT(m_window), "delete-event", G_CALLBACK(on_window_close), this);
 
@@ -72,7 +72,7 @@ void ImportStashWizard::UpdateStageUI ()
 
 	switch (m_stage) {
 		case WIZ_START:
-			w = gtk_label_new (_("Selecting an existing encrypted stash directory (eg ~/.crypt)"));
+			w = gtk_label_new (_("Select an existing EncFS encrypted folder (eg ~/.crypt)"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			
 			m_magic = gtk_file_chooser_widget_new (GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -81,7 +81,7 @@ void ImportStashWizard::UpdateStageUI ()
 
 			break;
 		case WIZ_PASSWD:
-			w = gtk_label_new (_("Pick name and location at which to mount the stash"));
+			w = gtk_label_new (_("Choose the name and location at which you want the EncFS folder to be mounted"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			
 			// Start mount point locator in parent of crypt dir, because that
@@ -96,7 +96,7 @@ void ImportStashWizard::UpdateStageUI ()
 
 			break;
 		case WIZ_END:
-			w = gtk_label_new (_("Done!"));
+			w = gtk_label_new (_("The EncFS encrypted folder has been successfully imported into Cryptkeeper"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			break;
 		default:
@@ -139,12 +139,12 @@ void ImportStashWizard::GoForward ()
 		m_crypt_dir = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (m_magic));
 		if (m_crypt_dir == NULL) {
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
-						_("You must select a directory"));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
+						"<span weight=\"bold\" size=\"larger\">%s</span>",
+						_("You must select a folder"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
@@ -154,12 +154,12 @@ void ImportStashWizard::GoForward ()
 		struct stat blah;
 		if (stat (buf, &blah) == -1) {
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
-						_("The selected directory is not an encfs stash"));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
+						"<span weight=\"bold\" size=\"larger\">%s</span>",
+						_("The selected folder is not an EncFS encrypted folder"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			g_free (m_crypt_dir);
@@ -171,12 +171,12 @@ void ImportStashWizard::GoForward ()
 		m_mount_dir = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (m_magic));
 		if (m_mount_dir == NULL) {
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
+						"<span weight=\"bold\" size=\"larger\">%s</span>",
 						_("You must enter a name"));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;

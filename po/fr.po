@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2007-07-13 04:26+0100\n"
+"POT-Creation-Date: 2007-07-15 19:57+0100\n"
 "PO-Revision-Date: 2007-07-12 19:16+0100\n"
 "Last-Translator: tom <tom@mute.arctic.circle.candy.collective>\n"
 "Language-Team: French\n"
@@ -16,49 +16,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:84
+#: src/main.cpp:85
+msgid "Cryptkeeper cannot access fuse and so cannot start"
+msgstr ""
+
+#: src/main.cpp:86
 msgid ""
-"Cryptkeeper cannot access fuse and so cannot start.\n"
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
 
-#: src/main.cpp:100
-msgid ""
-"Cryptkeeper cannot run encfs.\n"
-"Check that encfs is installed and try again."
+#: src/main.cpp:102
+msgid "Cryptkeeper cannot find EncFS"
 msgstr ""
 
-#: src/main.cpp:102 src/PasswordChangeDialog.cpp:54
-#: src/CreateStashWizard.cpp:198
-msgid "Error"
+#: src/main.cpp:103
+msgid "Check that EncFS is installed and try again."
 msgstr ""
 
-#: src/main.cpp:132
-msgid ""
-"The stash couldn't be unmounted.\n"
-"Perhaps it is in use."
+#: src/main.cpp:134
+msgid "The stash could not be unmounted. Perhaps it is in use."
 msgstr ""
 
-#: src/main.cpp:144
-msgid ""
-"The stash couldn't be mounted.\n"
-"Maybe invalid password."
+#: src/main.cpp:146
+msgid "The stash could not be mounted. Invalid password?"
 msgstr ""
 
-#: src/main.cpp:159
-msgid ""
-"This stash is currently not available.\n"
-"It may be located on a removable disk, or has been deleted"
+#: src/main.cpp:160
+msgid "This encrypted folder is currently not available"
 msgstr ""
 
-#: src/main.cpp:216
-#, c-format
-msgid ""
-"The crypt directory %s does not exist.\n"
-"Perhaps it is on a removable disk, or has been deleted."
+#: src/main.cpp:161
+msgid "It may be located on a removable disk, or has been deleted."
 msgstr ""
 
-#: src/main.cpp:240
+#: src/main.cpp:229
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -66,162 +57,152 @@ msgid ""
 "%s"
 msgstr ""
 
+#: src/main.cpp:263
+msgid "Are you sure you want to remove the encrypted folder:"
+msgstr ""
+
 #: src/main.cpp:278
-#, c-format
-msgid ""
-"Are you sure you want to remove the stash at:\n"
-"%s"
+msgid "Do you want to permanently erase the encrypted data:"
 msgstr ""
 
-#: src/main.cpp:293
-#, c-format
-msgid ""
-"Do you want to permanently erase the stash at:\n"
-"%s"
-msgstr ""
-
-#: src/main.cpp:322 src/PasswordChangeDialog.cpp:65
+#: src/main.cpp:306
 msgid "Information"
 msgstr ""
 
-#: src/main.cpp:326 src/PasswordChangeDialog.cpp:79
+#: src/main.cpp:310 src/PasswordChangeDialog.cpp:78
 msgid "Change password"
 msgstr ""
 
-#: src/main.cpp:330
-msgid "Delete stash"
+#: src/main.cpp:314
+msgid "Delete encrypted folder"
 msgstr ""
 
-#: src/main.cpp:356
+#: src/main.cpp:340
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 2, as published\n"
 "by the Free Software Foundation."
 msgstr ""
 
-#: src/main.cpp:392
-msgid "<b>Encrypted stashes:</b>"
+#: src/main.cpp:376
+msgid "<b>Encrypted folders:</b>"
 msgstr ""
 
-#: src/main.cpp:440
-msgid "Import stash"
+#: src/main.cpp:424
+msgid "Import EncFS folder"
 msgstr ""
 
-#: src/main.cpp:444
-msgid "Create new stash"
+#: src/main.cpp:428
+msgid "New encrypted folder"
 msgstr ""
 
-#: src/ConfigDialog.cpp:25
+#: src/ConfigDialog.cpp:26 src/ConfigDialog.cpp:43
 msgid "Cryptkeeper Preferences"
 msgstr ""
 
-#: src/ConfigDialog.cpp:40
-msgid "<span weight=\"bold\" size=\"large\">Cryptkeeper Preferences</span>"
-msgstr ""
-
-#: src/ConfigDialog.cpp:47
+#: src/ConfigDialog.cpp:51
 msgid "File browser:"
 msgstr ""
 
-#: src/ConfigDialog.cpp:58
-msgid "Unmount after idle (minutes)"
+#: src/ConfigDialog.cpp:62
+msgid "Unmount after idle (minutes):"
 msgstr ""
 
-#: src/PasswordChangeDialog.cpp:37
-msgid ""
-"The new passwords do not match\n"
-"Try again"
+#: src/PasswordChangeDialog.cpp:38
+msgid "The new passwords do not match"
 msgstr ""
 
-#: src/PasswordChangeDialog.cpp:38 src/CreateStashWizard.cpp:142
-#: src/CreateStashWizard.cpp:161 src/CreateStashWizard.cpp:173
-#: src/ImportStashWizard.cpp:147 src/ImportStashWizard.cpp:162
-#: src/ImportStashWizard.cpp:179
-msgid "Ooops!"
-msgstr ""
-
-#: src/PasswordChangeDialog.cpp:48
-#, c-format
-msgid ""
-"Error setting password:\n"
-"%s"
+#: src/PasswordChangeDialog.cpp:52
+msgid "Error setting password:"
 msgstr ""
 
 #: src/PasswordChangeDialog.cpp:64
 msgid "Password changed"
 msgstr ""
 
-#: src/PasswordChangeDialog.cpp:90
+#: src/PasswordChangeDialog.cpp:89
 #, c-format
 msgid "Enter the current password for %s:"
 msgstr ""
 
-#: src/PasswordChangeDialog.cpp:98
+#: src/PasswordChangeDialog.cpp:97
 msgid "Enter a new password"
 msgstr ""
 
-#: src/PasswordChangeDialog.cpp:105
+#: src/PasswordChangeDialog.cpp:104
 msgid "Enter the new password again to confirm"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:34
+#: src/CreateStashWizard.cpp:35
 msgid "Create a new encrypted directory"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:73
-msgid "Pick a name and location of your new stash"
+#: src/CreateStashWizard.cpp:74
+msgid "Choose a name and location for your new encrypted folder"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:81
-msgid "Enter a password for your new stash"
+#: src/CreateStashWizard.cpp:83
+msgid "Enter a password for your new encrypted folder"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:88
+#: src/CreateStashWizard.cpp:91
 msgid "Enter the password again"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:96 src/ImportStashWizard.cpp:99
-msgid "Done!"
+#: src/CreateStashWizard.cpp:99
+msgid "The new encrypted folder has been sucessfully created"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:141
+#: src/CreateStashWizard.cpp:145
 msgid "You need to enter a name"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:160
+#: src/CreateStashWizard.cpp:164
 msgid ""
-"The passwords do not match\n"
+"The passwords you entered do not match\n"
 "Try again"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:172
+#: src/CreateStashWizard.cpp:176
 msgid "You need to enter a password"
 msgstr ""
 
-#: src/CreateStashWizard.cpp:197
-msgid "Failed to create encfs stash -- SOMETHING went wrong..."
+#: src/CreateStashWizard.cpp:201
+msgid "An error occurred while creating the encrypted folder"
+msgstr ""
+
+#: src/CreateStashWizard.cpp:202
+msgid ""
+"Please check that the folder name you chose was not already used, and that "
+"encfs is installed correctly."
 msgstr ""
 
 #: src/ImportStashWizard.cpp:34
-msgid "Import an Encfs stash"
+msgid "Import an Encfs encrypted folder"
 msgstr ""
 
 #: src/ImportStashWizard.cpp:75
-msgid "Selecting an existing encrypted stash directory (eg ~/.crypt)"
+msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
 msgstr ""
 
 #: src/ImportStashWizard.cpp:84
-msgid "Pick name and location at which to mount the stash"
+msgid ""
+"Choose the name and location at which you want the EncFS folder to be mounted"
 msgstr ""
 
-#: src/ImportStashWizard.cpp:146
-msgid "You must select a directory"
+#: src/ImportStashWizard.cpp:99
+msgid ""
+"The EncFS encrypted folder has been successfully imported into Cryptkeeper"
 msgstr ""
 
-#: src/ImportStashWizard.cpp:161
-msgid "The selected directory is not an encfs stash"
+#: src/ImportStashWizard.cpp:147
+msgid "You must select a folder"
 msgstr ""
 
-#: src/ImportStashWizard.cpp:178
+#: src/ImportStashWizard.cpp:162
+msgid "The selected folder is not an EncFS encrypted folder"
+msgstr ""
+
+#: src/ImportStashWizard.cpp:179
 msgid "You must enter a name"
 msgstr ""

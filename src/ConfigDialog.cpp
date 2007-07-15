@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gtk/gtk.h>
+#include <string>
 #include "ConfigDialog.h"
 #include "defines.h"
 #include "cryptkeeper.h"
@@ -37,7 +38,10 @@ ConfigDialog::ConfigDialog ()
 		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
 
 		w = gtk_label_new (NULL);
-		gtk_label_set_markup (GTK_LABEL (w), _("<span weight=\"bold\" size=\"large\">Cryptkeeper Preferences</span>"));
+
+		char buf[512];
+		snprintf (buf, sizeof(buf), "<span weight=\"bold\" size=\"large\">%s</span>", _("Cryptkeeper Preferences"));
+		gtk_label_set_markup (GTK_LABEL (w), buf);
 		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
 	}
 
@@ -55,7 +59,7 @@ ConfigDialog::ConfigDialog ()
 		hbox = gtk_hbox_new (FALSE, UI_SPACING);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, UI_SPACING);
 
-		w = gtk_label_new (_("Unmount after idle (minutes)"));
+		w = gtk_label_new (_("Unmount after idle (minutes):"));
 		gtk_box_pack_start (GTK_BOX (hbox), w, FALSE, FALSE, UI_SPACING);
 
 		m_idle_spinbutton = gtk_spin_button_new_with_range (0.0, 60.0, 1.0);

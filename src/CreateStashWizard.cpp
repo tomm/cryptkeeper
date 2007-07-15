@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "encfs_wrapper.h"
+#include <string>
 
 static gboolean on_window_close (GtkWidget *window, GdkEvent *event, CreateStashWizard *wizard)
 {
@@ -70,20 +71,22 @@ void CreateStashWizard::UpdateStageUI ()
 
 	switch (m_stage) {
 		case WIZ_START:
-			w = gtk_label_new (_("Pick a name and location of your new stash"));
+			w = gtk_label_new (_("Choose a name and location for your new encrypted folder"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			
 			m_magic = gtk_file_chooser_widget_new (GTK_FILE_CHOOSER_ACTION_SAVE);
 			gtk_box_pack_start (GTK_BOX (m_contents), m_magic, TRUE, TRUE, UI_SPACING);
+			gtk_widget_grab_focus (GTK_WIDGET (m_magic));
 
 			break;
 		case WIZ_PASSWD:
-			w = gtk_label_new (_("Enter a password for your new stash"));
+			w = gtk_label_new (_("Enter a password for your new encrypted folder"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 		
 			m_magic = gtk_entry_new ();
 			gtk_entry_set_visibility (GTK_ENTRY (m_magic), FALSE);
 			gtk_box_pack_start (GTK_BOX (m_contents), m_magic, FALSE, FALSE, UI_SPACING);
+			gtk_widget_grab_focus (GTK_WIDGET (m_magic));
 
 			w = gtk_label_new (_("Enter the password again"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
@@ -93,7 +96,7 @@ void CreateStashWizard::UpdateStageUI ()
 			gtk_box_pack_start (GTK_BOX (m_contents), m_magic2, FALSE, FALSE, UI_SPACING);
 			break;
 		case WIZ_END:
-			w = gtk_label_new (_("Done!"));
+			w = gtk_label_new (_("The new encrypted folder has been sucessfully created"));
 			gtk_box_pack_start (GTK_BOX (m_contents), w, FALSE, FALSE, UI_SPACING);
 			break;
 		default:
@@ -134,12 +137,12 @@ void CreateStashWizard::GoForward ()
 		m_mount_dir = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (m_magic));
 		if (m_mount_dir == NULL) {
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
+						"<span weight=\"bold\" size=\"larger\">%s</span>",
 						_("You need to enter a name"));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
@@ -153,24 +156,24 @@ void CreateStashWizard::GoForward ()
 			gtk_entry_set_text (GTK_ENTRY (m_magic), "");
 			gtk_entry_set_text (GTK_ENTRY (m_magic2), "");
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
-						_("The passwords do not match\nTry again"));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
+						"<span weight=\"bold\" size=\"larger\">%s</span>",
+						_("The passwords you entered do not match\nTry again"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
 		}
 		else if (strlen (pwd1) == 0) {
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_OK,
+						"<span weight=\"bold\" size=\"larger\">%s</span>",
 						_("You need to enter a password"));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
 			return;
@@ -190,14 +193,17 @@ void CreateStashWizard::GoForward ()
 		// non-zero indicates a terrible error
 		if (encfs_stash_new (crypt_dir, m_mount_dir, gtk_entry_get_text (GTK_ENTRY (m_magic)))) {
 			GtkWidget *dialog = 
-				gtk_message_dialog_new (GTK_WINDOW (m_window),
+				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 						GTK_DIALOG_MODAL,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_CANCEL,
-						_("Failed to create encfs stash -- SOMETHING went wrong..."));
-			gtk_window_set_title (GTK_WINDOW (dialog), _("Error"));
+						"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+						_("An error occurred while creating the encrypted folder"),
+						_("Please check that the folder name you chose was not already used,"
+						" and that encfs is installed correctly."));
 			gtk_dialog_run (GTK_DIALOG (dialog));
 			gtk_widget_destroy (dialog);
+			Hide ();
 		} else {
 			add_crypt_point (crypt_dir, m_mount_dir);
 			spawn_filemanager (m_mount_dir);

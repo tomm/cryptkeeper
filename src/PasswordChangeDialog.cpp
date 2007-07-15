@@ -30,12 +30,12 @@ bool PasswordChangeDialog::Apply ()
 
 	if (strcmp (new_pass1, new_pass2) != 0) {
 		GtkWidget *dialog = 
-			gtk_message_dialog_new (GTK_WINDOW (m_window),
+			gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
 					GTK_DIALOG_MODAL,
 					GTK_MESSAGE_ERROR,
 					GTK_BUTTONS_OK,
-					_("The new passwords do not match\nTry again"));
-		gtk_window_set_title (GTK_WINDOW (dialog), _("Ooops!"));
+					"<span weight=\"bold\" size=\"larger\">%s</span>",
+					_("The new passwords do not match"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		return false;
@@ -44,25 +44,24 @@ bool PasswordChangeDialog::Apply ()
 	char *output;
 	int status = encfs_stash_change_password (m_cryptDir, old_pass, new_pass1, &output);
 	if (status) {
-		char buf2[1024];
-		snprintf (buf2, sizeof (buf2), _("Error setting password:\n%s"), output);
-		GtkWidget *dialog = gtk_message_dialog_new (NULL,
+		GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_ERROR,
 				GTK_BUTTONS_CANCEL,
-				buf2);
-		gtk_window_set_title (GTK_WINDOW (dialog), _("Error"));
+				"<span weight=\"bold\" size=\"larger\">%s</span>\n%s",
+				_("Error setting password:"),
+				output);
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		free (output);
 		return false;
 	} else {
-		GtkWidget *dialog = gtk_message_dialog_new (NULL,
+		GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_INFO,
 				GTK_BUTTONS_CLOSE,
+				"<span weight=\"bold\" size=\"larger\">%s</span>",
 				_("Password changed"));
-		gtk_window_set_title (GTK_WINDOW (dialog), _("Information"));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		free (output);

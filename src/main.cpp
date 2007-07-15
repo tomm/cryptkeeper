@@ -77,13 +77,13 @@ void check_requirements ()
 	FILE *f = fopen ("/dev/fuse", "rw");
 	if (f==NULL) {
 		GtkWidget *dialog = 
-			gtk_message_dialog_new (NULL,
+			gtk_message_dialog_new_with_markup (NULL,
 					GTK_DIALOG_MODAL,
 					GTK_MESSAGE_ERROR,
 					GTK_BUTTONS_OK,
-					_("Cryptkeeper cannot access fuse and so cannot start.\n"
-					"Check that fuse is installed and that you are a member of the fuse group."));
-		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+					"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+					_("Cryptkeeper cannot access fuse and so cannot start"),
+					_("Check that fuse is installed and that you are a member of the fuse group."));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		exit (0);
@@ -91,15 +91,16 @@ void check_requirements ()
 	fclose (f);
 
 	struct stat blah;
-	if (stat ("/usr/bin/encfs", &blah) == -1) {
+	if ((stat ("/usr/bin/encfs", &blah) == -1) &&
+	    (stat ("/usr/local/bin/encfs", &blah) == -1)) {
 		GtkWidget *dialog = 
-			gtk_message_dialog_new (NULL,
+			gtk_message_dialog_new_with_markup (NULL,
 					GTK_DIALOG_MODAL,
 					GTK_MESSAGE_ERROR,
 					GTK_BUTTONS_OK,
-					_("Cryptkeeper cannot run encfs.\n"
-					"Check that encfs is installed and try again."));
-		gtk_window_set_title (GTK_WINDOW (dialog), _("Error"));
+					"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+					_("Cryptkeeper cannot find EncFS"),
+					_("Check that EncFS is installed and try again."));
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 		exit (0);
@@ -125,45 +126,50 @@ static bool unmount_cryptpoint (int idx)
 
 static void moan_cant_unmount ()
 {
-	GtkWidget *dialog = gtk_message_dialog_new (NULL,
+	GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_ERROR,
 			GTK_BUTTONS_CANCEL,
-			_("The stash couldn't be unmounted.\nPerhaps it is in use."));
-	gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+			"<span weight=\"bold\" size=\"larger\">%s</span>",
+			_("The stash could not be unmounted. Perhaps it is in use."));
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
 }
 
 static void moan_cant_mount ()
 {
-	GtkWidget *dialog = gtk_message_dialog_new (NULL,
+	GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_ERROR,
 			GTK_BUTTONS_CANCEL,
-			_("The stash couldn't be mounted.\nMaybe invalid password."));
-	gtk_window_set_title (GTK_WINDOW (dialog), "Error");
+			"<span weight=\"bold\" size=\"larger\">%s</span>",
+			_("The stash could not be mounted. Invalid password?"));
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
+}
+
+static bool test_crypt_dir_and_moan (const char *crypt_dir)
+{
+	if (isdir (crypt_dir)) return false;
+	else {
+		GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
+				GTK_DIALOG_MODAL,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CANCEL,
+				"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+				_("This encrypted folder is currently not available"),
+				_("It may be located on a removable disk, or has been deleted."));
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+		return true;
+	}
 }
 
 static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 {
 	CryptPoint *cp = &cryptPoints[idx];
 	
-	if (cp->GetIsAvailable () == FALSE) {
-		GtkWidget *dialog = gtk_message_dialog_new (NULL,
-				GTK_DIALOG_MODAL,
-				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_CANCEL,
-				_("This stash is currently not available.\n"
-				"It may be located on a removable disk, or has been deleted"));
-		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
-
-		return;
-	}
+	if (test_crypt_dir_and_moan (cp->GetCryptDir ())) return;
 
 	if (cp->GetIsMounted ()) {
 		if (!unmount_cryptpoint (idx)) moan_cant_unmount ();
@@ -208,26 +214,6 @@ static bool on_dostuff_menu_destroy ()
 	return FALSE;
 }
 
-static bool test_crypt_dir_and_moan (const char *crypt_dir)
-{
-	if (isdir (crypt_dir)) return false;
-	else {
-		char buf[1024];
-		snprintf (buf, sizeof (buf), _("The crypt directory %s does not exist.\n"
-				"Perhaps it is on a removable disk, or has been deleted."),
-				crypt_dir);
-		GtkWidget *dialog = gtk_message_dialog_new (NULL,
-				GTK_DIALOG_MODAL,
-				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_CANCEL,
-				buf);
-		gtk_window_set_title (GTK_WINDOW (dialog), "Error");
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
-		return true;
-	}
-}
-
 gboolean on_click_stash_info (GtkMenuItem *mi, gpointer data)
 {
 	int idx = GPOINTER_TO_INT (data);
@@ -236,16 +222,14 @@ gboolean on_click_stash_info (GtkMenuItem *mi, gpointer data)
 	char *msg;
 	encfs_stash_get_info (cryptPoints[idx].GetCryptDir (), &msg);
 	if (msg) {
-		char buf[2048];
-		snprintf (buf, sizeof (buf), _("Crypt directory: %s\nMount directory: %s\n%s"),
-				cryptPoints[idx].GetCryptDir (), 
-				cryptPoints[idx].GetMountDir (),
-				msg);
 		GtkWidget *dialog = gtk_message_dialog_new (NULL,
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_INFO,
 				GTK_BUTTONS_CLOSE,
-				buf);
+				_("Crypt directory: %s\nMount directory: %s\n%s"),
+				cryptPoints[idx].GetCryptDir (), 
+				cryptPoints[idx].GetMountDir (),
+				msg);
 		gtk_window_set_title (GTK_WINDOW (dialog), "Information");
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
@@ -271,32 +255,32 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 {
 	int idx = GPOINTER_TO_INT (data);
 
-	GtkWidget *dialog = gtk_message_dialog_new (NULL,
+	GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_QUESTION,
 			GTK_BUTTONS_OK_CANCEL,
-			_("Are you sure you want to remove the stash at:\n%s"),
+			"<span weight=\"bold\" size=\"larger\">%s\n\n%s</span>",
+			_("Are you sure you want to remove the encrypted folder:"),
 			cryptPoints[idx].GetMountDir ());
-	gtk_window_set_title (GTK_WINDOW (dialog), "Confirm");
 	int result = gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
-	if (result == GTK_RESPONSE_CANCEL) return FALSE;
+	if (result != GTK_RESPONSE_OK) return FALSE;
 	
 	if (!unmount_cryptpoint (idx)) {
 		// fuck. can't unmount
 		moan_cant_unmount ();
 	} else {
-		GtkWidget *dialog = gtk_message_dialog_new (NULL,
+		GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_WARNING,
 				GTK_BUTTONS_YES_NO,
-				_("Do you want to permanently erase the stash at:\n%s"),
+				"<span weight=\"bold\" size=\"larger\">%s\n\n%s</span>",
+				_("Do you want to permanently erase the encrypted data:"),
 				cryptPoints[idx].GetCryptDir ());
-		gtk_window_set_title (GTK_WINDOW (dialog), "Confirm");
 		int result = gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 
-		if (result == GTK_RESPONSE_NO) {
+		if (result != GTK_RESPONSE_YES) {
 			cryptPoints.erase (cryptPoints.begin () + idx);
 		} else {
 			// recursive delete is tedious to implement ;)
@@ -327,7 +311,7 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_click_change_stash_password), GINT_TO_POINTER (item_no));
 	gtk_menu_append (menu,  mi);
 	
-	mi = gtk_menu_item_new_with_label (_("Delete stash"));
+	mi = gtk_menu_item_new_with_label (_("Delete encrypted folder"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_click_delete_stash), GINT_TO_POINTER (item_no));
 	gtk_menu_append (menu,  mi);
 
@@ -350,7 +334,7 @@ static void open_config_dialog ()
 static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
-	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.6.666");
+	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.7.666");
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		_("This program is free software; you can redistribute it and/or modify it\n"
@@ -389,7 +373,7 @@ static void sico_activated (GtkWidget *data)
 
 	GtkWidget *mi = gtk_menu_item_new ();
 	GtkWidget *w = gtk_label_new (NULL);
-	gtk_label_set_markup (GTK_LABEL (w), _("<b>Encrypted stashes:</b>"));
+	gtk_label_set_markup (GTK_LABEL (w), _("<b>Encrypted folders:</b>"));
 	gtk_container_add (GTK_CONTAINER (mi), w);
 	gtk_widget_set_sensitive (mi, FALSE);
 	gtk_menu_append (stashes_popup_menu, mi);
@@ -437,11 +421,11 @@ static void sico_activated (GtkWidget *data)
 	mi = gtk_separator_menu_item_new ();
 	gtk_menu_append (stashes_popup_menu, mi);
 
-	mi = gtk_menu_item_new_with_label (_("Import stash"));
+	mi = gtk_menu_item_new_with_label (_("Import EncFS folder"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_import_stash_clicked), NULL);
 	gtk_menu_append (stashes_popup_menu, mi);
 	
-	mi = gtk_menu_item_new_with_label (_("Create new stash"));
+	mi = gtk_menu_item_new_with_label (_("New encrypted folder"));
 	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_create_new_stash_clicked), NULL);
 	gtk_menu_append (stashes_popup_menu, mi);
 	
@@ -481,7 +465,7 @@ void read_config ()
 	config_idletime = gconf_client_get_int (gconf_client, CONF_IDLE_TIMEOUT, NULL);
 	config_filemanager = gconf_client_get_string (gconf_client, CONF_PATH_FILEMANAGER, NULL);
 	if (config_filemanager == NULL) {
-		config_filemanager = strdup ("nautilus");
+		config_filemanager = strdup (DEFAULT_FILEMANAGER);
 	} else {
 		char *s = config_filemanager;
 		config_filemanager = strdup (s);
@@ -538,7 +522,7 @@ void read_config ()
 					continue;
 				}
 	bad:
-				fprintf (stderr, "blah blah error line %d\n", line_no);
+				fprintf (stderr, "Error parsing ~/.config/cryptkeeper/stashes at line %d\n", line_no);
 			}
 		}
 	}
@@ -592,6 +576,5 @@ int main (int argc, char *argv[])
 
 	gtk_main ();
 	
-	//fusermount ("/home/tom/one", "/home/tom/two");
 	return 0;
 }

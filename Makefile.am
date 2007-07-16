@@ -16,4 +16,4 @@ SUBDIRS = po src/
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = config.rpath m4/ChangeLog lib/gettext.h
+EXTRA_DIST = config.rpath m4/ChangeLog lib/gettext.h cryptkeeper32x32.png

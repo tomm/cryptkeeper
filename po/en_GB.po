@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2007-07-15 19:57+0100\n"
+"POT-Creation-Date: 2007-07-16 18:44+0100\n"
 "PO-Revision-Date: 2007-07-12 19:26+0100\n"
 "Last-Translator: tom <tom@infoseed.co.uk>\n"
 "Language-Team: English\n"
@@ -206,4 +206,3 @@ msgstr ""
 #: src/ImportStashWizard.cpp:179
 msgid "You must enter a name"
 msgstr ""
-

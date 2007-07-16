@@ -8,8 +8,13 @@ install-data-local:
 	$(INSTALL_DATA) cryptkeeper.desktop $(DESTDIR)/$(prefix)/share/applications/
 	$(INSTALL_DATA) cryptkeeper.png $(DESTDIR)/$(prefix)/share/pixmaps/
 
+uninstall-local:
+	rm -f $(DESTDIR)/$(prefix)/share/applications/cryptkeeper.desktop
+	rm -f $(DESTDIR)/$(prefix)/share/pixmaps/cryptkeeper.png
+
 SUBDIRS = po src/
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = config.rpath m4/ChangeLog lib/gettext.h
+EXTRA_DIST = config.rpath m4/ChangeLog lib/gettext.h cryptkeeper32x32.png \
+ cryptkeeper.png cryptkeeper.desktop

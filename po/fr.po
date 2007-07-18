@@ -7,202 +7,221 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2007-07-16 18:44+0100\n"
-"PO-Revision-Date: 2007-07-12 19:16+0100\n"
-"Last-Translator: tom <tom@mute.arctic.circle.candy.collective>\n"
+"POT-Creation-Date: 2007-07-18 15:16+0100\n"
+"PO-Revision-Date: 2007-07-16 22:32+0100\n"
+"Last-Translator: Jean-Sébastien Bour <sufflope@sufflope.net>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:85
+#: src/main.cpp:102
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr ""
+"Cryptkeeper ne peut pas accéder à FUSE, par conséquent il ne peut démarrer"
 
-#: src/main.cpp:86
+#: src/main.cpp:103
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
+"Assurez-vous que FUSE est installé et que vous êtes membre du groupe FUSE."
 
-#: src/main.cpp:102
+#: src/main.cpp:119
 msgid "Cryptkeeper cannot find EncFS"
-msgstr ""
+msgstr "Cryptkeeper n'a pas trouvé EncFS"
 
-#: src/main.cpp:103
+#: src/main.cpp:120
 msgid "Check that EncFS is installed and try again."
-msgstr ""
+msgstr "Assurez-vous qu'EncFS est installé et essayez à nouveau."
 
-#: src/main.cpp:134
+#: src/main.cpp:151
 msgid "The stash could not be unmounted. Perhaps it is in use."
 msgstr ""
+"La cachette n'a pas pu être démontée. Elle est peut-être en cours "
+"d'utilisation."
 
-#: src/main.cpp:146
+#: src/main.cpp:163
 msgid "The stash could not be mounted. Invalid password?"
-msgstr ""
+msgstr "La cachette n'a pas pu être montée. Mot de passe incorrect ?"
 
-#: src/main.cpp:160
+#: src/main.cpp:177
 msgid "This encrypted folder is currently not available"
-msgstr ""
+msgstr "Ce dossier chiffré est actuellement indisponible"
 
-#: src/main.cpp:161
+#: src/main.cpp:178
 msgid "It may be located on a removable disk, or has been deleted."
-msgstr ""
+msgstr "Il est peut-être situé sur un disque amovible, ou a été effacé."
 
-#: src/main.cpp:229
+#: src/main.cpp:246
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
 "Mount directory: %s\n"
 "%s"
 msgstr ""
+"Dossier chiffré : %s\n"
+"Dossier de montage : %s\n"
+"%s"
 
-#: src/main.cpp:263
+#: src/main.cpp:280
 msgid "Are you sure you want to remove the encrypted folder:"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir effacer le dossier chiffré :"
 
-#: src/main.cpp:278
+#: src/main.cpp:295
+#, fuzzy
 msgid "Do you want to permanently erase the encrypted data:"
-msgstr ""
+msgstr "Voulez-vous effacer définitivement les données chiffrées :"
 
-#: src/main.cpp:306
+#: src/main.cpp:323
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
-#: src/main.cpp:310 src/PasswordChangeDialog.cpp:78
+#: src/main.cpp:327 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
-msgstr ""
+msgstr "Modifier le mot de passe"
 
-#: src/main.cpp:314
+#: src/main.cpp:331
 msgid "Delete encrypted folder"
-msgstr ""
+msgstr "Effacer le dossier chiffré"
 
-#: src/main.cpp:340
+#: src/main.cpp:357
+#, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
-"under the terms of the GNU General Public License version 2, as published\n"
+"under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 msgstr ""
+"Ce programme est un logiciel libre; vous pouvez le redistribuer\n"
+"et/ou le modifier en respectant les termes de la\n"
+"Licence GNU GPL (General Public License) version 2,\n"
+"comme publiée par la Free Software Fondation."
 
-#: src/main.cpp:376
+#: src/main.cpp:393
 msgid "<b>Encrypted folders:</b>"
-msgstr ""
+msgstr "<b>Dossiers chiffrés :</b>"
 
-#: src/main.cpp:424
+#: src/main.cpp:441
 msgid "Import EncFS folder"
-msgstr ""
+msgstr "Importer un dossier EncFS"
 
-#: src/main.cpp:428
+#: src/main.cpp:445
 msgid "New encrypted folder"
-msgstr ""
+msgstr "Nouveau dossier chiffré"
 
-#: src/ConfigDialog.cpp:26 src/ConfigDialog.cpp:43
+#: src/ConfigDialog.cpp:44 src/ConfigDialog.cpp:61
 msgid "Cryptkeeper Preferences"
-msgstr ""
+msgstr "Préférences de Cryptkeeper"
 
-#: src/ConfigDialog.cpp:51
+#: src/ConfigDialog.cpp:69
 msgid "File browser:"
-msgstr ""
+msgstr "Explorateur de fichiers :"
 
-#: src/ConfigDialog.cpp:62
+#: src/ConfigDialog.cpp:80
 msgid "Unmount after idle (minutes):"
-msgstr ""
+msgstr "Démonter en cas d'inactivité (minutes) :"
 
-#: src/PasswordChangeDialog.cpp:38
+#: src/PasswordChangeDialog.cpp:55
 msgid "The new passwords do not match"
-msgstr ""
+msgstr "Les nouveaux mots de passe ne concordent pas"
 
-#: src/PasswordChangeDialog.cpp:52
+#: src/PasswordChangeDialog.cpp:69
 msgid "Error setting password:"
 msgstr ""
 
-#: src/PasswordChangeDialog.cpp:64
+#: src/PasswordChangeDialog.cpp:81
 msgid "Password changed"
-msgstr ""
+msgstr "Mot de passe modifié"
 
-#: src/PasswordChangeDialog.cpp:89
+#: src/PasswordChangeDialog.cpp:106
 #, c-format
 msgid "Enter the current password for %s:"
-msgstr ""
+msgstr "Entre le mot de passe pour %s :"
 
-#: src/PasswordChangeDialog.cpp:97
+#: src/PasswordChangeDialog.cpp:114
 msgid "Enter a new password"
-msgstr ""
+msgstr "Entrez un nouveau mot de passe"
 
-#: src/PasswordChangeDialog.cpp:104
+#: src/PasswordChangeDialog.cpp:121
+#, fuzzy
 msgid "Enter the new password again to confirm"
-msgstr ""
+msgstr "Entrez à nouveau le mot de passe pour confirmer"
 
-#: src/CreateStashWizard.cpp:35
+#: src/CreateStashWizard.cpp:52
 msgid "Create a new encrypted directory"
-msgstr ""
-
-#: src/CreateStashWizard.cpp:74
-msgid "Choose a name and location for your new encrypted folder"
-msgstr ""
-
-#: src/CreateStashWizard.cpp:83
-msgid "Enter a password for your new encrypted folder"
-msgstr ""
+msgstr "Créer un nouveau dossier chiffré"
 
 #: src/CreateStashWizard.cpp:91
+msgid "Choose a name and location for your new encrypted folder"
+msgstr "Choisissez un nom et un emplacement pour votre nouveau dossier chiffré"
+
+#: src/CreateStashWizard.cpp:100
+msgid "Enter a password for your new encrypted folder"
+msgstr "Entre un mot de passe pour votre nouveau dossier chiffré"
+
+#: src/CreateStashWizard.cpp:108
 msgid "Enter the password again"
-msgstr ""
+msgstr "Entre le mot de passe à nouveau"
 
-#: src/CreateStashWizard.cpp:99
+#: src/CreateStashWizard.cpp:116
 msgid "The new encrypted folder has been sucessfully created"
-msgstr ""
+msgstr "Le nouveau dossier chiffré a été créé avec succès"
 
-#: src/CreateStashWizard.cpp:145
+#: src/CreateStashWizard.cpp:162
 msgid "You need to enter a name"
-msgstr ""
+msgstr "Vous devez entrer un nom"
 
-#: src/CreateStashWizard.cpp:164
+#: src/CreateStashWizard.cpp:181
 msgid ""
 "The passwords you entered do not match\n"
 "Try again"
 msgstr ""
+"Les mots de passe que vous avez entrés ne concordent pas.\n"
+"Essayez à nouveau"
 
-#: src/CreateStashWizard.cpp:176
+#: src/CreateStashWizard.cpp:193
 msgid "You need to enter a password"
-msgstr ""
+msgstr "Vous devez entrer un mot de passe"
 
-#: src/CreateStashWizard.cpp:201
+#: src/CreateStashWizard.cpp:218
 msgid "An error occurred while creating the encrypted folder"
-msgstr ""
+msgstr "Une erreur s'est produite lors de la création du dossier chiffré"
 
-#: src/CreateStashWizard.cpp:202
+#: src/CreateStashWizard.cpp:219
 msgid ""
 "Please check that the folder name you chose was not already used, and that "
 "encfs is installed correctly."
 msgstr ""
+"Veuillez vous assurer que le nom de dossier que vous avez choisi n'est pas "
+"utilisé, et qu'EncFS est correctement installé."
 
-#: src/ImportStashWizard.cpp:34
+#: src/ImportStashWizard.cpp:51
 msgid "Import an Encfs encrypted folder"
-msgstr ""
+msgstr "Importer un dossier chiffré par EncFS"
 
-#: src/ImportStashWizard.cpp:75
+#: src/ImportStashWizard.cpp:92
 msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
-msgstr ""
+msgstr "Choisissez un dossier existant chiffré avec EncFS (p.e. ~/.crypt)"
 
-#: src/ImportStashWizard.cpp:84
+#: src/ImportStashWizard.cpp:101
 msgid ""
 "Choose the name and location at which you want the EncFS folder to be mounted"
-msgstr ""
+msgstr "Choisissez le nom et l'emplacement où monter le dossier EncFS"
 
-#: src/ImportStashWizard.cpp:99
+#: src/ImportStashWizard.cpp:116
 msgid ""
 "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
 msgstr ""
+"Le dossier chiffré par EncFS a été importé dans Cryptkeeper avec succès."
 
-#: src/ImportStashWizard.cpp:147
+#: src/ImportStashWizard.cpp:164
 msgid "You must select a folder"
-msgstr ""
-
-#: src/ImportStashWizard.cpp:162
-msgid "The selected folder is not an EncFS encrypted folder"
-msgstr ""
+msgstr "Vous devez choisir un dossier"
 
 #: src/ImportStashWizard.cpp:179
+msgid "The selected folder is not an EncFS encrypted folder"
+msgstr "Le dossier sélectionné n'est pas chiffré par EncFS"
+
+#: src/ImportStashWizard.cpp:196
 msgid "You must enter a name"
-msgstr ""
+msgstr "Vous devez entrer un nom"

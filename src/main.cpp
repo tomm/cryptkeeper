@@ -1,3 +1,20 @@
+/*
+ * This file is part of Cryptkeeper.
+ * Copyright (C) 2007 Tom Morton
+ *
+ * Cryptkeeper is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * Cryptkeeper is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -334,11 +351,11 @@ static void open_config_dialog ()
 static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
-	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.7.666");
+	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.8.666");
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		_("This program is free software; you can redistribute it and/or modify it\n"
-		"under the terms of the GNU General Public License version 2, as published\n"
+		"under the terms of the GNU General Public License version 3, as published\n"
 		"by the Free Software Foundation."));
 	gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog), "Hasta la victoria siempre!");
 	gtk_dialog_run (GTK_DIALOG (dialog));

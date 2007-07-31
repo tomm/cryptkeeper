@@ -191,23 +191,11 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 	if (cp->GetIsMounted ()) {
 		if (!unmount_cryptpoint (idx)) moan_cant_unmount ();
 	} else {
-		mkdir (cp->GetMountDir (), 0700);
-		int pid = fork ();
-		if (pid == 0) {
-			if (config_idletime == 0) {
-				execlp ("encfs", "encfs", "--extpass=cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
-			} else {
-				char buf[256];
-				snprintf (buf, sizeof (buf), "--idle=%d", config_idletime);
-				execlp ("encfs", "encfs", buf, "--extpass=cryptkeeper_password", cp->GetCryptDir (), cp->GetMountDir (), NULL);
-			}
-			exit (0);
-		}
-		waitpid (pid, NULL, 0);
-		// will succeed if the dude fucked up his password, so dandy
-		if (rmdir (cp->GetMountDir ()) == -1) {
+		if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), config_idletime)) {
+			// success
 			spawn_filemanager (cp->GetMountDir ());
 		} else {
+			rmdir (cp->GetMountDir ());
 			moan_cant_mount ();
 		}
 	}

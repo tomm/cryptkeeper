@@ -2,6 +2,7 @@
 #define _CRYPTKEEPER_H
 
 #include "defines.h"
+#include "../config.h"
 
 bool encfs_stash_change_password (const char *stash_dir, const char *old_password, const char *new_password);
 void add_crypt_point (const char *stash_dir, const char *mount_dir);

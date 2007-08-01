@@ -34,7 +34,7 @@ PasswordEntryDialog::PasswordEntryDialog ()
 	gtk_dialog_add_button(GTK_DIALOG(m_dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_REJECT);
 	gtk_dialog_set_has_separator(GTK_DIALOG(m_dialog), FALSE);
 	gtk_dialog_set_default_response(GTK_DIALOG(m_dialog), GTK_RESPONSE_ACCEPT);
-	gtk_container_set_border_width(GTK_CONTAINER(m_dialog), UI_SPACING);
+	gtk_container_set_border_width(GTK_CONTAINER(m_dialog), UI_WINDOW_BORDER);
 
 	GtkWidget *vbox = GTK_DIALOG(m_dialog)->vbox;
 	w = gtk_label_new(_("Enter your password:"));

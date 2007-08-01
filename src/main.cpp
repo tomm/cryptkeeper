@@ -72,6 +72,9 @@ static GConfClient *gconf_client;
 
 char *config_filemanager;
 int config_idletime;
+#ifdef USE_GNOME_KEYRING
+bool config_use_keyring;
+#endif /* USE_GNOME_KEYRING */
 
 static bool isdir (const char *filename)
 {

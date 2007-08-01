@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-dist_bin_SCRIPTS = cryptkeeper_password
+#dist_bin_SCRIPTS = cryptkeeper_password
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)/$(prefix)/share/applications

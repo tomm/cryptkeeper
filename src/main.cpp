@@ -33,6 +33,7 @@
 #include "CreateStashWizard.h"
 #include "ImportStashWizard.h"
 #include "PasswordChangeDialog.h"
+#include "PasswordEntryDialog.h"
 #include "ConfigDialog.h"
 #include "encfs_wrapper.h"
 
@@ -191,13 +192,20 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 	if (cp->GetIsMounted ()) {
 		if (!unmount_cryptpoint (idx)) moan_cant_unmount ();
 	} else {
-		if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), config_idletime)) {
+		PasswordEntryDialog *d = new PasswordEntryDialog();
+		char *password = d->Run();
+		delete d;
+
+		if (password == NULL) return;
+
+		if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), password, config_idletime)) {
 			// success
 			spawn_filemanager (cp->GetMountDir ());
 		} else {
 			rmdir (cp->GetMountDir ());
 			moan_cant_mount ();
 		}
+		free(password);
 	}
 }
 

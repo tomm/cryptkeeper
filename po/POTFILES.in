@@ -4,3 +4,4 @@ src/ConfigDialog.cpp
 src/PasswordChangeDialog.cpp
 src/CreateStashWizard.cpp
 src/ImportStashWizard.cpp
+src/PasswordEntryDialog.cpp

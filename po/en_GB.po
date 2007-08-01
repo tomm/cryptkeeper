@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2007-07-18 15:16+0100\n"
+"POT-Creation-Date: 2007-08-01 14:56+0100\n"
 "PO-Revision-Date: 2007-07-12 19:26+0100\n"
 "Last-Translator: tom <tom@infoseed.co.uk>\n"
 "Language-Team: English\n"
@@ -16,40 +16,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/main.cpp:102
+#: src/main.cpp:103
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr ""
 
-#: src/main.cpp:103
+#: src/main.cpp:104
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
 
-#: src/main.cpp:119
+#: src/main.cpp:120
 msgid "Cryptkeeper cannot find EncFS"
 msgstr ""
 
-#: src/main.cpp:120
+#: src/main.cpp:121
 msgid "Check that EncFS is installed and try again."
 msgstr ""
 
-#: src/main.cpp:151
+#: src/main.cpp:152
 msgid "The stash could not be unmounted. Perhaps it is in use."
 msgstr ""
 
-#: src/main.cpp:163
+#: src/main.cpp:164
 msgid "The stash could not be mounted. Invalid password?"
 msgstr ""
 
-#: src/main.cpp:177
+#: src/main.cpp:178
 msgid "This encrypted folder is currently not available"
 msgstr ""
 
-#: src/main.cpp:178
+#: src/main.cpp:179
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr ""
 
-#: src/main.cpp:246
+#: src/main.cpp:242
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -57,54 +57,54 @@ msgid ""
 "%s"
 msgstr ""
 
-#: src/main.cpp:280
+#: src/main.cpp:276
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr ""
 
-#: src/main.cpp:295
+#: src/main.cpp:291
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr ""
 
-#: src/main.cpp:323
+#: src/main.cpp:319
 msgid "Information"
 msgstr ""
 
-#: src/main.cpp:327 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:323 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr ""
 
-#: src/main.cpp:331
+#: src/main.cpp:327
 msgid "Delete encrypted folder"
 msgstr ""
 
-#: src/main.cpp:357
+#: src/main.cpp:353
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 msgstr ""
 
-#: src/main.cpp:393
+#: src/main.cpp:389
 msgid "<b>Encrypted folders:</b>"
 msgstr ""
 
-#: src/main.cpp:441
+#: src/main.cpp:437
 msgid "Import EncFS folder"
 msgstr ""
 
-#: src/main.cpp:445
+#: src/main.cpp:441
 msgid "New encrypted folder"
 msgstr ""
 
-#: src/ConfigDialog.cpp:44 src/ConfigDialog.cpp:61
+#: src/ConfigDialog.cpp:44 src/ConfigDialog.cpp:62
 msgid "Cryptkeeper Preferences"
 msgstr ""
 
-#: src/ConfigDialog.cpp:69
+#: src/ConfigDialog.cpp:70
 msgid "File browser:"
 msgstr ""
 
-#: src/ConfigDialog.cpp:80
+#: src/ConfigDialog.cpp:81
 msgid "Unmount after idle (minutes):"
 msgstr ""
 
@@ -205,4 +205,8 @@ msgstr ""
 
 #: src/ImportStashWizard.cpp:196
 msgid "You must enter a name"
+msgstr ""
+
+#: src/PasswordEntryDialog.cpp:40
+msgid "Enter your password:"
 msgstr ""

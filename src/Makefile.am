@@ -10,6 +10,7 @@ bin_PROGRAMS = cryptkeeper
 cryptkeeper_SOURCES = encfs_wrapper.cpp ConfigDialog.cpp ImportStashWizard.cpp CreateStashWizard.cpp \
 PasswordChangeDialog.cpp main.cpp gtkstatusicon.c gtktrayicon-x11.c \
 ConfigDialog.h cryptkeeper.h encfs_wrapper.h gtktrayicon.h PasswordChangeDialog.h \
-CreateStashWizard.h defines.h gtkstatusicon.h ImportStashWizard.h
+CreateStashWizard.h defines.h gtkstatusicon.h ImportStashWizard.h \
+PasswordEntryDialog.cpp PasswordEntryDialog.h
 
 #hello_LDADD		= libhello.la

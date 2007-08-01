@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2007-07-18 15:16+0100\n"
+"POT-Creation-Date: 2007-08-01 14:56+0100\n"
 "PO-Revision-Date: 2007-07-16 22:32+0100\n"
 "Last-Translator: Jean-Sébastien Bour <sufflope@sufflope.net>\n"
 "Language-Team: French\n"
@@ -16,44 +16,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:102
+#: src/main.cpp:103
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr ""
 "Cryptkeeper ne peut pas accéder à FUSE, par conséquent il ne peut démarrer"
 
-#: src/main.cpp:103
+#: src/main.cpp:104
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
 "Assurez-vous que FUSE est installé et que vous êtes membre du groupe FUSE."
 
-#: src/main.cpp:119
+#: src/main.cpp:120
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper n'a pas trouvé EncFS"
 
-#: src/main.cpp:120
+#: src/main.cpp:121
 msgid "Check that EncFS is installed and try again."
 msgstr "Assurez-vous qu'EncFS est installé et essayez à nouveau."
 
-#: src/main.cpp:151
+#: src/main.cpp:152
 msgid "The stash could not be unmounted. Perhaps it is in use."
 msgstr ""
 "La cachette n'a pas pu être démontée. Elle est peut-être en cours "
 "d'utilisation."
 
-#: src/main.cpp:163
+#: src/main.cpp:164
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "La cachette n'a pas pu être montée. Mot de passe incorrect ?"
 
-#: src/main.cpp:177
+#: src/main.cpp:178
 msgid "This encrypted folder is currently not available"
 msgstr "Ce dossier chiffré est actuellement indisponible"
 
-#: src/main.cpp:178
+#: src/main.cpp:179
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Il est peut-être situé sur un disque amovible, ou a été effacé."
 
-#: src/main.cpp:246
+#: src/main.cpp:242
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -64,28 +64,28 @@ msgstr ""
 "Dossier de montage : %s\n"
 "%s"
 
-#: src/main.cpp:280
+#: src/main.cpp:276
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Êtes-vous sûr de vouloir effacer le dossier chiffré :"
 
-#: src/main.cpp:295
+#: src/main.cpp:291
 #, fuzzy
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Voulez-vous effacer définitivement les données chiffrées :"
 
-#: src/main.cpp:323
+#: src/main.cpp:319
 msgid "Information"
 msgstr "Information"
 
-#: src/main.cpp:327 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:323 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Modifier le mot de passe"
 
-#: src/main.cpp:331
+#: src/main.cpp:327
 msgid "Delete encrypted folder"
 msgstr "Effacer le dossier chiffré"
 
-#: src/main.cpp:357
+#: src/main.cpp:353
 #, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
@@ -94,30 +94,30 @@ msgid ""
 msgstr ""
 "Ce programme est un logiciel libre; vous pouvez le redistribuer\n"
 "et/ou le modifier en respectant les termes de la\n"
-"Licence GNU GPL (General Public License) version 2,\n"
+"Licence GNU GPL (General Public License) version 3,\n"
 "comme publiée par la Free Software Fondation."
 
-#: src/main.cpp:393
+#: src/main.cpp:389
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Dossiers chiffrés :</b>"
 
-#: src/main.cpp:441
+#: src/main.cpp:437
 msgid "Import EncFS folder"
 msgstr "Importer un dossier EncFS"
 
-#: src/main.cpp:445
+#: src/main.cpp:441
 msgid "New encrypted folder"
 msgstr "Nouveau dossier chiffré"
 
-#: src/ConfigDialog.cpp:44 src/ConfigDialog.cpp:61
+#: src/ConfigDialog.cpp:44 src/ConfigDialog.cpp:62
 msgid "Cryptkeeper Preferences"
 msgstr "Préférences de Cryptkeeper"
 
-#: src/ConfigDialog.cpp:69
+#: src/ConfigDialog.cpp:70
 msgid "File browser:"
 msgstr "Explorateur de fichiers :"
 
-#: src/ConfigDialog.cpp:80
+#: src/ConfigDialog.cpp:81
 msgid "Unmount after idle (minutes):"
 msgstr "Démonter en cas d'inactivité (minutes) :"
 
@@ -225,3 +225,8 @@ msgstr "Le dossier sélectionné n'est pas chiffré par EncFS"
 #: src/ImportStashWizard.cpp:196
 msgid "You must enter a name"
 msgstr "Vous devez entrer un nom"
+
+#: src/PasswordEntryDialog.cpp:40
+#, fuzzy
+msgid "Enter your password:"
+msgstr ""

@@ -125,7 +125,7 @@ int encfs_stash_new (const char *crypt_dir, const char *mount_dir, const char *p
 	return status;
 }
 
-int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, int idle_timeout)
+int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout)
 {
 	mkdir (mount_dir, 0700);
 	int fd[2];
@@ -135,17 +135,16 @@ int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, int idle_tim
 		dup2(fd[0], 0);
 		close(fd[1]);
 		if (idle_timeout == 0) {
-		//	execlp ("encfs", "encfs", "--extpass=cryptkeeper_password", crypt_dir, mount_dir, NULL);
 			execlp ("encfs", "encfs", "-S", crypt_dir, mount_dir, NULL);
 		} else {
 			char buf[256];
 			snprintf (buf, sizeof (buf), "--idle=%d", idle_timeout);
-			execlp ("encfs", "encfs", buf, "--extpass=cryptkeeper_password", crypt_dir, mount_dir, NULL);
+			execlp ("encfs", "encfs", buf, "-S", crypt_dir, mount_dir, NULL);
 		}
 		exit (0);
 	}
 	close(fd[0]);
-	write(fd[1], "hello", 5);
+	write(fd[1], password, strlen(password));
 	write(fd[1], "\n", 1);
 	close(fd[1]);
 	int status;

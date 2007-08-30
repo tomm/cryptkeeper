@@ -28,6 +28,7 @@
 #include <string>
 #include <assert.h>
 #include <gconf/gconf-client.h>
+#include <mntent.h>
 
 #include "cryptkeeper.h"
 #include "CreateStashWizard.h"
@@ -72,6 +73,7 @@ static GConfClient *gconf_client;
 
 char *config_filemanager;
 int config_idletime;
+bool config_keep_mountpoints;
 #ifdef USE_GNOME_KEYRING
 bool config_use_keyring;
 #endif /* USE_GNOME_KEYRING */
@@ -82,6 +84,17 @@ static bool isdir (const char *filename)
 
 	if (stat (filename, &s) != -1) {
 		if (S_ISDIR (s.st_mode)) return true;
+	}
+	return false;
+}
+
+static bool is_mounted(const char *mount_dir)
+{
+	FILE *f = setmntent("/etc/mtab", "r");
+	for (;;) {
+		struct mntent *m = getmntent(f);
+		if (!m) break;
+		if (strcmp(mount_dir, m->mnt_dir)==0) return true;
 	}
 	return false;
 }
@@ -142,7 +155,9 @@ static bool unmount_cryptpoint (int idx)
 	
 	if (cp->GetIsMounted () == false) return true;
 
-	return (!encfs_stash_unmount (cp->GetMountDir ()));
+	int result = !encfs_stash_unmount (cp->GetMountDir ());
+	if (!config_keep_mountpoints) rmdir (cp->GetMountDir());
+	return result;
 }
 
 static void moan_cant_unmount ()
@@ -205,7 +220,7 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 			// success
 			spawn_filemanager (cp->GetMountDir ());
 		} else {
-			rmdir (cp->GetMountDir ());
+			if (!config_keep_mountpoints) rmdir (cp->GetMountDir());
 			moan_cant_mount ();
 		}
 		free(password);
@@ -408,9 +423,9 @@ static void sico_activated (GtkWidget *data)
 		}
 
 		// to get rid of festering mount points
-		rmdir ((*it).GetMountDir ());
+		if (!config_keep_mountpoints) rmdir ((*it).GetMountDir ());
 
-		if (stat ((*it).GetMountDir (), &s) != -1) {
+		if (is_mounted((*it).GetMountDir())) {
 			if (S_ISDIR (s.st_mode)) (*it).SetIsMounted (true);
 		}
 	}
@@ -454,6 +469,7 @@ static void sico_activated (GtkWidget *data)
 #define CONF_DIR "/apps/cryptkeeper"
 #define CONF_PATH_FILEMANAGER "/apps/cryptkeeper/filemanager"
 #define CONF_IDLE_TIMEOUT "/apps/cryptkeeper/idletimeout"
+#define CONF_KEEP_MOUNTPOINTS "/apps/cryptkeeper/keep_mountpoints"
 #define CONF_STASHES "/apps/cryptkeeper/stashes"
 char *config_loc;
 
@@ -461,6 +477,7 @@ void write_config ()
 {
 	char buf[1024];
 	
+	gconf_client_set_bool(gconf_client, CONF_KEEP_MOUNTPOINTS, config_keep_mountpoints, NULL);
 	gconf_client_set_int (gconf_client, CONF_IDLE_TIMEOUT, config_idletime, NULL);
 	gconf_client_set_string (gconf_client, CONF_PATH_FILEMANAGER, config_filemanager, NULL);
 	
@@ -478,6 +495,7 @@ void read_config ()
 {
 	char buf[1024];
 	
+	config_keep_mountpoints = gconf_client_get_bool(gconf_client, CONF_KEEP_MOUNTPOINTS, NULL);
 	config_idletime = gconf_client_get_int (gconf_client, CONF_IDLE_TIMEOUT, NULL);
 	config_filemanager = gconf_client_get_string (gconf_client, CONF_PATH_FILEMANAGER, NULL);
 	if (config_filemanager == NULL) {
@@ -578,7 +596,7 @@ int main (int argc, char *argv[])
 	// festering mount points
 	std::vector<CryptPoint>::iterator it;
 	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it) {
-		rmdir ((*it).GetMountDir ());
+		if (!config_keep_mountpoints) rmdir ((*it).GetMountDir ());
 	}
 
 	sico = gtk_status_icon_new_from_stock (GTK_STOCK_DIALOG_AUTHENTICATION);

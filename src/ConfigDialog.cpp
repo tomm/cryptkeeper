@@ -35,6 +35,12 @@ static void on_close_clicked (GtkButton *button, ConfigDialog *w)
 	w->Hide ();
 }
 
+static void on_toggle_keep_mountpoint(GtkToggleButton *w, gpointer userdata)
+{
+	config_keep_mountpoints = !config_keep_mountpoints;
+	write_config();
+}
+
 ConfigDialog::ConfigDialog ()
 {
 	GtkWidget *w, *hbox, *parent_box;
@@ -96,6 +102,11 @@ ConfigDialog::ConfigDialog ()
 			gtk_spin_button_set_value (GTK_SPIN_BUTTON (m_idle_spinbutton), config_idletime);
 			gtk_box_pack_start (GTK_BOX (hbox), m_idle_spinbutton, FALSE, FALSE, UI_SPACING);
 		}
+
+		m_keep_mountdir_checkbutton = gtk_check_button_new_with_label(_("Do not delete mount point when unmounting"));
+		gtk_box_pack_start(GTK_BOX(vbox), m_keep_mountdir_checkbutton, FALSE, FALSE, UI_SPACING);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(m_keep_mountdir_checkbutton), config_keep_mountpoints);
+		g_signal_connect(G_OBJECT(m_keep_mountdir_checkbutton), "toggled", G_CALLBACK(on_toggle_keep_mountpoint), NULL);
 	}
 	// gnome keyring tab
  	{

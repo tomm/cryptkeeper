@@ -34,9 +34,17 @@ int main()
 	TEST("mount", encfs_stash_mount(crypt_dir, mount_dir, PASSWORD2, 0, &output));
 	OUTPUT();
 	TEST("unmount", encfs_stash_unmount(mount_dir));
+	
+	TEST("incorrect password mount", !encfs_stash_mount(crypt_dir, mount_dir, "blah", 0, &output));
+	OUTPUT();
+
+	system("touch unit_test_mount/file");
+	TEST("non-empty mount point mount", !encfs_stash_mount(crypt_dir, mount_dir, PASSWORD2, 0, &output));
+	OUTPUT();
 
 	TEST("get_info", encfs_stash_get_info(crypt_dir, &output));
 	OUTPUT();
+	
 
 	system("rm -rf unit_test_crypt unit_test_mount");
 

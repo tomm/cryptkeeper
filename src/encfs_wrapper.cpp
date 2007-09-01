@@ -197,7 +197,8 @@ int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *
 	if (pfd.revents & POLLIN) {
 		// encfs has a message for us 
 		char buf[256];
-		read(status_fd[0], buf, 256);
+		memset(buf,0,sizeof(buf));
+		read(status_fd[0], buf, sizeof(buf));
 		close(status_fd[0]);
 		*output = strdup(buf);
 	} else {

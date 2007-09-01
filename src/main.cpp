@@ -172,14 +172,14 @@ static void moan_cant_unmount ()
 	gtk_widget_destroy (dialog);
 }
 
-static void moan_cant_mount ()
+static void moan_cant_mount (const char *message)
 {
 	GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_ERROR,
 			GTK_BUTTONS_CANCEL,
 			"<span weight=\"bold\" size=\"larger\">%s</span>",
-			_("The stash could not be mounted. Invalid password?"));
+			(message ? message : _("The stash could not be mounted. Invalid password?")));
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
 }
@@ -216,12 +216,13 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 
 		if (password == NULL) return;
 
-		if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), password, config_idletime)) {
+		char *message;
+		if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), password, config_idletime, &message)) {
 			// success
 			spawn_filemanager (cp->GetMountDir ());
 		} else {
 			if (!config_keep_mountpoints) rmdir (cp->GetMountDir());
-			moan_cant_mount ();
+			moan_cant_mount (message);
 		}
 		free(password);
 	}

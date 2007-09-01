@@ -20,10 +20,26 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <mntent.h>
+#include <poll.h>
 #include <unistd.h>
 #include <signal.h>
 #include <string.h>
 #include <assert.h>
+
+// only for the gettext _
+#include "cryptkeeper.h"
+
+static bool is_mounted(const char *mount_dir)
+{
+	FILE *f = setmntent("/etc/mtab", "r");
+	for (;;) {
+		struct mntent *m = getmntent(f);
+		if (!m) break;
+		if (strcmp(mount_dir, m->mnt_dir)==0) return true;
+	}
+	return false;
+}
 
 int encfs_stash_get_info (const char *crypt_dir, char **output)
 {
@@ -125,9 +141,19 @@ int encfs_stash_new (const char *crypt_dir, const char *mount_dir, const char *p
 	return status;
 }
 
-int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout)
+int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout, char **output)
 {
 	mkdir (mount_dir, 0700);
+	if (rmdir (mount_dir) == -1) {
+		char buf[256];
+		snprintf(buf, sizeof(buf), "%s\n\n%s",
+				_("The encrypted folder could not be mounted because the mount point is not empty:"),
+				mount_dir);
+		*output = strdup(buf);
+		return 255;
+	}
+	mkdir (mount_dir, 0700);
+
 	int fd[2], status_fd[2];
 
 	assert(pipe(fd) == 0);
@@ -154,14 +180,32 @@ int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *
 	write(fd[1], "\n", 1);
 	close(fd[1]);
 
-	char buf[256];
-	read(status_fd[0], buf, 256);
-	printf ("WANKER SAID:::\"%s\"\n", buf);
-	close(status_fd[0]);
+	// unfortunately encfs does not report errors in a consistent way. eg
+	// the 'mountpoint is not empty' error is not written to fd=1 but the
+	// password incorrect error msg is -- hence the stupid crap at the
+	// start of this function
+	struct pollfd pfd;
+	pfd.fd = status_fd[0];
+	pfd.events = POLLIN;
+	poll(&pfd, 1, 1000);
+	
+	if (pfd.revents & POLLIN) {
+		// encfs has a message for us 
+		char buf[256];
+		read(status_fd[0], buf, 256);
+		close(status_fd[0]);
+		*output = strdup(buf);
+	} else {
+		*output = NULL;
+	}
 
 	int status;
 	waitpid (pid, &status, 0);
-	return status;
+	printf("status %d\n", status);
+	//return status;
+	//return output != NULL
+	// encfs returned status is useless, so we just have to test like this...
+	return !is_mounted(mount_dir);
 }
 
 int encfs_stash_unmount (const char *mount_dir)
@@ -174,5 +218,6 @@ int encfs_stash_unmount (const char *mount_dir)
 	}
 	int status;
 	waitpid (pid, &status, 0);
-	return status;
+	//return status;
+	return is_mounted(mount_dir);
 }

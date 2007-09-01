@@ -366,7 +366,7 @@ static void open_config_dialog ()
 static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
-	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper 0.8.666");
+	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper "VERSION);
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		_("This program is free software; you can redistribute it and/or modify it\n"

@@ -6,11 +6,13 @@
 
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
-bin_PROGRAMS = cryptkeeper
+bin_PROGRAMS = cryptkeeper unit_test
 cryptkeeper_SOURCES = encfs_wrapper.cpp ConfigDialog.cpp ImportStashWizard.cpp CreateStashWizard.cpp \
 PasswordChangeDialog.cpp main.cpp gtkstatusicon.c gtktrayicon-x11.c \
 ConfigDialog.h cryptkeeper.h encfs_wrapper.h gtktrayicon.h PasswordChangeDialog.h \
 CreateStashWizard.h defines.h gtkstatusicon.h ImportStashWizard.h \
 PasswordEntryDialog.cpp PasswordEntryDialog.h
+
+unit_test_SOURCES= encfs_wrapper.cpp unit_tests.cpp
 
 #hello_LDADD		= libhello.la

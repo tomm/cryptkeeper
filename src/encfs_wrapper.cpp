@@ -20,6 +20,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 #include <mntent.h>
 #include <poll.h>
 #include <unistd.h>
@@ -124,6 +125,9 @@ int encfs_stash_new (const char *crypt_dir, const char *mount_dir, const char *p
 
 	if (pid == 0) {
 		dup2 (fd[0], 0);
+		// don't want to see encfses stdout bullshit
+		int devnull = open("/dev/null", O_WRONLY);
+		dup2(devnull, 1);
 		close (fd[1]);
 		execlp ("encfs", "encfs", "-S", crypt_dir, mount_dir, NULL);
 		exit (0);
@@ -138,7 +142,8 @@ int encfs_stash_new (const char *crypt_dir, const char *mount_dir, const char *p
 	close (fd[1]);
 	int status;
 	waitpid (pid, &status, 0);
-	return status;
+	return !is_mounted(mount_dir);
+//	return status;
 }
 
 int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout, char **output)
@@ -201,7 +206,7 @@ int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *
 
 	int status;
 	waitpid (pid, &status, 0);
-	printf("status %d\n", status);
+	//printf("status %d\n", status);
 	//return status;
 	//return output != NULL
 	// encfs returned status is useless, so we just have to test like this...

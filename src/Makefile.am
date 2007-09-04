@@ -11,7 +11,7 @@ cryptkeeper_SOURCES = encfs_wrapper.cpp ConfigDialog.cpp ImportStashWizard.cpp C
 PasswordChangeDialog.cpp main.cpp gtkstatusicon.c gtktrayicon-x11.c \
 ConfigDialog.h cryptkeeper.h encfs_wrapper.h gtktrayicon.h PasswordChangeDialog.h \
 CreateStashWizard.h defines.h gtkstatusicon.h ImportStashWizard.h \
-PasswordEntryDialog.cpp PasswordEntryDialog.h
+PasswordEntryDialog.cpp PasswordEntryDialog.h lsof.cpp lsof.h
 
 check_PROGRAMS = unit_test
 unit_test_SOURCES= encfs_wrapper.cpp unit_tests.cpp

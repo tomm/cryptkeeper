@@ -144,9 +144,15 @@ void check_requirements ()
 
 void spawn_filemanager (const char *dir)
 {
-	char buf[256];
-	snprintf (buf, sizeof (buf), "%s %s &", config_filemanager, dir);
-	system (buf);
+	/*char buf[256];
+	snprintf (buf, sizeof (buf), "%s \"%s\" &", config_filemanager, dir);
+	system (buf);*/
+	
+	int pid = fork ();
+	if (pid == 0) {
+		execlp (config_filemanager, config_filemanager, dir, NULL);
+		exit (0);
+	}
 }
 
 // returns true on success
@@ -390,7 +396,7 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 		} else {
 			// recursive delete is tedious to implement ;)
 			char buf[1024];
-			snprintf (buf, sizeof (buf), "rm -rf %s", cryptPoints[idx].GetCryptDir ());
+			snprintf (buf, sizeof (buf), "rm -rf \"%s\"", cryptPoints[idx].GetCryptDir ());
 			system (buf);
 			cryptPoints.erase (cryptPoints.begin () + idx);
 		}

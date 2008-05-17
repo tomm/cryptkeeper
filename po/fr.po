@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-01-11 23:34+0000\n"
+"POT-Creation-Date: 2008-05-17 23:04+0100\n"
 "PO-Revision-Date: 2007-07-16 22:32+0100\n"
 "Last-Translator: Jean-Sébastien Bour <sufflope@sufflope.net>\n"
 "Language-Team: French\n"
@@ -107,7 +107,11 @@ msgstr "Modifier le mot de passe"
 msgid "Delete encrypted folder"
 msgstr "Effacer le dossier chiffré"
 
-#: src/main.cpp:451
+#: src/main.cpp:453
+msgid "translator-credits"
+msgstr "Jean-Sébastien Bour <sufflope@sufflope.net>"
+
+#: src/main.cpp:455
 #, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
@@ -119,15 +123,15 @@ msgstr ""
 "Licence GNU GPL (General Public License) version 3,\n"
 "comme publiée par la Free Software Fondation."
 
-#: src/main.cpp:487
+#: src/main.cpp:491
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Dossiers chiffrés :</b>"
 
-#: src/main.cpp:535
+#: src/main.cpp:539
 msgid "Import EncFS folder"
 msgstr "Importer un dossier EncFS"
 
-#: src/main.cpp:539
+#: src/main.cpp:543
 msgid "New encrypted folder"
 msgstr "Nouveau dossier chiffré"
 

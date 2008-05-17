@@ -435,7 +435,10 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 	return TRUE;
 }
 
-static const char *author_names[] = { "Tom Morton <t-morton@blueyonder.co.uk>" };
+static const char *about_authors[] = { "Tom Morton <t-morton@blueyonder.co.uk>" };
+/*static const char *about_translators = "Christoph Langner <mail@christoph-langner.de>\n"
+		"Jean-Sébastien Bour <sufflope@sufflope.net>\n"
+		"Phantom X <megaphantomx@bol.com.br>";*/
 
 static void open_config_dialog ()
 {
@@ -446,7 +449,8 @@ static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
 	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper "VERSION);
-	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
+	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), about_authors);
+	gtk_about_dialog_set_translator_credits (GTK_ABOUT_DIALOG (dialog), _("translator-credits"));
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		_("This program is free software; you can redistribute it and/or modify it\n"
 		"under the terms of the GNU General Public License version 3, as published\n"

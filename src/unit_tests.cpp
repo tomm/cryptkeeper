@@ -23,6 +23,7 @@ int main()
 	snprintf(mount_dir, sizeof(mount_dir), "%s/unit_test_mount", getenv("PWD"));
 
 	TEST("create", encfs_stash_new(crypt_dir, mount_dir, PASSWORD1));
+	sleep(1);
 	TEST("unmount", encfs_stash_unmount(mount_dir));
 	TEST("mount", encfs_stash_mount(crypt_dir, mount_dir, PASSWORD1, 0, &output));
 	OUTPUT();
@@ -33,6 +34,7 @@ int main()
 
 	TEST("mount", encfs_stash_mount(crypt_dir, mount_dir, PASSWORD2, 0, &output));
 	OUTPUT();
+	sleep(1);
 	TEST("unmount", encfs_stash_unmount(mount_dir));
 	
 	TEST("incorrect password mount", !encfs_stash_mount(crypt_dir, mount_dir, "blah", 0, &output));

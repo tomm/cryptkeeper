@@ -37,6 +37,7 @@
 #include "PasswordEntryDialog.h"
 #include "ConfigDialog.h"
 #include "encfs_wrapper.h"
+#include "lsof.h"
 
 #if GTK_MINOR_VERSION < 10
 # include "gtkstatusicon.h"
@@ -143,9 +144,15 @@ void check_requirements ()
 
 void spawn_filemanager (const char *dir)
 {
-	char buf[256];
-	snprintf (buf, sizeof (buf), "%s %s &", config_filemanager, dir);
-	system (buf);
+	/*char buf[256];
+	snprintf (buf, sizeof (buf), "%s \"%s\" &", config_filemanager, dir);
+	system (buf);*/
+	
+	int pid = fork ();
+	if (pid == 0) {
+		execlp (config_filemanager, config_filemanager, dir, NULL);
+		exit (0);
+	}
 }
 
 // returns true on success
@@ -160,15 +167,85 @@ static bool unmount_cryptpoint (int idx)
 	return result;
 }
 
-static void moan_cant_unmount ()
+static gboolean timeout_unmount(gpointer data)
 {
+	char *mount_dir = (char*)data;
+	
+	if (0 != encfs_stash_unmount (mount_dir)) {
+		GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
+				GTK_DIALOG_MODAL,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CANCEL,
+				"<span weight=\"bold\" size=\"larger\">%s</span>",
+				_("Forced unmounting of the encrypted folder was not successful"));
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+	}
+	free(data);
+	return FALSE;
+}
+
+static gboolean timeout_sigkill(gpointer data)
+{
+	char *mount_dir = (char*)data;
+	lsof_result_t ls;
+
+	get_fsusers(&ls, mount_dir);
+	
+	for (__typeof__(ls.fsusers.end()) i = ls.fsusers.begin(); i != ls.fsusers.end(); i++) {
+		kill((*i).pid, SIGKILL);
+	}
+	
+	g_timeout_add (500, timeout_unmount, data);
+	printf("Hello timeout!\n");
+
+	return FALSE;
+}
+
+static void moan_cant_unmount (const char *mount_dir)
+{
+	std::string msg;
+	lsof_result_t ls;
+
+	get_fsusers(&ls, mount_dir);
+
+#define MAX_FSUSERS_TO_LIST	5
+	int max = MAX_FSUSERS_TO_LIST;
+	for (__typeof__(ls.num.end()) i = ls.num.begin(); i != ls.num.end(); i++) {
+		char buf[256];
+		if ((--max <= 0) && (ls.num.size() > MAX_FSUSERS_TO_LIST)) {
+			snprintf(buf, sizeof(buf), _("... %d others ..."), 1 + ls.num.size() - MAX_FSUSERS_TO_LIST);
+			msg += buf;
+			break;
+		}
+		if ((*i).second > 1)
+			snprintf(buf, sizeof(buf), _("%s (%d instances)\n"), (*i).first.c_str(), (*i).second);
+		else	
+			snprintf(buf, sizeof(buf), "%s\n", (*i).first.c_str(), (*i).second);
+		msg += buf;
+	}
+
 	GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 			GTK_DIALOG_MODAL,
 			GTK_MESSAGE_ERROR,
-			GTK_BUTTONS_CANCEL,
-			"<span weight=\"bold\" size=\"larger\">%s</span>",
-			_("The stash could not be unmounted. Perhaps it is in use."));
-	gtk_dialog_run (GTK_DIALOG (dialog));
+			GTK_BUTTONS_NONE,
+			"<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+			_("The stash could not be unmounted because it is in use by the following applications:"),
+			msg.c_str()
+			);
+	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+	gtk_dialog_add_button (GTK_DIALOG (dialog), _("Kill them"), GTK_RESPONSE_OK);
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK) {
+		// renew list
+		get_fsusers(&ls, mount_dir);
+
+		for (__typeof__(ls.fsusers.end()) i = ls.fsusers.begin(); i != ls.fsusers.end(); i++) {
+			kill((*i).pid, SIGTERM);
+		}
+		// after 5 seconds do SIGKILL, unmount
+		const char *mdir = strdup(mount_dir);
+		g_timeout_add (1000, timeout_sigkill, (void*)mdir);
+	}
 	gtk_widget_destroy (dialog);
 }
 
@@ -208,7 +285,9 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 	if (test_crypt_dir_and_moan (cp->GetCryptDir ())) return;
 
 	if (cp->GetIsMounted ()) {
-		if (!unmount_cryptpoint (idx)) moan_cant_unmount ();
+		if (!unmount_cryptpoint (idx)) {
+			moan_cant_unmount (cp->GetMountDir());
+		}
 	} else {
 		PasswordEntryDialog *d = new PasswordEntryDialog();
 		char *password = d->Run();
@@ -300,7 +379,7 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 	
 	if (!unmount_cryptpoint (idx)) {
 		// fuck. can't unmount
-		moan_cant_unmount ();
+		moan_cant_unmount (cryptPoints[idx].GetMountDir());
 	} else {
 		GtkWidget *dialog = gtk_message_dialog_new_with_markup (NULL,
 				GTK_DIALOG_MODAL,
@@ -317,7 +396,7 @@ gboolean on_click_delete_stash (GtkMenuItem *mi, gpointer data)
 		} else {
 			// recursive delete is tedious to implement ;)
 			char buf[1024];
-			snprintf (buf, sizeof (buf), "rm -rf %s", cryptPoints[idx].GetCryptDir ());
+			snprintf (buf, sizeof (buf), "rm -rf \"%s\"", cryptPoints[idx].GetCryptDir ());
 			system (buf);
 			cryptPoints.erase (cryptPoints.begin () + idx);
 		}
@@ -356,7 +435,10 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 	return TRUE;
 }
 
-static const char *author_names[] = { "Tom Morton <t-morton@blueyonder.co.uk>" };
+static const char *about_authors[] = { "Tom Morton <t-morton@blueyonder.co.uk>" };
+/*static const char *about_translators = "Christoph Langner <mail@christoph-langner.de>\n"
+		"Jean-Sébastien Bour <sufflope@sufflope.net>\n"
+		"Phantom X <megaphantomx@bol.com.br>";*/
 
 static void open_config_dialog ()
 {
@@ -367,7 +449,8 @@ static void open_about_dialog ()
 {
 	GtkWidget *dialog = gtk_about_dialog_new ();
 	gtk_about_dialog_set_name (GTK_ABOUT_DIALOG (dialog), "Cryptkeeper "VERSION);
-	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), author_names);
+	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), about_authors);
+	gtk_about_dialog_set_translator_credits (GTK_ABOUT_DIALOG (dialog), _("translator-credits"));
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		_("This program is free software; you can redistribute it and/or modify it\n"
 		"under the terms of the GNU General Public License version 3, as published\n"

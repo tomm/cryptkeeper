@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <assert.h>
+#include <cstring>
 #include "lsof.h"
 
 fsuser::fsuser(const char *pid, const char *name)

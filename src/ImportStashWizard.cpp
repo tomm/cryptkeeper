@@ -167,21 +167,28 @@ void ImportStashWizard::GoForward ()
 			return;
 		}
 		char buf[1024];
-		snprintf (buf, sizeof (buf), "%s/.encfs5", m_crypt_dir);
 		struct stat blah;
-		if (stat (buf, &blah) == -1) {
-			GtkWidget *dialog = 
-				gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
-						GTK_DIALOG_MODAL,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_OK,
-						"<span weight=\"bold\" size=\"larger\">%s</span>",
-						_("The selected folder is not an EncFS encrypted folder"));
-			gtk_dialog_run (GTK_DIALOG (dialog));
-			gtk_widget_destroy (dialog);
-			g_free (m_crypt_dir);
-			m_crypt_dir = NULL;
-			return;
+		const char* const conf[] = {"%s/.encfs5", "%s/.encfs6.xml"};
+		unsigned int confs = sizeof conf / sizeof conf[0];
+
+		for (int i = 0; i <= confs; i++) {
+			if (i == confs) {
+				GtkWidget *dialog = 
+					gtk_message_dialog_new_with_markup (GTK_WINDOW (m_window),
+							GTK_DIALOG_MODAL,
+							GTK_MESSAGE_ERROR,
+							GTK_BUTTONS_OK,
+							"<span weight=\"bold\" size=\"larger\">%s</span>",
+							_("The selected folder is not an EncFS encrypted folder"));
+				gtk_dialog_run (GTK_DIALOG (dialog));
+				gtk_widget_destroy (dialog);
+				g_free (m_crypt_dir);
+				m_crypt_dir = NULL;
+				return;
+			}
+			snprintf (buf, sizeof (buf), conf[i], m_crypt_dir);
+			if (stat (buf, &blah) == 0 ) 
+				break;
 		}
 	}
 	if (m_stage == WIZ_PASSWD) {

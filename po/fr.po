@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-05-17 23:04+0100\n"
+"POT-Creation-Date: 2008-11-03 20:45+0000\n"
 "PO-Revision-Date: 2007-07-16 22:32+0100\n"
 "Last-Translator: Jean-Sébastien Bour <sufflope@sufflope.net>\n"
 "Language-Team: French\n"
@@ -252,11 +252,11 @@ msgstr ""
 msgid "You must select a folder"
 msgstr "Vous devez choisir un dossier"
 
-#: src/ImportStashWizard.cpp:179
+#: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
 msgstr "Le dossier sélectionné n'est pas chiffré par EncFS"
 
-#: src/ImportStashWizard.cpp:196
+#: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"
 msgstr "Vous devez entrer un nom"
 

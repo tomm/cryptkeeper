@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-05-17 23:04+0100\n"
+"POT-Creation-Date: 2008-11-03 20:45+0000\n"
 "PO-Revision-Date: 2008-05-30 19:19+0300\n"
 "Last-Translator: Damir Sharipov <dammer@mail.ru>\n"
 "Language-Team: \n"
@@ -237,11 +237,11 @@ msgstr "Зашифрованная папка EncFS была успешно им
 msgid "You must select a folder"
 msgstr "Вы должны выбрать папку"
 
-#: src/ImportStashWizard.cpp:179
+#: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
 msgstr "Эта папка не является зашифрованной папкой EncFS"
 
-#: src/ImportStashWizard.cpp:196
+#: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"
 msgstr "Вы должны ввести имя"
 

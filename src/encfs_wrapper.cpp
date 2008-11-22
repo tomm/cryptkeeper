@@ -31,13 +31,25 @@
 // only for the gettext _
 #include "cryptkeeper.h"
 
-static bool is_mounted(const char *mount_dir)
+bool is_mounted(const char *mount_dir)
 {
 	FILE *f = setmntent("/etc/mtab", "r");
+ 	char *mount_dir_expanded = realpath(mount_dir, NULL);
+	if (mount_dir_expanded == NULL) {
+		// no such file or dir, ...
+		// so: not mounted
+		//	  perror("cryptkeeper, is_mounted");
+		return false;
+	}
 	for (;;) {
+ 	        char *mnt_dir_expanded;
 		struct mntent *m = getmntent(f);
 		if (!m) break;
-		if (strcmp(mount_dir, m->mnt_dir)==0) return true;
+ 		mnt_dir_expanded = realpath(m->mnt_dir, NULL);
+ 		if (strcmp(mount_dir_expanded, mnt_dir_expanded)==0) {
+			free(mnt_dir_expanded);
+ 			return true;
+ 		}
 	}
 	return false;
 }

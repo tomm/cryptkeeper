@@ -424,7 +424,7 @@ gboolean on_button_release (GtkWidget *widget, GdkEventButton *event, gpointer d
 	return TRUE;
 }
 
-static const char *about_authors[] = { "Tom Morton <t-morton@blueyonder.co.uk>" };
+static const char *about_authors[] = { "Tom Morton <tomm@riseup.net>" };
 /*static const char *about_translators = "Christoph Langner <mail@christoph-langner.de>\n"
 		"Jean-Sébastien Bour <sufflope@sufflope.net>\n"
 		"Phantom X <megaphantomx@bol.com.br>";*/

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-05-17 23:04+0100\n"
+"POT-Creation-Date: 2008-11-03 20:45+0000\n"
 "PO-Revision-Date: 2007-09-01 20:42+0100\n"
 "Last-Translator: Christoph Langner <mail@christoph-langner.de>\n"
 "Language-Team: English\n"
@@ -254,11 +254,11 @@ msgstr "Der neue verschlüsselte Ordner wurde erfolgreich angelegt"
 msgid "You must select a folder"
 msgstr "Bitte geben sie einen Namen ein"
 
-#: src/ImportStashWizard.cpp:179
+#: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
 msgstr ""
 
-#: src/ImportStashWizard.cpp:196
+#: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"
 msgstr "Bitte geben sie einen Namen ein"
 

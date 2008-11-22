@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cryptkeeper 0.9.1\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-05-17 23:04+0100\n"
+"POT-Creation-Date: 2008-11-03 20:45+0000\n"
 "PO-Revision-Date: 2008-07-14 00:32+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: \n"
@@ -236,11 +236,11 @@ msgstr "Şifrelenmiş EncFS klasörü başarıyla Cryptkeeper'a aktarıldı."
 msgid "You must select a folder"
 msgstr "Bir klasör seçmelisiniz"
 
-#: src/ImportStashWizard.cpp:179
+#: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
 msgstr "Seçilen klasör bir şifreli EncFS klasörü değil"
 
-#: src/ImportStashWizard.cpp:196
+#: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"
 msgstr "Bir ad girmelisiniz"
 

@@ -10,5 +10,6 @@ int encfs_stash_change_password (const char *crypt_dir, const char *old_password
 int encfs_stash_new (const char *crypt_dir, const char *mount_dir, const char *password);
 int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout, char **output);
 int encfs_stash_unmount (const char *mount_dir);
+bool is_mounted(const char *mount_dir);
 
 #endif /* _ENCFS_WRAPPER_H */

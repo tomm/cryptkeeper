@@ -1,6 +1,6 @@
 # Process this file with autoconf to create configure.
 
-AC_INIT([cryptkeeper], [0.9.3], [t-morton@blueyonder.co.uk])
+AC_INIT([cryptkeeper], [0.9.4], [tomm@riseup.net])
 AC_PREREQ(2.59)
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([1.9 foreign])

@@ -89,17 +89,6 @@ static bool isdir (const char *filename)
 	return false;
 }
 
-static bool is_mounted(const char *mount_dir)
-{
-	FILE *f = setmntent("/etc/mtab", "r");
-	for (;;) {
-		struct mntent *m = getmntent(f);
-		if (!m) break;
-		if (strcmp(mount_dir, m->mnt_dir)==0) return true;
-	}
-	return false;
-}
-
 void add_crypt_point (const char *stash_dir, const char *mount_dir)
 {
 	cryptPoints.push_back (CryptPoint (stash_dir, mount_dir));

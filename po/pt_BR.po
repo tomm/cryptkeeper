@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-05-17 23:04+0100\n"
+"POT-Creation-Date: 2008-11-03 20:45+0000\n"
 "PO-Revision-Date: 2008-05-02 15:46-0300\n"
 "Last-Translator: Phantom X <megaphantomx@bol.com.br>\n"
 "Language-Team: Português do Brasil <pt@li.org>\n"
@@ -246,11 +246,11 @@ msgstr ""
 msgid "You must select a folder"
 msgstr "Você deve selecionar uma pasta"
 
-#: src/ImportStashWizard.cpp:179
+#: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
 msgstr "A pasta selecionada não é uma pasta criptografada do EncFS"
 
-#: src/ImportStashWizard.cpp:196
+#: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"
 msgstr "Você deve inserir um nome"
 

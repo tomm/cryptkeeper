@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-11-03 20:45+0000\n"
+"POT-Creation-Date: 2008-11-22 18:11+0000\n"
 "PO-Revision-Date: 2008-05-30 19:19+0300\n"
 "Last-Translator: Damir Sharipov <dammer@mail.ru>\n"
 "Language-Team: \n"
@@ -10,38 +10,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.cpp:120
+#: src/main.cpp:109
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper не может найти fuse и по этому не может быть запущен"
 
-#: src/main.cpp:121
+#: src/main.cpp:110
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr "Проверьте установлена ли fuse и включены ли вы в группу fuse."
 
-#: src/main.cpp:137
+#: src/main.cpp:126
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper не может найти EncFS"
 
-#: src/main.cpp:138
+#: src/main.cpp:127
 msgid "Check that EncFS is installed and try again."
 msgstr "Проверьте установлена ли EncFS и попробуйте ещё раз."
 
-#: src/main.cpp:180
+#: src/main.cpp:169
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr "Не удалось принудительно отмонтировать зашифрованную папку"
 
-#: src/main.cpp:217
+#: src/main.cpp:206
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d другие ..."
 
-#: src/main.cpp:222
+#: src/main.cpp:211
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d экземпляров)\n"
 
-#: src/main.cpp:233
+#: src/main.cpp:222
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
@@ -49,23 +49,23 @@ msgstr ""
 "Хранилище не может быть отсоединено, поскольку используется следующими "
 "приложениями:"
 
-#: src/main.cpp:237
+#: src/main.cpp:226
 msgid "Kill them"
 msgstr "Убейте их"
 
-#: src/main.cpp:259
+#: src/main.cpp:248
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Хранилище не может быть смонтировано. Неправильный пароль?"
 
-#: src/main.cpp:273
+#: src/main.cpp:262
 msgid "This encrypted folder is currently not available"
 msgstr "Эта зашифрованная папка  в настоящее время недоступна"
 
-#: src/main.cpp:274
+#: src/main.cpp:263
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Возможно расположена на сменном носителе или была удалена."
 
-#: src/main.cpp:340
+#: src/main.cpp:329
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -76,46 +76,46 @@ msgstr ""
 "Точка монтирования: %s\n"
 "%s"
 
-#: src/main.cpp:374
+#: src/main.cpp:363
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Вы уверенны в том, что хотите удалить зашифрованную папку:"
 
-#: src/main.cpp:389
+#: src/main.cpp:378
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Вы точно хотите полностью стереть зашифрованные данные:"
 
-#: src/main.cpp:417
+#: src/main.cpp:406
 msgid "Information"
 msgstr "Информация"
 
-#: src/main.cpp:421 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:410 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Сменить пароль"
 
-#: src/main.cpp:425
+#: src/main.cpp:414
 msgid "Delete encrypted folder"
 msgstr "Удалить зашифрованную папку"
 
-#: src/main.cpp:453
+#: src/main.cpp:442
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.cpp:455
+#: src/main.cpp:444
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 msgstr ""
 
-#: src/main.cpp:491
+#: src/main.cpp:480
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Зашифрованные папки:</b>"
 
-#: src/main.cpp:539
+#: src/main.cpp:528
 msgid "Import EncFS folder"
 msgstr "Импорт папки EncFS"
 
-#: src/main.cpp:543
+#: src/main.cpp:532
 msgid "New encrypted folder"
 msgstr "Новая зашифрованная папка"
 

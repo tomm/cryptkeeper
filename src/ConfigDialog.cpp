@@ -41,6 +41,12 @@ static void on_toggle_keep_mountpoint(GtkToggleButton *w, gpointer userdata)
 	write_config();
 }
 
+static void on_toggle_allow_other(GtkToggleButton *w, gpointer userdata)
+{
+	config_allow_other = !config_allow_other;
+	write_config();
+}
+
 ConfigDialog::ConfigDialog ()
 {
 	GtkWidget *w, *hbox, *parent_box;
@@ -107,6 +113,11 @@ ConfigDialog::ConfigDialog ()
 		gtk_box_pack_start(GTK_BOX(vbox), m_keep_mountdir_checkbutton, FALSE, FALSE, UI_SPACING);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(m_keep_mountdir_checkbutton), config_keep_mountpoints);
 		g_signal_connect(G_OBJECT(m_keep_mountdir_checkbutton), "toggled", G_CALLBACK(on_toggle_keep_mountpoint), NULL);
+
+		m_allow_other_checkbutton = gtk_check_button_new_with_label(_("Allow other users to access mounted folders"));
+		gtk_box_pack_start(GTK_BOX(vbox), m_allow_other_checkbutton, FALSE, FALSE, UI_SPACING);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(m_allow_other_checkbutton), config_allow_other);
+		g_signal_connect(G_OBJECT(m_allow_other_checkbutton), "toggled", G_CALLBACK(on_toggle_allow_other), NULL);
 	}
 	// gnome keyring tab
  	{

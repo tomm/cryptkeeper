@@ -158,7 +158,8 @@ int encfs_stash_new (const char *crypt_dir, const char *mount_dir, const char *p
 //	return status;
 }
 
-int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout, char **output)
+int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *password, int idle_timeout, 
+                      bool allow_other, char **output)
 {
 	mkdir (mount_dir, 0700);
 	if (rmdir (mount_dir) == -1) {
@@ -180,14 +181,24 @@ int encfs_stash_mount(const char *crypt_dir, const char *mount_dir, const char *
 	if (pid == 0) {
 		dup2(fd[0], 0);
 		dup2(status_fd[1], 1);
+		dup2(status_fd[1], 2);
 		close(fd[1]);
 		close(status_fd[0]);
 		if (idle_timeout == 0) {
-			execlp ("encfs", "encfs", "-S", crypt_dir, mount_dir, NULL);
+			if (allow_other) {
+				execlp ("encfs", "encfs", "-S", crypt_dir, mount_dir, "--", "-o", "allow_other", NULL);
+			} else {
+				execlp ("encfs", "encfs", "-S", crypt_dir, mount_dir, NULL);
+			}
 		} else {
 			char buf[256];
 			snprintf (buf, sizeof (buf), "--idle=%d", idle_timeout);
-			execlp ("encfs", "encfs", buf, "-S", crypt_dir, mount_dir, NULL);
+			if (allow_other) {
+				execlp ("encfs", "encfs", buf, "-S", crypt_dir, mount_dir, "--", "-o", "allow_other", NULL);
+			}
+			else {
+				execlp ("encfs", "encfs", buf, "-S", crypt_dir, mount_dir, NULL);
+			}
 		}
 		exit (0);
 	}

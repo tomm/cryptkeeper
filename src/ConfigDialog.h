@@ -14,6 +14,7 @@ class ConfigDialog {
 	GtkWidget *m_filemanager_entry;
 	GtkWidget *m_idle_spinbutton;
 	GtkWidget *m_keep_mountdir_checkbutton;
+	GtkWidget *m_allow_other_checkbutton;
 };
 
 #endif /* _CONFIGDIALOG_H */

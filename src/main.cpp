@@ -75,6 +75,7 @@ static GConfClient *gconf_client;
 char *config_filemanager;
 int config_idletime;
 bool config_keep_mountpoints;
+bool config_allow_other;
 #ifdef USE_GNOME_KEYRING
 bool config_use_keyring;
 #endif /* USE_GNOME_KEYRING */
@@ -278,21 +279,26 @@ static void on_mount_check_item_toggled (GtkCheckMenuItem *mi, int idx)
 			moan_cant_unmount (cp->GetMountDir());
 		}
 	} else {
-		PasswordEntryDialog *d = new PasswordEntryDialog();
-		char *password = d->Run();
-		delete d;
+		for (;;) {
+			PasswordEntryDialog *d = new PasswordEntryDialog();
+			char *password = d->Run();
+			delete d;
 
-		if (password == NULL) return;
+			if (password == NULL) return;
 
-		char *message;
-		if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), password, config_idletime, &message)) {
-			// success
-			spawn_filemanager (cp->GetMountDir ());
-		} else {
-			if (!config_keep_mountpoints) rmdir (cp->GetMountDir());
-			moan_cant_mount (message);
+			char *message;
+			if (0 == encfs_stash_mount(cp->GetCryptDir(), cp->GetMountDir(), password, config_idletime, 
+					   config_allow_other, &message)) {
+				// success
+				spawn_filemanager (cp->GetMountDir ());
+				free(password);
+				break;
+			} else {
+				if (!config_keep_mountpoints) rmdir (cp->GetMountDir());
+				moan_cant_mount (message);
+				free(password);
+			}
 		}
-		free(password);
 	}
 }
 
@@ -543,6 +549,7 @@ static void sico_activated (GtkWidget *data)
 #define CONF_PATH_FILEMANAGER "/apps/cryptkeeper/filemanager"
 #define CONF_IDLE_TIMEOUT "/apps/cryptkeeper/idletimeout"
 #define CONF_KEEP_MOUNTPOINTS "/apps/cryptkeeper/keep_mountpoints"
+#define CONF_ALLOW_OTHER "/apps/cryptkeeper/allow_other"
 #define CONF_STASHES "/apps/cryptkeeper/stashes"
 char *config_loc;
 
@@ -550,6 +557,7 @@ void write_config ()
 {
 	char buf[1024];
 	
+	gconf_client_set_bool(gconf_client, CONF_ALLOW_OTHER, config_allow_other, NULL);
 	gconf_client_set_bool(gconf_client, CONF_KEEP_MOUNTPOINTS, config_keep_mountpoints, NULL);
 	gconf_client_set_int (gconf_client, CONF_IDLE_TIMEOUT, config_idletime, NULL);
 	gconf_client_set_string (gconf_client, CONF_PATH_FILEMANAGER, config_filemanager, NULL);
@@ -568,6 +576,7 @@ void read_config ()
 {
 	char buf[1024];
 	
+	config_allow_other = gconf_client_get_bool(gconf_client, CONF_ALLOW_OTHER, NULL);
 	config_keep_mountpoints = gconf_client_get_bool(gconf_client, CONF_KEEP_MOUNTPOINTS, NULL);
 	config_idletime = gconf_client_get_int (gconf_client, CONF_IDLE_TIMEOUT, NULL);
 	config_filemanager = gconf_client_get_string (gconf_client, CONF_PATH_FILEMANAGER, NULL);

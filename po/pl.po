@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-11-22 18:11+0000\n"
+"POT-Creation-Date: 2009-10-18 12:58+0100\n"
 "PO-Revision-Date: 2009-01-02 20:43+0100\n"
 "Last-Translator: Franciszek Janowski <nobange@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -15,61 +15,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/main.cpp:109
+#: src/main.cpp:110
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper nie znalazł fuse, uruchomienie niemożliwe"
 
-#: src/main.cpp:110
-msgid "Check that fuse is installed and that you are a member of the fuse group."
-msgstr "Sprawdź czy fuse jest zainstalowane oraz czy jesteś członkiem grupy fuse."
+#: src/main.cpp:111
+msgid ""
+"Check that fuse is installed and that you are a member of the fuse group."
+msgstr ""
+"Sprawdź czy fuse jest zainstalowane oraz czy jesteś członkiem grupy fuse."
 
-#: src/main.cpp:126
+#: src/main.cpp:127
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper nie znalazł EncFS"
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Check that EncFS is installed and try again."
 msgstr "Sprawdź, czy EncFS jest zainstalowany i spróbuj ponownie."
 
-#: src/main.cpp:169
+#: src/main.cpp:170
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr "Wymuszone odmontowanie zaszyfrowanego katalogu nie udało się"
 
-#: src/main.cpp:206
+#: src/main.cpp:207
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d inne ..."
 
-#: src/main.cpp:211
+#: src/main.cpp:212
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d instancje)\n"
 
-#: src/main.cpp:222
+#: src/main.cpp:223
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
-msgstr "Schowek nie mógł zostać odmontowany, ponieważ jest używany przez następujące aplikacje:"
+msgstr ""
+"Schowek nie mógł zostać odmontowany, ponieważ jest używany przez następujące "
+"aplikacje:"
 
-#: src/main.cpp:226
+#: src/main.cpp:227
 msgid "Kill them"
 msgstr "Zabij je"
 
-#: src/main.cpp:248
+#: src/main.cpp:249
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Schowek nie mógł zostac zamontowany. Nieprawidłowe hasło?"
 
-#: src/main.cpp:262
+#: src/main.cpp:263
 msgid "This encrypted folder is currently not available"
 msgstr "Zaszyfrowany katalog jest obecnie niedostępny"
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "It may be located on a removable disk, or has been deleted."
-msgstr "Być może jest on zlokalizowany na dysku przenośnym albo został usunięty."
+msgstr ""
+"Być może jest on zlokalizowany na dysku przenośnym albo został usunięty."
 
-#: src/main.cpp:329
+#: src/main.cpp:335
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -80,31 +86,31 @@ msgstr ""
 "Katalog montowania: %s\n"
 "%s"
 
-#: src/main.cpp:363
+#: src/main.cpp:369
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Czy na pewno chcesz usunąć zaszyfrowany katalog:"
 
-#: src/main.cpp:378
+#: src/main.cpp:384
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Czy chcesz ostatecznie skasować zaszyfrowane dane:"
 
-#: src/main.cpp:406
+#: src/main.cpp:412
 msgid "Information"
 msgstr "Informacje"
 
-#: src/main.cpp:410 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Zmień hasło"
 
-#: src/main.cpp:414
+#: src/main.cpp:420
 msgid "Delete encrypted folder"
 msgstr "Usuń zaszyfrowany katalog"
 
-#: src/main.cpp:442
+#: src/main.cpp:448
 msgid "translator-credits"
 msgstr "Franciszek Janowski (nobange@poczta.onet.pl)"
 
-#: src/main.cpp:444
+#: src/main.cpp:450
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -114,37 +120,41 @@ msgstr ""
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 
-#: src/main.cpp:480
+#: src/main.cpp:486
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Zaszyfrowane katalogi:</b>"
 
-#: src/main.cpp:528
+#: src/main.cpp:534
 msgid "Import EncFS folder"
 msgstr "Importuj katalog EncFS"
 
-#: src/main.cpp:532
+#: src/main.cpp:538
 msgid "New encrypted folder"
 msgstr "Nowy zaszyfrowany katalog"
 
-#: src/ConfigDialog.cpp:50 src/ConfigDialog.cpp:70
+#: src/ConfigDialog.cpp:56 src/ConfigDialog.cpp:76
 msgid "Cryptkeeper Preferences"
 msgstr "Preferencje Cryptkeepera"
 
-#: src/ConfigDialog.cpp:80
+#: src/ConfigDialog.cpp:86
 msgid "General"
 msgstr "Ogólne"
 
-#: src/ConfigDialog.cpp:87
+#: src/ConfigDialog.cpp:93
 msgid "File browser:"
 msgstr "Przeglądarka plików:"
 
-#: src/ConfigDialog.cpp:98
+#: src/ConfigDialog.cpp:104
 msgid "Unmount after idle (minutes):"
 msgstr "Odmontuj po czasie nieużywania (minuty):"
 
-#: src/ConfigDialog.cpp:106
+#: src/ConfigDialog.cpp:112
 msgid "Do not delete mount point when unmounting"
 msgstr "Nie usuwaj punktu montowania przy odmontowywaniu"
+
+#: src/ConfigDialog.cpp:117
+msgid "Allow other users to access mounted folders"
+msgstr ""
 
 #: src/PasswordChangeDialog.cpp:55
 msgid "The new passwords do not match"
@@ -215,7 +225,9 @@ msgstr "Podczas tworzenia zaszyfrowanego katalogu pojawił się błąd"
 msgid ""
 "Please check that the folder name you chose was not already used, and that "
 "encfs is installed correctly."
-msgstr "Sprawdź, czy nazwa katalogu, którą wybrałeś, nie jest już używana oraz czy encfs jest poprawnie zainstalowany."
+msgstr ""
+"Sprawdź, czy nazwa katalogu, którą wybrałeś, nie jest już używana oraz czy "
+"encfs jest poprawnie zainstalowany."
 
 #: src/ImportStashWizard.cpp:51
 msgid "Import an Encfs encrypted folder"
@@ -226,12 +238,15 @@ msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
 msgstr "Wybierz istniejący katalog zaszyfrowany EncFS (np ~/.crypt)"
 
 #: src/ImportStashWizard.cpp:101
-msgid "Choose the name and location at which you want the EncFS folder to be mounted"
+msgid ""
+"Choose the name and location at which you want the EncFS folder to be mounted"
 msgstr "Wybierz nazwę i lokalizację, gdzie katalog EncFS będzie montowany"
 
 #: src/ImportStashWizard.cpp:116
-msgid "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
-msgstr "Katalog zaszyfrowany EncFS został pomyślnie zaimportowany do Cryptkeepera"
+msgid ""
+"The EncFS encrypted folder has been successfully imported into Cryptkeeper"
+msgstr ""
+"Katalog zaszyfrowany EncFS został pomyślnie zaimportowany do Cryptkeepera"
 
 #: src/ImportStashWizard.cpp:164
 msgid "You must select a folder"
@@ -248,4 +263,3 @@ msgstr "Musisz wpisać nazwę"
 #: src/PasswordEntryDialog.cpp:40
 msgid "Enter your password:"
 msgstr "Wpisz swoje hasło:"
-

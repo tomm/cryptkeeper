@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2008-11-22 18:11+0000\n"
+"POT-Creation-Date: 2009-10-18 12:58+0100\n"
 "PO-Revision-Date: 2007-07-16 22:32+0100\n"
 "Last-Translator: Martino Salvetti <the9ull@silix.org>\n"
 "Language-Team: Italian\n"
@@ -16,67 +16,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:109
-msgid "Cryptkeeper cannot access fuse and so cannot start"
-msgstr ""
-"Cryptkeeper non riesce ad accedere a fuse e non può essere avviato"
-
 #: src/main.cpp:110
+msgid "Cryptkeeper cannot access fuse and so cannot start"
+msgstr "Cryptkeeper non riesce ad accedere a fuse e non può essere avviato"
+
+#: src/main.cpp:111
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
-msgstr ""
-"Controlla che fuse sia installato e di essere membro del gruppo fuse."
+msgstr "Controlla che fuse sia installato e di essere membro del gruppo fuse."
 
-#: src/main.cpp:126
+#: src/main.cpp:127
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper non trova EncFS"
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Check that EncFS is installed and try again."
 msgstr "Controlla che EncFS sia installato e riprova."
 
-#: src/main.cpp:169
-#, fuzzy
+#: src/main.cpp:170
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr ""
-#TODO
 
-#: src/main.cpp:206
+# TODO
+#: src/main.cpp:207
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d altri ..."
 
-#: src/main.cpp:211
+#: src/main.cpp:212
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d istanze)\n"
 
-#: src/main.cpp:222
+#: src/main.cpp:223
 #, fuzzy
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
 msgstr ""
-"La cartella non può essere smontata perché è utilizzata "
-"dall'applicazione:"
+"La cartella non può essere smontata perché è utilizzata dall'applicazione:"
 
-#: src/main.cpp:226
+#: src/main.cpp:227
 msgid "Kill them"
 msgstr "Uccidili"
 
-#: src/main.cpp:248
+#: src/main.cpp:249
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "La cartella non può essere montata. È corretta la password?"
 
-#: src/main.cpp:262
+#: src/main.cpp:263
 msgid "This encrypted folder is currently not available"
 msgstr "Questa cartella crittografata non è disponibile"
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Potrebbe essere su un disco rimovibile, o essere stata rimossa."
 
-#: src/main.cpp:329
+#: src/main.cpp:335
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -87,72 +83,75 @@ msgstr ""
 "Punto di mount : %s\n"
 "%s"
 
-#: src/main.cpp:363
+#: src/main.cpp:369
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Sei sicuro di voler rimuovere la cartella crittografata:"
 
-#: src/main.cpp:378
+#: src/main.cpp:384
 #, fuzzy
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Vuoi eliminare in modo permanente i dati crittografati:"
 
-#: src/main.cpp:406
+#: src/main.cpp:412
 msgid "Information"
 msgstr "Informationi"
 
-#: src/main.cpp:410 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Cambia la password"
 
-#: src/main.cpp:414
+#: src/main.cpp:420
 msgid "Delete encrypted folder"
 msgstr "Elimina una cartella crittografata"
 
-#: src/main.cpp:442
+#: src/main.cpp:448
 msgid "translator-credits"
 msgstr "Martino Salvetti <the9ull@silix.org"
 
-#: src/main.cpp:444
-#, fuzzy
+#: src/main.cpp:450
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 msgstr ""
-# TODO
 
-#: src/main.cpp:480
+# TODO
+#: src/main.cpp:486
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Cartelle crittografate :</b>"
 
-#: src/main.cpp:528
+#: src/main.cpp:534
 msgid "Import EncFS folder"
 msgstr "Importa cartella EncFS"
 
-#: src/main.cpp:532
+#: src/main.cpp:538
 msgid "New encrypted folder"
 msgstr "Nuova cartella crittografata"
 
-#: src/ConfigDialog.cpp:50 src/ConfigDialog.cpp:70
+#: src/ConfigDialog.cpp:56 src/ConfigDialog.cpp:76
 msgid "Cryptkeeper Preferences"
 msgstr "Preferenze di Cryptkeeper"
 
-#: src/ConfigDialog.cpp:80
+#: src/ConfigDialog.cpp:86
 msgid "General"
 msgstr ""
-#TODO
 
-#: src/ConfigDialog.cpp:87
+# TODO
+#: src/ConfigDialog.cpp:93
 msgid "File browser:"
 msgstr "Sfoglia:"
 
-#: src/ConfigDialog.cpp:98
+#: src/ConfigDialog.cpp:104
 msgid "Unmount after idle (minutes):"
 msgstr "Smonta dopo inattività (minuti):"
 
-#: src/ConfigDialog.cpp:106
+#: src/ConfigDialog.cpp:112
 msgid "Do not delete mount point when unmounting"
 msgstr "Non eliminare il punto di mount dopo aver smontato la cartella"
+
+#: src/ConfigDialog.cpp:117
+msgid "Allow other users to access mounted folders"
+msgstr ""
 
 #: src/PasswordChangeDialog.cpp:55
 msgid "The new passwords do not match"
@@ -161,8 +160,8 @@ msgstr "La nuova password non corrisponde"
 #: src/PasswordChangeDialog.cpp:69
 msgid "Error setting password:"
 msgstr ""
-#TODO
 
+# TODO
 #: src/PasswordChangeDialog.cpp:81
 msgid "Password changed"
 msgstr "Password modificata"
@@ -240,13 +239,13 @@ msgstr "Seleziona una cartella crittografata esistente (es ~/.crypt)"
 #: src/ImportStashWizard.cpp:101
 msgid ""
 "Choose the name and location at which you want the EncFS folder to be mounted"
-msgstr "Scegli il nome e la posizione dove vuoi che la cartella di EncFS sia montata"
+msgstr ""
+"Scegli il nome e la posizione dove vuoi che la cartella di EncFS sia montata"
 
 #: src/ImportStashWizard.cpp:116
 msgid ""
 "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
-msgstr ""
-"La cartella di EncFS è stata importata correttamente in Cryptkeeper"
+msgstr "La cartella di EncFS è stata importata correttamente in Cryptkeeper"
 
 #: src/ImportStashWizard.cpp:164
 msgid "You must select a folder"

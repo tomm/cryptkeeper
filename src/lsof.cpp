@@ -1,4 +1,3 @@
-#include <string>
 /*
  * This file is part of Cryptkeeper.
  * Copyright (C) 2007 Tom Morton
@@ -17,6 +16,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 #include <stdlib.h>
+#include <stdio.h>
+#include <string>
 #include <vector>
 #include <assert.h>
 #include <cstring>

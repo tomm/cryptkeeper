@@ -1,0 +1,254 @@
+# Czech translation for Cryptkeeper.
+# Copyright (C) Josef Lusticky
+# This file is distributed under the same license as the Cryptkeeper package.
+# Josef Lusticky <evramp@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cryptkeeper\n"
+"Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
+"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"PO-Revision-Date: 2010-06-03 17:56+0100\n"
+"Last-Translator: Josef Luštický <evramp@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+
+#: src/main.cpp:110
+msgid "Cryptkeeper cannot access fuse and so cannot start"
+msgstr "Cryptkeeper nemá přístup k fuse a nemůže tak pokračovat"
+
+#: src/main.cpp:111
+msgid "Check that fuse is installed and that you are a member of the fuse group."
+msgstr "Zkontrolujte, zda je fuse nainstalováno a zda jeste členem skupiny fuse."
+
+#: src/main.cpp:127
+msgid "Cryptkeeper cannot find EncFS"
+msgstr "Cryptkeeper nemůže nalézt EncFS"
+
+#: src/main.cpp:128
+msgid "Check that EncFS is installed and try again."
+msgstr "Zkontroluje, zda je EncFS nainstalováno a zkuste znovu."
+
+#: src/main.cpp:170
+msgid "Forced unmounting of the encrypted folder was not successful"
+msgstr "Vynucené odpojení šifrované složky nebylo úspěšné"
+
+#: src/main.cpp:207
+#, c-format
+msgid "... %d others ..."
+msgstr "... %d ostatní ..."
+
+#: src/main.cpp:212
+#, c-format
+msgid "%s (%d instances)\n"
+msgstr "%s (%d instancí)\n"
+
+#: src/main.cpp:223
+msgid "The stash could not be unmounted because it is in use by the following applications:"
+msgstr "Tato úschovna nemohla být odpojena, protože je používáná následujícími aplikacemi:"
+
+#: src/main.cpp:227
+msgid "Kill them"
+msgstr "Zabít je"
+
+#: src/main.cpp:249
+msgid "The stash could not be mounted. Invalid password?"
+msgstr "Úschovna nemohla být připojena. Chybné heslo?"
+
+#: src/main.cpp:263
+msgid "This encrypted folder is currently not available"
+msgstr "Tato šifrovaná složka je dočasně nedostupná"
+
+#: src/main.cpp:264
+msgid "It may be located on a removable disk, or has been deleted."
+msgstr "Může být na vyměnitelném disku nebo byla smazána."
+
+#: src/main.cpp:335
+#, c-format
+msgid ""
+"Crypt directory: %s\n"
+"Mount directory: %s\n"
+"%s"
+msgstr ""
+"Šifrovaný adresář: %s\n"
+"Přípojný adresář: %s\n"
+"%s"
+
+#: src/main.cpp:369
+msgid "Are you sure you want to remove the encrypted folder:"
+msgstr "Jste si jisti, že chcete odstranit šifrovanou složku:"
+
+#: src/main.cpp:384
+msgid "Do you want to permanently erase the encrypted data:"
+msgstr "Chcete trvale vymazat šifrovaná data:"
+
+#: src/main.cpp:412
+msgid "Information"
+msgstr "Informace"
+
+#: src/main.cpp:416
+#: src/PasswordChangeDialog.cpp:95
+msgid "Change password"
+msgstr "Změnit heslo"
+
+#: src/main.cpp:420
+msgid "Delete encrypted folder"
+msgstr "Smazat šifrovanou složku"
+
+#: src/main.cpp:448
+msgid "translator-credits"
+msgstr "překladatelé-zásluhy"
+
+#: src/main.cpp:450
+msgid ""
+"This program is free software; you can redistribute it and/or modify it\n"
+"under the terms of the GNU General Public License version 3, as published\n"
+"by the Free Software Foundation."
+msgstr ""
+"Tento program je svobodný software: můžete jej šířit a upravovat\n"
+"podle ustanovení Obecné veřejné licence GNU (GNU General Public Licence)\n"
+"3. verze, vydávané Free Software Foundation."
+
+#: src/main.cpp:486
+msgid "<b>Encrypted folders:</b>"
+msgstr "<b>Šifrované složky:</b>"
+
+#: src/main.cpp:534
+msgid "Import EncFS folder"
+msgstr "Importovat složku EncFS"
+
+#: src/main.cpp:538
+msgid "New encrypted folder"
+msgstr "Nová šifrovaná složka"
+
+#: src/ConfigDialog.cpp:56
+#: src/ConfigDialog.cpp:76
+msgid "Cryptkeeper Preferences"
+msgstr "Cryptkeeper nastavení"
+
+#: src/ConfigDialog.cpp:86
+msgid "General"
+msgstr "Obecné"
+
+#: src/ConfigDialog.cpp:93
+msgid "File browser:"
+msgstr "Správce souborů:"
+
+#: src/ConfigDialog.cpp:104
+msgid "Unmount after idle (minutes):"
+msgstr "Odpojit po nečinnosti (minuty):"
+
+#: src/ConfigDialog.cpp:112
+msgid "Do not delete mount point when unmounting"
+msgstr "Nemazat připojný bod při odpojení"
+
+#: src/ConfigDialog.cpp:117
+msgid "Allow other users to access mounted folders"
+msgstr "Povolit ostatním uživatelům přístup k připojeným složkám"
+
+#: src/PasswordChangeDialog.cpp:55
+msgid "The new passwords do not match"
+msgstr "Nová hesla nesouhlasí"
+
+#: src/PasswordChangeDialog.cpp:69
+msgid "Error setting password:"
+msgstr "Chyba nastavení hesla:"
+
+#: src/PasswordChangeDialog.cpp:81
+msgid "Password changed"
+msgstr "Heslo změněno"
+
+#: src/PasswordChangeDialog.cpp:106
+#, c-format
+msgid "Enter the current password for %s:"
+msgstr "Současné heslo pro %s:"
+
+#: src/PasswordChangeDialog.cpp:114
+msgid "Enter a new password"
+msgstr "Vložte nové heslo"
+
+#: src/PasswordChangeDialog.cpp:121
+msgid "Enter the new password again to confirm"
+msgstr "Vložte nové heslo znovu pro potvrzení"
+
+#: src/CreateStashWizard.cpp:52
+msgid "Create a new encrypted directory"
+msgstr "Vytvořit nový šifrovaný adresář"
+
+#: src/CreateStashWizard.cpp:91
+msgid "Choose a name and location for your new encrypted folder"
+msgstr "Vyberte jméno a umístění pro Vaši novou šifrovanou složku"
+
+#: src/CreateStashWizard.cpp:100
+msgid "Enter a password for your new encrypted folder"
+msgstr "Vložte heslo pro Vaši novou šifrovanou složku"
+
+#: src/CreateStashWizard.cpp:108
+msgid "Enter the password again"
+msgstr "Vložte nové heslo znovu"
+
+#: src/CreateStashWizard.cpp:116
+msgid "The new encrypted folder has been sucessfully created"
+msgstr "Nová šifrovaná složka byla úspěšně vytvořena"
+
+#: src/CreateStashWizard.cpp:162
+msgid "You need to enter a name"
+msgstr "Musíte vložit název"
+
+#: src/CreateStashWizard.cpp:181
+msgid ""
+"The passwords you entered do not match\n"
+"Try again"
+msgstr ""
+"Hesla, která jste zadali nesouhlasí\n"
+"Zkuste znovu"
+
+#: src/CreateStashWizard.cpp:193
+msgid "You need to enter a password"
+msgstr "Musíte vložit heslo"
+
+#: src/CreateStashWizard.cpp:218
+msgid "An error occurred while creating the encrypted folder"
+msgstr "Vyskytla se chyba při vytváření šifrované složky"
+
+#: src/CreateStashWizard.cpp:219
+msgid "Please check that the folder name you chose was not already used, and that encfs is installed correctly."
+msgstr "Prosím zkontrolujte, zda vybrané jméno složky už není používáno, a zda je encfs nainstalováno korektně."
+
+#: src/ImportStashWizard.cpp:51
+msgid "Import an Encfs encrypted folder"
+msgstr "Importovat složku šifrovanou Encfs"
+
+#: src/ImportStashWizard.cpp:92
+msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
+msgstr "Vybrat existující složku šofrovanou EncFS (např. ~/.crypt)"
+
+#: src/ImportStashWizard.cpp:101
+msgid "Choose the name and location at which you want the EncFS folder to be mounted"
+msgstr "Vyberte jméno a umístění, do kterého chcete složku EncFS připojit"
+
+#: src/ImportStashWizard.cpp:116
+msgid "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
+msgstr "Šifrovaná složka EncFS byla úspěšně importována do programu Cryptkeeper"
+
+#: src/ImportStashWizard.cpp:164
+msgid "You must select a folder"
+msgstr "Musíte vybrat složku"
+
+#: src/ImportStashWizard.cpp:182
+msgid "The selected folder is not an EncFS encrypted folder"
+msgstr "Vybraná složka není šifrovaná složka EncFS"
+
+#: src/ImportStashWizard.cpp:203
+msgid "You must enter a name"
+msgstr "Musíte vložit jméno"
+
+#: src/PasswordEntryDialog.cpp:40
+msgid "Enter your password:"
+msgstr "Vložte Vaše heslo"
+

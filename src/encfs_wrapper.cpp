@@ -49,6 +49,10 @@ bool is_mounted(const char *mount_dir)
 		struct mntent *m = getmntent(f);
 		if (!m) break;
  		mnt_dir_expanded = realpath(m->mnt_dir, NULL);
+		if(NULL == mnt_dir_expanded) {
+			free(mount_dir_expanded);
+			return false;
+		}
 		srclen = strlen(mount_dir_expanded);
 		dstlen = strlen(mnt_dir_expanded);
  		if (strncmp(mount_dir_expanded, mnt_dir_expanded, MIN(srclen,dstlen))==0) {

@@ -31,6 +31,8 @@
 // only for the gettext _
 #include "cryptkeeper.h"
 
+#define MIN(x,y) ((x) < (y) ? (x) : (y))
+
 bool is_mounted(const char *mount_dir)
 {
 	FILE *f = setmntent("/etc/mtab", "r");
@@ -42,15 +44,21 @@ bool is_mounted(const char *mount_dir)
 		return false;
 	}
 	for (;;) {
+		size_t srclen, dstlen;
  	        char *mnt_dir_expanded;
 		struct mntent *m = getmntent(f);
 		if (!m) break;
  		mnt_dir_expanded = realpath(m->mnt_dir, NULL);
- 		if (strcmp(mount_dir_expanded, mnt_dir_expanded)==0) {
+		srclen = strlen(mount_dir_expanded);
+		dstlen = strlen(mnt_dir_expanded);
+ 		if (strncmp(mount_dir_expanded, mnt_dir_expanded, MIN(srclen,dstlen))==0) {
 			free(mnt_dir_expanded);
+			free(mount_dir_expanded);
  			return true;
  		}
+		free(mnt_dir_expanded);
 	}
+	free(mount_dir_expanded);
 	return false;
 }
 

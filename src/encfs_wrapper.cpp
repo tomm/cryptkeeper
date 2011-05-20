@@ -31,8 +31,6 @@
 // only for the gettext _
 #include "cryptkeeper.h"
 
-#define MIN(x,y) ((x) < (y) ? (x) : (y))
-
 bool is_mounted(const char *mount_dir)
 {
 	struct mntent *m;

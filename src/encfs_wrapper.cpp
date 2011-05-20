@@ -33,6 +33,7 @@
 
 bool is_mounted(const char *mount_dir)
 {
+	struct mntent *m;
 	FILE *f = setmntent("/etc/mtab", "r");
  	char *mount_dir_expanded = realpath(mount_dir, NULL);
 	if (mount_dir_expanded == NULL) {
@@ -41,11 +42,8 @@ bool is_mounted(const char *mount_dir)
 		//	  perror("cryptkeeper, is_mounted");
 		return false;
 	}
-	for (;;) {
- 	        char *mnt_dir_expanded;
-		struct mntent *m = getmntent(f);
-		if (!m) break;
- 		mnt_dir_expanded = realpath(m->mnt_dir, NULL);
+	while(m = getmntent(f)) {
+ 	        char *mnt_dir_expanded = realpath(m->mnt_dir, NULL);
 		if(mnt_dir_expanded) {
 			if (strcmp(mount_dir_expanded, mnt_dir_expanded)==0) {
 				free(mnt_dir_expanded);

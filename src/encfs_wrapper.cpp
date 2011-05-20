@@ -37,12 +37,9 @@ bool is_mounted(const char *mount_dir)
 	FILE *f = setmntent("/etc/mtab", "r");
  	char *mount_dir_expanded, *mnt_dir_expanded;
 
-	if (!(mount_dir_expanded = realpath(mount_dir, NULL))) {
-		// no such file or dir, ...
-		// so: not mounted
-		//	  perror("cryptkeeper, is_mounted");
+	if (!(mount_dir_expanded = realpath(mount_dir, NULL)))
 		return false;
-	}
+
 	while(m = getmntent(f)) {
  	        if(mnt_dir_expanded = realpath(m->mnt_dir, NULL)) {
 			if (strcmp(mount_dir_expanded, mnt_dir_expanded)==0) {

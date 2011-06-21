@@ -225,7 +225,24 @@ static void moan_cant_unmount (const char *mount_dir)
 			);
 	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 	gtk_dialog_add_button (GTK_DIALOG (dialog), _("Kill them"), GTK_RESPONSE_OK);
-	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK) {
+	gtk_dialog_add_button (GTK_DIALOG (dialog), _("Retry"), GTK_RESPONSE_YES );
+	const gint response =  gtk_dialog_run (GTK_DIALOG (dialog)); 
+	if (response == GTK_RESPONSE_YES) {
+		gtk_widget_destroy (dialog);
+		
+		// renew list
+		get_fsusers(&ls, mount_dir);
+		if(ls.num.size() > 0){
+		// call moan_cant_unmount again
+		moan_cant_unmount(mount_dir);
+		}
+		else{
+		// unmount 
+		const char *mdir = strdup(mount_dir);
+		timeout_unmount((void*)mdir);
+		}
+	}
+	if (response == GTK_RESPONSE_OK) {
 		// renew list
 		get_fsusers(&ls, mount_dir);
 

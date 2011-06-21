@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2011-06-21 22:07+0200\n"
 "PO-Revision-Date: 2008-05-02 15:46-0300\n"
 "Last-Translator: Phantom X <megaphantomx@bol.com.br>\n"
 "Language-Team: Português do Brasil <pt@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,19 +62,23 @@ msgstr ""
 msgid "Kill them"
 msgstr "Matá-los"
 
-#: src/main.cpp:249
+#: src/main.cpp:228
+msgid "Retry"
+msgstr ""
+
+#: src/main.cpp:257
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Não é possível montar o estoque. Senha inválida?"
 
-#: src/main.cpp:263
+#: src/main.cpp:271
 msgid "This encrypted folder is currently not available"
 msgstr "A pasta criptografada não está disponível atualmente"
 
-#: src/main.cpp:264
+#: src/main.cpp:272
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Ela pode se localizar num disco removível, ou foi apagado."
 
-#: src/main.cpp:335
+#: src/main.cpp:343
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -84,31 +89,31 @@ msgstr ""
 "Montar diretório: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:377
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Você tem certeza que deseja remover a pasta criptografada?"
 
-#: src/main.cpp:384
+#: src/main.cpp:392
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Você deseja apagar permanentemente os dados criptografados?"
 
-#: src/main.cpp:412
+#: src/main.cpp:420
 msgid "Information"
 msgstr "Informações"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:424 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Alterar senha:"
 
-#: src/main.cpp:420
+#: src/main.cpp:428
 msgid "Delete encrypted folder"
 msgstr "Apagar pasta criptografada"
 
-#: src/main.cpp:448
+#: src/main.cpp:456
 msgid "translator-credits"
 msgstr "Phantom X <megaphantomx@bol.com.br>"
 
-#: src/main.cpp:450
+#: src/main.cpp:458
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -118,15 +123,15 @@ msgstr ""
 "sob os termos da GNU General Public License versão 3, como publicado\n"
 "pela Free Software Foundation."
 
-#: src/main.cpp:486
+#: src/main.cpp:494
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Pastas criptografadas:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:542
 msgid "Import EncFS folder"
 msgstr "Importar pasta do EncFS"
 
-#: src/main.cpp:538
+#: src/main.cpp:546
 msgid "New encrypted folder"
 msgstr "Nova pasta criptografada"
 

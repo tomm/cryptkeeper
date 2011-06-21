@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2011-06-21 22:07+0200\n"
 "PO-Revision-Date: 2009-01-02 20:43+0100\n"
 "Last-Translator: Franciszek Janowski <nobange@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%"
-"100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/main.cpp:110
 msgid "Cryptkeeper cannot access fuse and so cannot start"
@@ -62,20 +63,24 @@ msgstr ""
 msgid "Kill them"
 msgstr "Zabij je"
 
-#: src/main.cpp:249
+#: src/main.cpp:228
+msgid "Retry"
+msgstr ""
+
+#: src/main.cpp:257
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Schowek nie mógł zostac zamontowany. Nieprawidłowe hasło?"
 
-#: src/main.cpp:263
+#: src/main.cpp:271
 msgid "This encrypted folder is currently not available"
 msgstr "Zaszyfrowany katalog jest obecnie niedostępny"
 
-#: src/main.cpp:264
+#: src/main.cpp:272
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr ""
 "Być może jest on zlokalizowany na dysku przenośnym albo został usunięty."
 
-#: src/main.cpp:335
+#: src/main.cpp:343
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -86,31 +91,31 @@ msgstr ""
 "Katalog montowania: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:377
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Czy na pewno chcesz usunąć zaszyfrowany katalog:"
 
-#: src/main.cpp:384
+#: src/main.cpp:392
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Czy chcesz ostatecznie skasować zaszyfrowane dane:"
 
-#: src/main.cpp:412
+#: src/main.cpp:420
 msgid "Information"
 msgstr "Informacje"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:424 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Zmień hasło"
 
-#: src/main.cpp:420
+#: src/main.cpp:428
 msgid "Delete encrypted folder"
 msgstr "Usuń zaszyfrowany katalog"
 
-#: src/main.cpp:448
+#: src/main.cpp:456
 msgid "translator-credits"
 msgstr "Franciszek Janowski (nobange@poczta.onet.pl)"
 
-#: src/main.cpp:450
+#: src/main.cpp:458
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -120,15 +125,15 @@ msgstr ""
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 
-#: src/main.cpp:486
+#: src/main.cpp:494
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Zaszyfrowane katalogi:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:542
 msgid "Import EncFS folder"
 msgstr "Importuj katalog EncFS"
 
-#: src/main.cpp:538
+#: src/main.cpp:546
 msgid "New encrypted folder"
 msgstr "Nowy zaszyfrowany katalog"
 

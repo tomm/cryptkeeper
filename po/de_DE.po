@@ -2,13 +2,13 @@
 # Copyright (C) 2007 Tom Morton
 # This file is distributed under the same license as the cryptkeeper package.
 # tom <tom@infoseed.co.uk>, 2007.
-#
+# Frederik Schwarzer <schwarzer@kde.org>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
 "POT-Creation-Date: 2009-10-18 12:58+0100\n"
-"PO-Revision-Date: 2007-09-01 20:42+0100\n"
+"PO-Revision-Date: 2012-01-27 08:42+0100\n"
 "Last-Translator: Christoph Langner <mail@christoph-langner.de>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,13 @@ msgstr ""
 
 #: src/main.cpp:110
 msgid "Cryptkeeper cannot access fuse and so cannot start"
-msgstr "Cryptkeeper kann fuse nicht finden und wird daher beendet"
+msgstr "Cryptkeeper kann FUSE nicht finden und wird daher beendet"
 
 #: src/main.cpp:111
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
-"Bitte überprüfen sie ob fuse installiert ist und ob sie in der Gruppe fuse "
+"Bitte überprüfen Sie, ob FUSE installiert ist und ob Sie in der Gruppe fuse "
 "sind."
 
 #: src/main.cpp:127
@@ -33,45 +33,44 @@ msgstr "Cryptkeeper kann EncFS nicht finden"
 
 #: src/main.cpp:128
 msgid "Check that EncFS is installed and try again."
-msgstr ""
+msgstr "Bitte überprüfen Sie, ob EncFS installiert ist und versuchen Sie es erneut."
 
 #: src/main.cpp:170
-#, fuzzy
 msgid "Forced unmounting of the encrypted folder was not successful"
-msgstr "Der neue verschlüsselte Ordner wurde erfolgreich angelegt"
+msgstr "Das erzwungene Lösen der Einbindung des verschüsselten Ordners war nicht erfolgreich"
 
 #: src/main.cpp:207
 #, c-format
 msgid "... %d others ..."
-msgstr ""
+msgstr "... %d weitere ..."
 
 #: src/main.cpp:212
 #, c-format
 msgid "%s (%d instances)\n"
-msgstr ""
+msgstr "%s (%d Instanzen)\n"
 
 #: src/main.cpp:223
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
-msgstr ""
+msgstr "Die Einbindung des versteckten Ordners kann nicht gelöst werden, da er von den folgenden Anwendungen benutzt wird:"
 
 #: src/main.cpp:227
 msgid "Kill them"
-msgstr ""
+msgstr "Diese beenden (kill)"
 
 #: src/main.cpp:249
 msgid "The stash could not be mounted. Invalid password?"
-msgstr ""
+msgstr "Der versteckte Ordner kann nicht eingebunden werden. Ist das Passwort korrekt?"
 
 #: src/main.cpp:263
 msgid "This encrypted folder is currently not available"
-msgstr ""
+msgstr "Dieser verschlüsselte Ordner ist derzeit nicht verfügbar"
 
 #: src/main.cpp:264
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr ""
-"Das Verzeichnis wurde gelöscht oder lag eventuell auf einem "
+"Der Ordner wurde gelöscht oder lag eventuell auf einem "
 "Wechseldatenträger."
 
 #: src/main.cpp:335
@@ -81,17 +80,17 @@ msgid ""
 "Mount directory: %s\n"
 "%s"
 msgstr ""
-"Verschlüsseles Verzeichnis: %s\n"
-"Mountpunkt: %s\n"
+"Verschlüsselter Ordner: %s\n"
+"Mount-Punkt: %s\n"
 "%s"
 
 #: src/main.cpp:369
 msgid "Are you sure you want to remove the encrypted folder:"
-msgstr "Sind sie sicher, dass sie den verschlüsselten Ordner löschen wollen:"
+msgstr "Sind Sie sicher, dass Sie den verschlüsselten Ordner löschen möchten:"
 
 #: src/main.cpp:384
 msgid "Do you want to permanently erase the encrypted data:"
-msgstr "Möchten sie den verschlüsselten Daten permanent löschen:"
+msgstr "Möchten Sie die verschlüsselten Daten permanent löschen:"
 
 #: src/main.cpp:412
 msgid "Information"
@@ -125,15 +124,15 @@ msgstr "<b>Verschlüsselte Ordner:</b>"
 
 #: src/main.cpp:534
 msgid "Import EncFS folder"
-msgstr "Importiere EncFS ordner"
+msgstr "EncFS-Ordner importieren"
 
 #: src/main.cpp:538
 msgid "New encrypted folder"
-msgstr "Erstelle verschlüsselten Ordner "
+msgstr "Verschlüsselten Ordner erstellen"
 
 #: src/ConfigDialog.cpp:56 src/ConfigDialog.cpp:76
 msgid "Cryptkeeper Preferences"
-msgstr "Cryptkeeper Einstellungen"
+msgstr "Cryptkeeper-Einstellungen"
 
 #: src/ConfigDialog.cpp:86
 msgid "General"
@@ -145,25 +144,23 @@ msgstr "Dateimanager:"
 
 #: src/ConfigDialog.cpp:104
 msgid "Unmount after idle (minutes):"
-msgstr "Ordner bei Nichgebrauch aushängen (Minuten):"
+msgstr "Einbindung des Ordners bei Nichtgebrauch lösen (Minuten):"
 
 #: src/ConfigDialog.cpp:112
 msgid "Do not delete mount point when unmounting"
-msgstr "Erhalte Mointpunkt nach dem Aushängen"
+msgstr "Mount-Punkt nach dem Lösen der Einbindung erhalten"
 
 #: src/ConfigDialog.cpp:117
 msgid "Allow other users to access mounted folders"
-msgstr ""
+msgstr "Anderen Benutzern erlauben, eingebundene Ordner zu verwenden"
 
 #: src/PasswordChangeDialog.cpp:55
 msgid "The new passwords do not match"
-msgstr ""
-"Bitte wiederholen sie die Eingabe.\n"
-"Die Eingabe stimmte nicht überein."
+msgstr "Die Eingabe stimmt nicht überein"
 
 #: src/PasswordChangeDialog.cpp:69
 msgid "Error setting password:"
-msgstr "Fehler beim Setzen des Passwortes"
+msgstr "Fehler beim Setzen des Passworts:"
 
 #: src/PasswordChangeDialog.cpp:81
 msgid "Password changed"
@@ -172,7 +169,7 @@ msgstr "Das Passwort wurde geändert"
 #: src/PasswordChangeDialog.cpp:106
 #, c-format
 msgid "Enter the current password for %s:"
-msgstr "Bitte geben sie das aktuelle Passwort für %s ein:"
+msgstr "Bitte geben Sie das aktuelle Passwort für %s ein:"
 
 #: src/PasswordChangeDialog.cpp:114
 msgid "Enter a new password"
@@ -184,16 +181,16 @@ msgstr "Passwortbestätigung"
 
 #: src/CreateStashWizard.cpp:52
 msgid "Create a new encrypted directory"
-msgstr "Neues verschlüsseltes Verzeichnis erzeugen"
+msgstr "Neuen verschlüsselten Ordner erstellen"
 
 #: src/CreateStashWizard.cpp:91
 msgid "Choose a name and location for your new encrypted folder"
 msgstr ""
-"Bitte wählen sie den Ort und den Namen des neuen verschlüsselten Ordners"
+"Bitte wählen Sie den Ort und den Namen des neuen verschlüsselten Ordners"
 
 #: src/CreateStashWizard.cpp:100
 msgid "Enter a password for your new encrypted folder"
-msgstr "Bitte geben sie ein Passwort für den neuen verschlüsselten Ordner ein"
+msgstr "Bitte geben Sie ein Passwort für den neuen verschlüsselten Ordner ein"
 
 #: src/CreateStashWizard.cpp:108
 msgid "Enter the password again"
@@ -205,62 +202,59 @@ msgstr "Der neue verschlüsselte Ordner wurde erfolgreich angelegt"
 
 #: src/CreateStashWizard.cpp:162
 msgid "You need to enter a name"
-msgstr "Bitte geben sie einen Namen ein"
+msgstr "Bitte geben Sie einen Namen ein"
 
 #: src/CreateStashWizard.cpp:181
 msgid ""
 "The passwords you entered do not match\n"
 "Try again"
 msgstr ""
-"Das eingegebene Passwort stimmt nicht mit der Wiederholung\n"
-"überein. Bitte wiederholen sie die Eingabe."
+"Die eingegebenen Passwörter stimmen nicht überein.\n"
+"Bitte wiederholen Sie die Eingabe."
 
 #: src/CreateStashWizard.cpp:193
 msgid "You need to enter a password"
-msgstr "Bitte geben sie ein Passwort ein"
+msgstr "Bitte geben Sie ein Passwort ein"
 
 #: src/CreateStashWizard.cpp:218
 msgid "An error occurred while creating the encrypted folder"
-msgstr "Ein Fehler trat beim Anlegen des verschlüsselten Ordners auf"
+msgstr "Beim Anlegen des verschlüsselten Ordners ist ein Fehler aufgetreten"
 
 #: src/CreateStashWizard.cpp:219
 msgid ""
 "Please check that the folder name you chose was not already used, and that "
 "encfs is installed correctly."
 msgstr ""
-"Bitte überprüfen sie ob es einen Ordner mit dem gewählten Namen bereits gibt "
-"und ob encfs korrekt installiert ist."
+"Bitte überprüfen Sie, ob es einen Ordner mit dem gewählten Namen bereits gibt "
+"und ob EncFS korrekt installiert ist."
 
 #: src/ImportStashWizard.cpp:51
-#, fuzzy
 msgid "Import an Encfs encrypted folder"
-msgstr "Importiere EncFS ordner"
+msgstr "Einen mit EncFS verschlüsselten Ordner importieren"
 
 #: src/ImportStashWizard.cpp:92
 msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
-msgstr ""
+msgstr "Wählen Sie einen bestehenden, mit EncFS verschlüsselten Ordner (z. B. ~/.crypt)"
 
 #: src/ImportStashWizard.cpp:101
 msgid ""
 "Choose the name and location at which you want the EncFS folder to be mounted"
 msgstr ""
-"Bitte geben sie den Namen und Ort an unter dem der EncFS Ordner eingebunden "
+"Bitte geben Sie den Namen und Ort an, unter dem der EncFS-Ordner eingebunden "
 "werden soll"
 
 #: src/ImportStashWizard.cpp:116
-#, fuzzy
 msgid ""
 "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
-msgstr "Der neue verschlüsselte Ordner wurde erfolgreich angelegt"
+msgstr "Der EncFS-verschlüsselte Ordner wurde erfolgreich importiert"
 
 #: src/ImportStashWizard.cpp:164
-#, fuzzy
 msgid "You must select a folder"
-msgstr "Bitte geben sie einen Namen ein"
+msgstr "Bite geben Sie einen Ordner an"
 
 #: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
-msgstr ""
+msgstr "Der angegebene Ordner ist kein EncFS-verschlüsselter Ordner"
 
 #: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"

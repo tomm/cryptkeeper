@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2012-11-26 21:02+0100\n"
 "PO-Revision-Date: 2007-07-12 19:26+0100\n"
 "Last-Translator: tom <tom@infoseed.co.uk>\n"
 "Language-Team: English\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -108,15 +109,15 @@ msgid ""
 "by the Free Software Foundation."
 msgstr ""
 
-#: src/main.cpp:486
+#: src/main.cpp:508
 msgid "<b>Encrypted folders:</b>"
 msgstr ""
 
-#: src/main.cpp:534
+#: src/main.cpp:556
 msgid "Import EncFS folder"
 msgstr ""
 
-#: src/main.cpp:538
+#: src/main.cpp:560
 msgid "New encrypted folder"
 msgstr ""
 

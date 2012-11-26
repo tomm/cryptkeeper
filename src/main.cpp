@@ -149,7 +149,7 @@ void spawn_filemanager (const char *dir)
 static bool unmount_cryptpoint (int idx)
 {
 	CryptPoint *cp = &cryptPoints[idx];
-	
+
 	if (cp->GetIsMounted () == false) return true;
 
 	int result = !encfs_stash_unmount (cp->GetMountDir ());
@@ -455,8 +455,43 @@ static void open_about_dialog ()
 	gtk_widget_destroy (dialog);
 }
 
+static void on_exit ()
+{
+    int i = 0;
+    std::vector<CryptPoint>::iterator it;
+    for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, ++i) {
+        if (it->GetIsMounted()){
+            if (!unmount_cryptpoint (i)) {
+                moan_cant_unmount (it->GetMountDir());
+            }
+        }
+    }
+    gtk_main_quit();
+}
+
 static void sico_right_button_activated ()
 {
+    int i = 0;
+	std::vector<CryptPoint>::iterator it;
+	// find out which ones are mounted
+	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, i++) {
+		struct stat s;
+
+		(*it).SetIsMounted (false);
+		(*it).SetIsAvailable (false);
+
+		if (stat ((*it).GetCryptDir (), &s) != -1) {
+			if (S_ISDIR (s.st_mode)) (*it).SetIsAvailable (true);
+		}
+
+		// to get rid of festering mount points
+		if (!config_keep_mountpoints) rmdir ((*it).GetMountDir ());
+
+		if (is_mounted((*it).GetMountDir())) {
+			if (S_ISDIR (s.st_mode)) (*it).SetIsMounted (true);
+		}
+	}
+
 	GtkWidget *menu = gtk_menu_new ();
 
 	GtkWidget *mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_PREFERENCES, NULL);
@@ -468,7 +503,7 @@ static void sico_right_button_activated ()
 	gtk_menu_append (GTK_MENU (menu), mi);
 
 	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
-	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (gtk_exit), NULL);
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_exit), NULL);
 	gtk_menu_append (GTK_MENU (menu), mi);
 
 	gtk_widget_show_all (menu);

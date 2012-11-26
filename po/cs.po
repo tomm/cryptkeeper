@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2012-11-26 21:02+0100\n"
 "PO-Revision-Date: 2010-06-03 17:56+0100\n"
 "Last-Translator: Josef Luštický <evramp@gmail.com>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,8 +24,10 @@ msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper nemá přístup k fuse a nemůže tak pokračovat"
 
 #: src/main.cpp:111
-msgid "Check that fuse is installed and that you are a member of the fuse group."
-msgstr "Zkontrolujte, zda je fuse nainstalováno a zda jeste členem skupiny fuse."
+msgid ""
+"Check that fuse is installed and that you are a member of the fuse group."
+msgstr ""
+"Zkontrolujte, zda je fuse nainstalováno a zda jeste členem skupiny fuse."
 
 #: src/main.cpp:127
 msgid "Cryptkeeper cannot find EncFS"
@@ -49,8 +52,12 @@ msgid "%s (%d instances)\n"
 msgstr "%s (%d instancí)\n"
 
 #: src/main.cpp:223
-msgid "The stash could not be unmounted because it is in use by the following applications:"
-msgstr "Tato úschovna nemohla být odpojena, protože je používáná následujícími aplikacemi:"
+msgid ""
+"The stash could not be unmounted because it is in use by the following "
+"applications:"
+msgstr ""
+"Tato úschovna nemohla být odpojena, protože je používáná následujícími "
+"aplikacemi:"
 
 #: src/main.cpp:227
 msgid "Kill them"
@@ -91,8 +98,7 @@ msgstr "Chcete trvale vymazat šifrovaná data:"
 msgid "Information"
 msgstr "Informace"
 
-#: src/main.cpp:416
-#: src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -114,20 +120,19 @@ msgstr ""
 "podle ustanovení Obecné veřejné licence GNU (GNU General Public Licence)\n"
 "3. verze, vydávané Free Software Foundation."
 
-#: src/main.cpp:486
+#: src/main.cpp:508
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Šifrované složky:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:556
 msgid "Import EncFS folder"
 msgstr "Importovat složku EncFS"
 
-#: src/main.cpp:538
+#: src/main.cpp:560
 msgid "New encrypted folder"
 msgstr "Nová šifrovaná složka"
 
-#: src/ConfigDialog.cpp:56
-#: src/ConfigDialog.cpp:76
+#: src/ConfigDialog.cpp:56 src/ConfigDialog.cpp:76
 msgid "Cryptkeeper Preferences"
 msgstr "Cryptkeeper nastavení"
 
@@ -217,8 +222,12 @@ msgid "An error occurred while creating the encrypted folder"
 msgstr "Vyskytla se chyba při vytváření šifrované složky"
 
 #: src/CreateStashWizard.cpp:219
-msgid "Please check that the folder name you chose was not already used, and that encfs is installed correctly."
-msgstr "Prosím zkontrolujte, zda vybrané jméno složky už není používáno, a zda je encfs nainstalováno korektně."
+msgid ""
+"Please check that the folder name you chose was not already used, and that "
+"encfs is installed correctly."
+msgstr ""
+"Prosím zkontrolujte, zda vybrané jméno složky už není používáno, a zda je "
+"encfs nainstalováno korektně."
 
 #: src/ImportStashWizard.cpp:51
 msgid "Import an Encfs encrypted folder"
@@ -229,12 +238,15 @@ msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
 msgstr "Vybrat existující složku šofrovanou EncFS (např. ~/.crypt)"
 
 #: src/ImportStashWizard.cpp:101
-msgid "Choose the name and location at which you want the EncFS folder to be mounted"
+msgid ""
+"Choose the name and location at which you want the EncFS folder to be mounted"
 msgstr "Vyberte jméno a umístění, do kterého chcete složku EncFS připojit"
 
 #: src/ImportStashWizard.cpp:116
-msgid "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
-msgstr "Šifrovaná složka EncFS byla úspěšně importována do programu Cryptkeeper"
+msgid ""
+"The EncFS encrypted folder has been successfully imported into Cryptkeeper"
+msgstr ""
+"Šifrovaná složka EncFS byla úspěšně importována do programu Cryptkeeper"
 
 #: src/ImportStashWizard.cpp:164
 msgid "You must select a folder"
@@ -251,4 +263,3 @@ msgstr "Musíte vložit jméno"
 #: src/PasswordEntryDialog.cpp:40
 msgid "Enter your password:"
 msgstr "Vložte Vaše heslo"
-

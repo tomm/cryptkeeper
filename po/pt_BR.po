@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2012-11-26 21:02+0100\n"
 "PO-Revision-Date: 2008-05-02 15:46-0300\n"
 "Last-Translator: Phantom X <megaphantomx@bol.com.br>\n"
 "Language-Team: Português do Brasil <pt@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -118,15 +119,15 @@ msgstr ""
 "sob os termos da GNU General Public License versão 3, como publicado\n"
 "pela Free Software Foundation."
 
-#: src/main.cpp:486
+#: src/main.cpp:508
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Pastas criptografadas:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:556
 msgid "Import EncFS folder"
 msgstr "Importar pasta do EncFS"
 
-#: src/main.cpp:538
+#: src/main.cpp:560
 msgid "New encrypted folder"
 msgstr "Nova pasta criptografada"
 

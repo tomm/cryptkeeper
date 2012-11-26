@@ -1,0 +1,17 @@
+2012-11-26  Eugenio M. Vigo  <emvigo@gmail.com>
+
+	*  Forked from <https://github.com/tomm/cryptkeeper>
+
+	* ChangeLog: Added. This ChangeLog only keeps record of
+	development done in this forked version.
+
+	* src/lsof.cpp: Added missing #include<unistd.h>
+
+	* src/main.cpp (on_exit): New feature: directories are
+	automatically unmounted when quitting cryptkeeper.
+
+	(sico_right_button_activated): The previous code only checked
+	whether some mount point was or not mounted when activating the
+	left-click menu. Of course, this disrupted the behavior of the new
+	on_exit function, which is accessed from the right-click menu.
+

@@ -1,6 +1,7 @@
 /*
  * This file is part of Cryptkeeper.
  * Copyright (C) 2007 Tom Morton
+ * Copyright (C) 2012 Eugenio M. Vigo
  *
  * Cryptkeeper is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -469,7 +470,7 @@ static void on_exit ()
     gtk_main_quit();
 }
 
-static void sico_right_button_activated ()
+static void update_mounted()
 {
     int i = 0;
 	std::vector<CryptPoint>::iterator it;
@@ -491,6 +492,11 @@ static void sico_right_button_activated ()
 			if (S_ISDIR (s.st_mode)) (*it).SetIsMounted (true);
 		}
 	}
+}
+
+static void sico_right_button_activated ()
+{
+    update_mounted();
 
 	GtkWidget *menu = gtk_menu_new ();
 
@@ -523,28 +529,10 @@ static void sico_activated (GtkWidget *data)
 	gtk_widget_set_sensitive (mi, FALSE);
 	gtk_menu_append (stashes_popup_menu, mi);
 
-	int i = 0;
-	std::vector<CryptPoint>::iterator it;
-	// find out which ones are mounted
-	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, i++) {
-		struct stat s;
-
-		(*it).SetIsMounted (false);
-		(*it).SetIsAvailable (false);
-
-		if (stat ((*it).GetCryptDir (), &s) != -1) {
-			if (S_ISDIR (s.st_mode)) (*it).SetIsAvailable (true);
-		}
-
-		// to get rid of festering mount points
-		if (!config_keep_mountpoints) rmdir ((*it).GetMountDir ());
-
-		if (is_mounted((*it).GetMountDir())) {
-			if (S_ISDIR (s.st_mode)) (*it).SetIsMounted (true);
-		}
-	}
+    update_mounted();
 	
-	i = 0;
+	int i = 0;
+    std::vector<CryptPoint>::iterator it;
 	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, i++) {
 		mi = gtk_check_menu_item_new ();
 		char buf[256];

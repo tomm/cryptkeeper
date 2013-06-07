@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2012-11-26 21:02+0100\n"
+"POT-Creation-Date: 2013-06-07 13:22+0200\n"
 "PO-Revision-Date: 2008-05-02 15:46-0300\n"
 "Last-Translator: Phantom X <megaphantomx@bol.com.br>\n"
 "Language-Team: Português do Brasil <pt@li.org>\n"
@@ -18,39 +18,39 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:110
+#: src/main.cpp:111
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper não pode acessar o fuse e iniciar"
 
-#: src/main.cpp:111
+#: src/main.cpp:112
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
 "Verifique se o fuse está instalado e se você é um menbro do grupo fuse."
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper não encontra o EncFS"
 
-#: src/main.cpp:128
+#: src/main.cpp:129
 msgid "Check that EncFS is installed and try again."
 msgstr "Verifique se o EncFS está instalado e tente novamente."
 
-#: src/main.cpp:170
+#: src/main.cpp:171
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr "A desmontagem forçada da pasta encriptada não obteve sucesso"
 
-#: src/main.cpp:207
+#: src/main.cpp:208
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d outros ..."
 
-#: src/main.cpp:212
+#: src/main.cpp:213
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d instâncias)\n"
 
-#: src/main.cpp:223
+#: src/main.cpp:224
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
@@ -58,23 +58,23 @@ msgstr ""
 "Não é possível desmontar o estoque porque ele está em uso pelas aplicações "
 "seguintes:"
 
-#: src/main.cpp:227
+#: src/main.cpp:228
 msgid "Kill them"
 msgstr "Matá-los"
 
-#: src/main.cpp:249
+#: src/main.cpp:250
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Não é possível montar o estoque. Senha inválida?"
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "This encrypted folder is currently not available"
 msgstr "A pasta criptografada não está disponível atualmente"
 
-#: src/main.cpp:264
+#: src/main.cpp:265
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Ela pode se localizar num disco removível, ou foi apagado."
 
-#: src/main.cpp:335
+#: src/main.cpp:336
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -85,31 +85,31 @@ msgstr ""
 "Montar diretório: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:370
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Você tem certeza que deseja remover a pasta criptografada?"
 
-#: src/main.cpp:384
+#: src/main.cpp:385
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Você deseja apagar permanentemente os dados criptografados?"
 
-#: src/main.cpp:412
+#: src/main.cpp:413
 msgid "Information"
 msgstr "Informações"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:417 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Alterar senha:"
 
-#: src/main.cpp:420
+#: src/main.cpp:421
 msgid "Delete encrypted folder"
 msgstr "Apagar pasta criptografada"
 
-#: src/main.cpp:448
+#: src/main.cpp:449
 msgid "translator-credits"
 msgstr "Phantom X <megaphantomx@bol.com.br>"
 
-#: src/main.cpp:450
+#: src/main.cpp:451
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -119,15 +119,15 @@ msgstr ""
 "sob os termos da GNU General Public License versão 3, como publicado\n"
 "pela Free Software Foundation."
 
-#: src/main.cpp:508
+#: src/main.cpp:527
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Pastas criptografadas:</b>"
 
-#: src/main.cpp:556
+#: src/main.cpp:557
 msgid "Import EncFS folder"
 msgstr "Importar pasta do EncFS"
 
-#: src/main.cpp:560
+#: src/main.cpp:561
 msgid "New encrypted folder"
 msgstr "Nova pasta criptografada"
 

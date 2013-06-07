@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2012-11-26 21:02+0100\n"
+"POT-Creation-Date: 2013-06-07 13:22+0200\n"
 "PO-Revision-Date: 2007-07-16 22:32+0100\n"
 "Last-Translator: Martino Salvetti <the9ull@silix.org>\n"
 "Language-Team: Italian\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.cpp:110
+#: src/main.cpp:111
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper non riesce ad accedere a fuse e non può essere avviato"
 
-#: src/main.cpp:111
+#: src/main.cpp:112
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr "Controlla che fuse sia installato e di essere membro del gruppo fuse."
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper non trova EncFS"
 
-#: src/main.cpp:128
+#: src/main.cpp:129
 msgid "Check that EncFS is installed and try again."
 msgstr "Controlla che EncFS sia installato e riprova."
 
-#: src/main.cpp:170
+#: src/main.cpp:171
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr ""
 
 # TODO
-#: src/main.cpp:207
+#: src/main.cpp:208
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d altri ..."
 
-#: src/main.cpp:212
+#: src/main.cpp:213
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d istanze)\n"
 
-#: src/main.cpp:223
+#: src/main.cpp:224
 #, fuzzy
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
@@ -57,23 +57,23 @@ msgid ""
 msgstr ""
 "La cartella non può essere smontata perché è utilizzata dall'applicazione:"
 
-#: src/main.cpp:227
+#: src/main.cpp:228
 msgid "Kill them"
 msgstr "Uccidili"
 
-#: src/main.cpp:249
+#: src/main.cpp:250
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "La cartella non può essere montata. È corretta la password?"
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "This encrypted folder is currently not available"
 msgstr "Questa cartella crittografata non è disponibile"
 
-#: src/main.cpp:264
+#: src/main.cpp:265
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Potrebbe essere su un disco rimovibile, o essere stata rimossa."
 
-#: src/main.cpp:335
+#: src/main.cpp:336
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -84,32 +84,32 @@ msgstr ""
 "Punto di mount : %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:370
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Sei sicuro di voler rimuovere la cartella crittografata:"
 
-#: src/main.cpp:384
+#: src/main.cpp:385
 #, fuzzy
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Vuoi eliminare in modo permanente i dati crittografati:"
 
-#: src/main.cpp:412
+#: src/main.cpp:413
 msgid "Information"
 msgstr "Informationi"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:417 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Cambia la password"
 
-#: src/main.cpp:420
+#: src/main.cpp:421
 msgid "Delete encrypted folder"
 msgstr "Elimina una cartella crittografata"
 
-#: src/main.cpp:448
+#: src/main.cpp:449
 msgid "translator-credits"
 msgstr "Martino Salvetti <the9ull@silix.org"
 
-#: src/main.cpp:450
+#: src/main.cpp:451
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -117,15 +117,15 @@ msgid ""
 msgstr ""
 
 # TODO
-#: src/main.cpp:508
+#: src/main.cpp:527
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Cartelle crittografate :</b>"
 
-#: src/main.cpp:556
+#: src/main.cpp:557
 msgid "Import EncFS folder"
 msgstr "Importa cartella EncFS"
 
-#: src/main.cpp:560
+#: src/main.cpp:561
 msgid "New encrypted folder"
 msgstr "Nuova cartella crittografata"
 

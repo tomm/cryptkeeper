@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2012-11-26 21:02+0100\n"
+"POT-Creation-Date: 2013-06-07 13:22+0200\n"
 "PO-Revision-Date: 2010-06-03 17:56+0100\n"
 "Last-Translator: Josef Luštický <evramp@gmail.com>\n"
 "Language-Team: \n"
@@ -19,39 +19,39 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
-#: src/main.cpp:110
+#: src/main.cpp:111
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper nemá přístup k fuse a nemůže tak pokračovat"
 
-#: src/main.cpp:111
+#: src/main.cpp:112
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
 "Zkontrolujte, zda je fuse nainstalováno a zda jeste členem skupiny fuse."
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper nemůže nalézt EncFS"
 
-#: src/main.cpp:128
+#: src/main.cpp:129
 msgid "Check that EncFS is installed and try again."
 msgstr "Zkontroluje, zda je EncFS nainstalováno a zkuste znovu."
 
-#: src/main.cpp:170
+#: src/main.cpp:171
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr "Vynucené odpojení šifrované složky nebylo úspěšné"
 
-#: src/main.cpp:207
+#: src/main.cpp:208
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d ostatní ..."
 
-#: src/main.cpp:212
+#: src/main.cpp:213
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d instancí)\n"
 
-#: src/main.cpp:223
+#: src/main.cpp:224
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
@@ -59,23 +59,23 @@ msgstr ""
 "Tato úschovna nemohla být odpojena, protože je používáná následujícími "
 "aplikacemi:"
 
-#: src/main.cpp:227
+#: src/main.cpp:228
 msgid "Kill them"
 msgstr "Zabít je"
 
-#: src/main.cpp:249
+#: src/main.cpp:250
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Úschovna nemohla být připojena. Chybné heslo?"
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "This encrypted folder is currently not available"
 msgstr "Tato šifrovaná složka je dočasně nedostupná"
 
-#: src/main.cpp:264
+#: src/main.cpp:265
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Může být na vyměnitelném disku nebo byla smazána."
 
-#: src/main.cpp:335
+#: src/main.cpp:336
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -86,31 +86,31 @@ msgstr ""
 "Přípojný adresář: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:370
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Jste si jisti, že chcete odstranit šifrovanou složku:"
 
-#: src/main.cpp:384
+#: src/main.cpp:385
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Chcete trvale vymazat šifrovaná data:"
 
-#: src/main.cpp:412
+#: src/main.cpp:413
 msgid "Information"
 msgstr "Informace"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:417 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Změnit heslo"
 
-#: src/main.cpp:420
+#: src/main.cpp:421
 msgid "Delete encrypted folder"
 msgstr "Smazat šifrovanou složku"
 
-#: src/main.cpp:448
+#: src/main.cpp:449
 msgid "translator-credits"
 msgstr "překladatelé-zásluhy"
 
-#: src/main.cpp:450
+#: src/main.cpp:451
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -120,15 +120,15 @@ msgstr ""
 "podle ustanovení Obecné veřejné licence GNU (GNU General Public Licence)\n"
 "3. verze, vydávané Free Software Foundation."
 
-#: src/main.cpp:508
+#: src/main.cpp:527
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Šifrované složky:</b>"
 
-#: src/main.cpp:556
+#: src/main.cpp:557
 msgid "Import EncFS folder"
 msgstr "Importovat složku EncFS"
 
-#: src/main.cpp:560
+#: src/main.cpp:561
 msgid "New encrypted folder"
 msgstr "Nová šifrovaná složka"
 

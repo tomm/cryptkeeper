@@ -2,67 +2,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cryptkeeper\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2013-06-07 13:22+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Hrotkó Gábor <roti@al.pmmf.hu>\n"
 "Language-Team: Hrotkó Gábor <roti@al.pmmf.hu>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: HUNGARY\n"
 
-#: src/main.cpp:110
+#: src/main.cpp:111
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "A Cryptkeeper nem fér hozzá a fuse-hez, így nem tud elindulni"
 
-#: src/main.cpp:111
-msgid "Check that fuse is installed and that you are a member of the fuse group."
+#: src/main.cpp:112
+msgid ""
+"Check that fuse is installed and that you are a member of the fuse group."
 msgstr "Ellenőrizze hogy a fuse telepítve van, és ön a fuse csoport tagja."
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "A Cryptkeeper nem találja az EncFS-t"
 
-#: src/main.cpp:128
+#: src/main.cpp:129
 msgid "Check that EncFS is installed and try again."
 msgstr "Ellenőrizze hogy az EncFS telepítve van-e, majd próbálja újra."
 
-#: src/main.cpp:170
+#: src/main.cpp:171
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr "A titkosított mappa kényszerített lecsatolása nem sikerült"
 
-#: src/main.cpp:207
+#: src/main.cpp:208
 #, c-format
 msgid "... %d others ..."
 msgstr "... %d egyéb ..."
 
-#: src/main.cpp:212
+#: src/main.cpp:213
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr "%s (%d példány(ok))\n"
 
-#: src/main.cpp:223
-msgid "The stash could not be unmounted because it is in use by the following applications:"
-msgstr "A rejtett adat nem csatlakoztatható le, mert a következő alkalmazás használja:"
+#: src/main.cpp:224
+msgid ""
+"The stash could not be unmounted because it is in use by the following "
+"applications:"
+msgstr ""
+"A rejtett adat nem csatlakoztatható le, mert a következő alkalmazás "
+"használja:"
 
-#: src/main.cpp:227
+#: src/main.cpp:228
 msgid "Kill them"
 msgstr "Elemek elpusztítása"
 
-#: src/main.cpp:249
+#: src/main.cpp:250
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "A rejtett adat nem csatlakoztatható. Helytelen a jelszó?"
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "This encrypted folder is currently not available"
 msgstr "Ez a titkosított könyvtár jelenleg nem elérhető"
 
-#: src/main.cpp:264
+#: src/main.cpp:265
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Lehet hogy hordozható lemezen van, vagy törölt."
 
-#: src/main.cpp:335
+#: src/main.cpp:336
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -73,52 +79,53 @@ msgstr ""
 "Csatolt mappa: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:370
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Biztosan törölni szeretné ezt a titkosított mappát:"
 
-#: src/main.cpp:384
+#: src/main.cpp:385
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Törölni szeretné a titkosítási adatokat véglegesen:"
 
-#: src/main.cpp:412
+#: src/main.cpp:413
 msgid "Information"
 msgstr "Információ"
 
-#: src/main.cpp:416
-#: src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:417 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Jelszó megváltoztatása"
 
-#: src/main.cpp:420
+#: src/main.cpp:421
 msgid "Delete encrypted folder"
 msgstr "Titkosított mappa törlése"
 
-#: src/main.cpp:448
+#: src/main.cpp:449
 msgid "translator-credits"
 msgstr "fordítók"
 
-#: src/main.cpp:450
+#: src/main.cpp:451
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
-msgstr "Ez a program szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software Foundation által kiadott GNU General Public License harmadik (vagy bármely későbbi) változatában foglaltak alapján."
+msgstr ""
+"Ez a program szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
+"Software Foundation által kiadott GNU General Public License harmadik (vagy "
+"bármely későbbi) változatában foglaltak alapján."
 
-#: src/main.cpp:486
+#: src/main.cpp:527
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Titkosított könyvtárak:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:557
 msgid "Import EncFS folder"
 msgstr "Titkosított mappa importálása"
 
-#: src/main.cpp:538
+#: src/main.cpp:561
 msgid "New encrypted folder"
 msgstr "Új titkosított mappa létrehozása"
 
-#: src/ConfigDialog.cpp:56
-#: src/ConfigDialog.cpp:76
+#: src/ConfigDialog.cpp:56 src/ConfigDialog.cpp:76
 msgid "Cryptkeeper Preferences"
 msgstr "Cryptkeeper beállítások"
 
@@ -208,8 +215,12 @@ msgid "An error occurred while creating the encrypted folder"
 msgstr "Hiba történt a titkosított mappa létrehozásakor"
 
 #: src/CreateStashWizard.cpp:219
-msgid "Please check that the folder name you chose was not already used, and that encfs is installed correctly."
-msgstr "Ellenőrizze hogy a választott könyvtárnév még nincs használatban, és az encfs megfelelően installálva van."
+msgid ""
+"Please check that the folder name you chose was not already used, and that "
+"encfs is installed correctly."
+msgstr ""
+"Ellenőrizze hogy a választott könyvtárnév még nincs használatban, és az "
+"encfs megfelelően installálva van."
 
 #: src/ImportStashWizard.cpp:51
 msgid "Import an Encfs encrypted folder"
@@ -220,11 +231,13 @@ msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
 msgstr "Válasszon egy már meglévő EncFS titkosított könyvtárat (pl.: ~/.crypt)"
 
 #: src/ImportStashWizard.cpp:101
-msgid "Choose the name and location at which you want the EncFS folder to be mounted"
+msgid ""
+"Choose the name and location at which you want the EncFS folder to be mounted"
 msgstr "Válasszon nevet és helyet ahol a titkosított könyvtár csatolásra kerül"
 
 #: src/ImportStashWizard.cpp:116
-msgid "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
+msgid ""
+"The EncFS encrypted folder has been successfully imported into Cryptkeeper"
 msgstr "Az EncFS titkosított könyvtárt sikeresen importáltuk a Cryptkeeperbe"
 
 #: src/ImportStashWizard.cpp:164
@@ -242,4 +255,3 @@ msgstr "Meg kell adnia egy nevet"
 #: src/PasswordEntryDialog.cpp:40
 msgid "Enter your password:"
 msgstr "Kérem, adja meg a jelszavát:"
-

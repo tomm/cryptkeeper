@@ -1,6 +1,7 @@
 /*
  * This file is part of Cryptkeeper.
  * Copyright (C) 2007 Tom Morton
+ * Copyright (C) 2012 Eugenio M. Vigo
  *
  * Cryptkeeper is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -149,7 +150,7 @@ void spawn_filemanager (const char *dir)
 static bool unmount_cryptpoint (int idx)
 {
 	CryptPoint *cp = &cryptPoints[idx];
-	
+
 	if (cp->GetIsMounted () == false) return true;
 
 	int result = !encfs_stash_unmount (cp->GetMountDir ());
@@ -455,40 +456,23 @@ static void open_about_dialog ()
 	gtk_widget_destroy (dialog);
 }
 
-static void sico_right_button_activated ()
+static void on_exit ()
 {
-	GtkWidget *menu = gtk_menu_new ();
-
-	GtkWidget *mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_PREFERENCES, NULL);
-	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_config_dialog), NULL);
-	gtk_menu_append (GTK_MENU (menu), mi);
-
-	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT, NULL);
-	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_about_dialog), NULL);
-	gtk_menu_append (GTK_MENU (menu), mi);
-
-	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
-	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (gtk_exit), NULL);
-	gtk_menu_append (GTK_MENU (menu), mi);
-
-	gtk_widget_show_all (menu);
-
-	gtk_menu_popup (GTK_MENU (menu), NULL, NULL, gtk_status_icon_position_menu, sico,
-			0, gtk_get_current_event_time ());
+    int i = 0;
+    std::vector<CryptPoint>::iterator it;
+    for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, ++i) {
+        if (it->GetIsMounted()){
+            if (!unmount_cryptpoint (i)) {
+                moan_cant_unmount (it->GetMountDir());
+            }
+        }
+    }
+    gtk_main_quit();
 }
 
-static void sico_activated (GtkWidget *data)
+static void update_mounted()
 {
-	stashes_popup_menu = gtk_menu_new ();
-
-	GtkWidget *mi = gtk_menu_item_new ();
-	GtkWidget *w = gtk_label_new (NULL);
-	gtk_label_set_markup (GTK_LABEL (w), _("<b>Encrypted folders:</b>"));
-	gtk_container_add (GTK_CONTAINER (mi), w);
-	gtk_widget_set_sensitive (mi, FALSE);
-	gtk_menu_append (stashes_popup_menu, mi);
-
-	int i = 0;
+    int i = 0;
 	std::vector<CryptPoint>::iterator it;
 	// find out which ones are mounted
 	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, i++) {
@@ -508,8 +492,47 @@ static void sico_activated (GtkWidget *data)
 			if (S_ISDIR (s.st_mode)) (*it).SetIsMounted (true);
 		}
 	}
+}
+
+static void sico_right_button_activated ()
+{
+    update_mounted();
+
+	GtkWidget *menu = gtk_menu_new ();
+
+	GtkWidget *mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_PREFERENCES, NULL);
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_config_dialog), NULL);
+	gtk_menu_append (GTK_MENU (menu), mi);
+
+	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT, NULL);
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (open_about_dialog), NULL);
+	gtk_menu_append (GTK_MENU (menu), mi);
+
+	mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
+	g_signal_connect (G_OBJECT (mi), "activate", G_CALLBACK (on_exit), NULL);
+	gtk_menu_append (GTK_MENU (menu), mi);
+
+	gtk_widget_show_all (menu);
+
+	gtk_menu_popup (GTK_MENU (menu), NULL, NULL, gtk_status_icon_position_menu, sico,
+			0, gtk_get_current_event_time ());
+}
+
+static void sico_activated (GtkWidget *data)
+{
+	stashes_popup_menu = gtk_menu_new ();
+
+	GtkWidget *mi = gtk_menu_item_new ();
+	GtkWidget *w = gtk_label_new (NULL);
+	gtk_label_set_markup (GTK_LABEL (w), _("<b>Encrypted folders:</b>"));
+	gtk_container_add (GTK_CONTAINER (mi), w);
+	gtk_widget_set_sensitive (mi, FALSE);
+	gtk_menu_append (stashes_popup_menu, mi);
+
+    update_mounted();
 	
-	i = 0;
+	int i = 0;
+    std::vector<CryptPoint>::iterator it;
 	for (it = cryptPoints.begin (); it != cryptPoints.end (); ++it, i++) {
 		mi = gtk_check_menu_item_new ();
 		char buf[256];

@@ -1,70 +1,99 @@
+# English translations for cryptkeeper package.
+# Copyright (C) 2013 Tom Morton
+# This file is distributed under the same license as the cryptkeeper package.
+# Automatically generated, 2013.
+#
+# All this catalog "translates" are quotation characters.
+# The msgids must be ASCII and therefore cannot contain real quotation
+# characters, only substitutes like grave accent (0x60), apostrophe (0x27)
+# and double quote (0x22). These substitutes look strange; see
+# http://www.cl.cam.ac.uk/~mgk25/ucs/quotes.html
+#
+# This catalog translates grave accent (0x60) and apostrophe (0x27) to
+# left single quotation mark (U+2018) and right single quotation mark (U+2019).
+# It also translates pairs of apostrophe (0x27) to
+# left single quotation mark (U+2018) and right single quotation mark (U+2019)
+# and pairs of quotation mark (0x22) to
+# left double quotation mark (U+201C) and right double quotation mark (U+201D).
+#
+# When output to an UTF-8 terminal, the quotation characters appear perfectly.
+# When output to an ISO-8859-1 terminal, the single quotation marks are
+# transliterated to apostrophes (by iconv in glibc 2.2 or newer) or to
+# grave/acute accent (by libiconv), and the double quotation marks are
+# transliterated to 0x22.
+# When output to an ASCII terminal, the single quotation marks are
+# transliterated to apostrophes, and the double quotation marks are
+# transliterated to 0x22.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: cryptkeeper 0.9.5\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
 "POT-Creation-Date: 2013-06-07 13:22+0200\n"
-"PO-Revision-Date: 2008-05-30 19:19+0300\n"
-"Last-Translator: Damir Sharipov <dammer@mail.ru>\n"
-"Language-Team: \n"
-"Language: \n"
+"PO-Revision-Date: 2013-06-07 13:22+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/main.cpp:111
 msgid "Cryptkeeper cannot access fuse and so cannot start"
-msgstr "Cryptkeeper не может найти fuse и по этому не может быть запущен"
+msgstr "Cryptkeeper cannot access fuse and so cannot start"
 
 #: src/main.cpp:112
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
-msgstr "Проверьте установлена ли fuse и включены ли вы в группу fuse."
+msgstr ""
+"Check that fuse is installed and that you are a member of the fuse group."
 
 #: src/main.cpp:128
 msgid "Cryptkeeper cannot find EncFS"
-msgstr "Cryptkeeper не может найти EncFS"
+msgstr "Cryptkeeper cannot find EncFS"
 
 #: src/main.cpp:129
 msgid "Check that EncFS is installed and try again."
-msgstr "Проверьте установлена ли EncFS и попробуйте ещё раз."
+msgstr "Check that EncFS is installed and try again."
 
 #: src/main.cpp:171
 msgid "Forced unmounting of the encrypted folder was not successful"
-msgstr "Не удалось принудительно отмонтировать зашифрованную папку"
+msgstr "Forced unmounting of the encrypted folder was not successful"
 
 #: src/main.cpp:208
 #, c-format
 msgid "... %d others ..."
-msgstr "... %d другие ..."
+msgstr "... %d others ..."
 
 #: src/main.cpp:213
 #, c-format
 msgid "%s (%d instances)\n"
-msgstr "%s (%d экземпляров)\n"
+msgstr "%s (%d instances)\n"
 
 #: src/main.cpp:224
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
 msgstr ""
-"Хранилище не может быть отсоединено, поскольку используется следующими "
-"приложениями:"
+"The stash could not be unmounted because it is in use by the following "
+"applications:"
 
 #: src/main.cpp:228
 msgid "Kill them"
-msgstr "Убейте их"
+msgstr "Kill them"
 
 #: src/main.cpp:250
 msgid "The stash could not be mounted. Invalid password?"
-msgstr "Хранилище не может быть смонтировано. Неправильный пароль?"
+msgstr "The stash could not be mounted. Invalid password?"
 
 #: src/main.cpp:264
 msgid "This encrypted folder is currently not available"
-msgstr "Эта зашифрованная папка  в настоящее время недоступна"
+msgstr "This encrypted folder is currently not available"
 
 #: src/main.cpp:265
 msgid "It may be located on a removable disk, or has been deleted."
-msgstr "Возможно расположена на сменном носителе или была удалена."
+msgstr "It may be located on a removable disk, or has been deleted."
 
 #: src/main.cpp:336
 #, c-format
@@ -73,33 +102,33 @@ msgid ""
 "Mount directory: %s\n"
 "%s"
 msgstr ""
-"Зашифрованная директория: %s\n"
-"Точка монтирования: %s\n"
+"Crypt directory: %s\n"
+"Mount directory: %s\n"
 "%s"
 
 #: src/main.cpp:370
 msgid "Are you sure you want to remove the encrypted folder:"
-msgstr "Вы уверенны в том, что хотите удалить зашифрованную папку:"
+msgstr "Are you sure you want to remove the encrypted folder:"
 
 #: src/main.cpp:385
 msgid "Do you want to permanently erase the encrypted data:"
-msgstr "Вы точно хотите полностью стереть зашифрованные данные:"
+msgstr "Do you want to permanently erase the encrypted data:"
 
 #: src/main.cpp:413
 msgid "Information"
-msgstr "Информация"
+msgstr "Information"
 
 #: src/main.cpp:417 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
-msgstr "Сменить пароль"
+msgstr "Change password"
 
 #: src/main.cpp:421
 msgid "Delete encrypted folder"
-msgstr "Удалить зашифрованную папку"
+msgstr "Delete encrypted folder"
 
 #: src/main.cpp:449
 msgid "translator-credits"
-msgstr ""
+msgstr "translator-credits"
 
 #: src/main.cpp:451
 msgid ""
@@ -107,149 +136,151 @@ msgid ""
 "under the terms of the GNU General Public License version 3, as published\n"
 "by the Free Software Foundation."
 msgstr ""
+"This program is free software; you can redistribute it and/or modify it\n"
+"under the terms of the GNU General Public License version 3, as published\n"
+"by the Free Software Foundation."
 
 #: src/main.cpp:527
 msgid "<b>Encrypted folders:</b>"
-msgstr "<b>Зашифрованные папки:</b>"
+msgstr "<b>Encrypted folders:</b>"
 
 #: src/main.cpp:557
 msgid "Import EncFS folder"
-msgstr "Импорт папки EncFS"
+msgstr "Import EncFS folder"
 
 #: src/main.cpp:561
 msgid "New encrypted folder"
-msgstr "Новая зашифрованная папка"
+msgstr "New encrypted folder"
 
 #: src/ConfigDialog.cpp:56 src/ConfigDialog.cpp:76
 msgid "Cryptkeeper Preferences"
-msgstr "Настройки Cryptkeeper"
+msgstr "Cryptkeeper Preferences"
 
 #: src/ConfigDialog.cpp:86
 msgid "General"
-msgstr "Основное"
+msgstr "General"
 
 #: src/ConfigDialog.cpp:93
 msgid "File browser:"
-msgstr "Обозреватель файлов:"
+msgstr "File browser:"
 
 #: src/ConfigDialog.cpp:104
 msgid "Unmount after idle (minutes):"
-msgstr "Отмонтировать при простое (минуты):"
+msgstr "Unmount after idle (minutes):"
 
 #: src/ConfigDialog.cpp:112
 msgid "Do not delete mount point when unmounting"
-msgstr "Не удалять точку монтирования при размонтировании"
+msgstr "Do not delete mount point when unmounting"
 
 #: src/ConfigDialog.cpp:117
 msgid "Allow other users to access mounted folders"
-msgstr ""
+msgstr "Allow other users to access mounted folders"
 
 #: src/PasswordChangeDialog.cpp:55
 msgid "The new passwords do not match"
-msgstr "Новые пароли не совпадают"
+msgstr "The new passwords do not match"
 
 #: src/PasswordChangeDialog.cpp:69
 msgid "Error setting password:"
-msgstr "Ошибка установки пароля:"
+msgstr "Error setting password:"
 
 #: src/PasswordChangeDialog.cpp:81
 msgid "Password changed"
-msgstr "Пароль изменён"
+msgstr "Password changed"
 
 #: src/PasswordChangeDialog.cpp:106
 #, c-format
 msgid "Enter the current password for %s:"
-msgstr "Введите текущий пароль для %s:"
+msgstr "Enter the current password for %s:"
 
 #: src/PasswordChangeDialog.cpp:114
 msgid "Enter a new password"
-msgstr "Введите новый пароль"
+msgstr "Enter a new password"
 
 #: src/PasswordChangeDialog.cpp:121
 msgid "Enter the new password again to confirm"
-msgstr "Введите новый пароль ещё раз для подтверждения "
+msgstr "Enter the new password again to confirm"
 
 #: src/CreateStashWizard.cpp:52
 msgid "Create a new encrypted directory"
-msgstr "Создание новой зашифрованной директории"
+msgstr "Create a new encrypted directory"
 
 #: src/CreateStashWizard.cpp:91
 msgid "Choose a name and location for your new encrypted folder"
-msgstr ""
-"Укажите имя и выберите путь по которому вы хотите создать новую "
-"зашифрованную папку"
+msgstr "Choose a name and location for your new encrypted folder"
 
 #: src/CreateStashWizard.cpp:100
 msgid "Enter a password for your new encrypted folder"
-msgstr "Введите пароль для вашей новой зашифрованной папки"
+msgstr "Enter a password for your new encrypted folder"
 
 #: src/CreateStashWizard.cpp:108
 msgid "Enter the password again"
-msgstr "Введите пароль снова"
+msgstr "Enter the password again"
 
 #: src/CreateStashWizard.cpp:116
 msgid "The new encrypted folder has been sucessfully created"
-msgstr "Новая зашифрованная папка была успешно создана"
+msgstr "The new encrypted folder has been sucessfully created"
 
 #: src/CreateStashWizard.cpp:162
 msgid "You need to enter a name"
-msgstr "Вам необходимо ввести имя"
+msgstr "You need to enter a name"
 
 #: src/CreateStashWizard.cpp:181
 msgid ""
 "The passwords you entered do not match\n"
 "Try again"
 msgstr ""
-"Введённые пароли не совпадают\n"
-"Попробуйте ещё раз"
+"The passwords you entered do not match\n"
+"Try again"
 
 #: src/CreateStashWizard.cpp:193
 msgid "You need to enter a password"
-msgstr "Вам необходимо ввести пароль"
+msgstr "You need to enter a password"
 
 #: src/CreateStashWizard.cpp:218
 msgid "An error occurred while creating the encrypted folder"
-msgstr "При создании зашифрованной папки произошла ошибка"
+msgstr "An error occurred while creating the encrypted folder"
 
 #: src/CreateStashWizard.cpp:219
 msgid ""
 "Please check that the folder name you chose was not already used, and that "
 "encfs is installed correctly."
 msgstr ""
-"Убедитесь, что выбранное вами имя папки не используется, и  ЕncFS "
-"установлена правильно."
+"Please check that the folder name you chose was not already used, and that "
+"encfs is installed correctly."
 
 #: src/ImportStashWizard.cpp:51
 msgid "Import an Encfs encrypted folder"
-msgstr "Импорт зашифрованной папки EncFS"
+msgstr "Import an Encfs encrypted folder"
 
 #: src/ImportStashWizard.cpp:92
 msgid "Select an existing EncFS encrypted folder (eg ~/.crypt)"
-msgstr "Выберите существующую зашифрованную папку EncFS (например ~/.crypt)"
+msgstr "Select an existing EncFS encrypted folder (eg ~/.crypt)"
 
 #: src/ImportStashWizard.cpp:101
 msgid ""
 "Choose the name and location at which you want the EncFS folder to be mounted"
 msgstr ""
-"Укажите имя и выберите путь по которому вы хотите смонтировать папку EncFS"
+"Choose the name and location at which you want the EncFS folder to be mounted"
 
 #: src/ImportStashWizard.cpp:116
 msgid ""
 "The EncFS encrypted folder has been successfully imported into Cryptkeeper"
-msgstr "Зашифрованная папка EncFS была успешно импортирована в Cryptkeeper"
+msgstr ""
+"The EncFS encrypted folder has been successfully imported into Cryptkeeper"
 
 #: src/ImportStashWizard.cpp:164
 msgid "You must select a folder"
-msgstr "Вы должны выбрать папку"
+msgstr "You must select a folder"
 
 #: src/ImportStashWizard.cpp:182
 msgid "The selected folder is not an EncFS encrypted folder"
-msgstr "Эта папка не является зашифрованной папкой EncFS"
+msgstr "The selected folder is not an EncFS encrypted folder"
 
 #: src/ImportStashWizard.cpp:203
 msgid "You must enter a name"
-msgstr "Вы должны ввести имя"
+msgstr "You must enter a name"
 
 #: src/PasswordEntryDialog.cpp:40
 msgid "Enter your password:"
-msgstr "Введите ваш пароль:"
+msgstr "Enter your password:"

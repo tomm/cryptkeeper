@@ -7,74 +7,75 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cryptkeeper 0.6.666\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2013-06-07 13:22+0200\n"
 "PO-Revision-Date: 2007-09-01 20:42+0100\n"
 "Last-Translator: Christoph Langner <mail@christoph-langner.de>\n"
 "Language-Team: English\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/main.cpp:110
+#: src/main.cpp:111
 msgid "Cryptkeeper cannot access fuse and so cannot start"
 msgstr "Cryptkeeper kann fuse nicht finden und wird daher beendet"
 
-#: src/main.cpp:111
+#: src/main.cpp:112
 msgid ""
 "Check that fuse is installed and that you are a member of the fuse group."
 msgstr ""
 "Bitte überprüfen sie ob fuse installiert ist und ob sie in der Gruppe fuse "
 "sind."
 
-#: src/main.cpp:127
+#: src/main.cpp:128
 msgid "Cryptkeeper cannot find EncFS"
 msgstr "Cryptkeeper kann EncFS nicht finden"
 
-#: src/main.cpp:128
+#: src/main.cpp:129
 msgid "Check that EncFS is installed and try again."
 msgstr ""
 
-#: src/main.cpp:170
+#: src/main.cpp:171
 #, fuzzy
 msgid "Forced unmounting of the encrypted folder was not successful"
 msgstr "Der neue verschlüsselte Ordner wurde erfolgreich angelegt"
 
-#: src/main.cpp:207
+#: src/main.cpp:208
 #, c-format
 msgid "... %d others ..."
 msgstr ""
 
-#: src/main.cpp:212
+#: src/main.cpp:213
 #, c-format
 msgid "%s (%d instances)\n"
 msgstr ""
 
-#: src/main.cpp:223
+#: src/main.cpp:224
 msgid ""
 "The stash could not be unmounted because it is in use by the following "
 "applications:"
 msgstr ""
 
-#: src/main.cpp:227
+#: src/main.cpp:228
 msgid "Kill them"
 msgstr ""
 
-#: src/main.cpp:249
+#: src/main.cpp:250
 msgid "The stash could not be mounted. Invalid password?"
 msgstr ""
 
-#: src/main.cpp:263
+#: src/main.cpp:264
 msgid "This encrypted folder is currently not available"
 msgstr ""
 
-#: src/main.cpp:264
+#: src/main.cpp:265
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr ""
 "Das Verzeichnis wurde gelöscht oder lag eventuell auf einem "
 "Wechseldatenträger."
 
-#: src/main.cpp:335
+#: src/main.cpp:336
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -85,31 +86,31 @@ msgstr ""
 "Mountpunkt: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:370
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Sind sie sicher, dass sie den verschlüsselten Ordner löschen wollen:"
 
-#: src/main.cpp:384
+#: src/main.cpp:385
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Möchten sie den verschlüsselten Daten permanent löschen:"
 
-#: src/main.cpp:412
+#: src/main.cpp:413
 msgid "Information"
 msgstr "Informationen"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:417 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Passwort ändern"
 
-#: src/main.cpp:420
+#: src/main.cpp:421
 msgid "Delete encrypted folder"
 msgstr "Verschlüsselten Ordner löschen"
 
-#: src/main.cpp:448
+#: src/main.cpp:449
 msgid "translator-credits"
 msgstr "Christoph Langner <mail@christoph-langner.de>"
 
-#: src/main.cpp:450
+#: src/main.cpp:451
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -119,15 +120,15 @@ msgstr ""
 "Bedingungen der GNU General Public License Version 3, wie von der Free\n"
 "Software Foundation veröffentlicht, weiterverteilen und/oder modifizieren."
 
-#: src/main.cpp:486
+#: src/main.cpp:527
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Verschlüsselte Ordner:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:557
 msgid "Import EncFS folder"
 msgstr "Importiere EncFS ordner"
 
-#: src/main.cpp:538
+#: src/main.cpp:561
 msgid "New encrypted folder"
 msgstr "Erstelle verschlüsselten Ordner "
 

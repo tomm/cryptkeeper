@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cryptkeeper 0.9.1\n"
 "Report-Msgid-Bugs-To: t-morton@blueyonder.co.uk\n"
-"POT-Creation-Date: 2009-10-18 12:58+0100\n"
+"POT-Creation-Date: 2011-06-21 22:07+0200\n"
 "PO-Revision-Date: 2008-07-14 00:32+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,19 +53,23 @@ msgstr "Zula ayrılamadı; çünkü aşağıdaki uygulamalar hâlen zulayı kull
 msgid "Kill them"
 msgstr "Onları öldür"
 
-#: src/main.cpp:249
+#: src/main.cpp:228
+msgid "Retry"
+msgstr ""
+
+#: src/main.cpp:257
 msgid "The stash could not be mounted. Invalid password?"
 msgstr "Zula bağlanamadı. Yanlış parola girmediğinize emin misiniz?"
 
-#: src/main.cpp:263
+#: src/main.cpp:271
 msgid "This encrypted folder is currently not available"
 msgstr "Şifrelenmiş klasör şu anda mevcut değil"
 
-#: src/main.cpp:264
+#: src/main.cpp:272
 msgid "It may be located on a removable disk, or has been deleted."
 msgstr "Klasör çıkarılabilir bir sürücüde, ya da silinmiş olabilir."
 
-#: src/main.cpp:335
+#: src/main.cpp:343
 #, c-format
 msgid ""
 "Crypt directory: %s\n"
@@ -75,31 +80,31 @@ msgstr ""
 "Bağlama dizini: %s\n"
 "%s"
 
-#: src/main.cpp:369
+#: src/main.cpp:377
 msgid "Are you sure you want to remove the encrypted folder:"
 msgstr "Şifrelenmiş klasörü kaldırmak istediğinize emin misiniz?"
 
-#: src/main.cpp:384
+#: src/main.cpp:392
 msgid "Do you want to permanently erase the encrypted data:"
 msgstr "Şifrelenmiş veriyi kalıcı olarak silmek ister misiniz:"
 
-#: src/main.cpp:412
+#: src/main.cpp:420
 msgid "Information"
 msgstr "Bilgi"
 
-#: src/main.cpp:416 src/PasswordChangeDialog.cpp:95
+#: src/main.cpp:424 src/PasswordChangeDialog.cpp:95
 msgid "Change password"
 msgstr "Parolayı değiştir"
 
-#: src/main.cpp:420
+#: src/main.cpp:428
 msgid "Delete encrypted folder"
 msgstr "Şifrelenmiş klasörü sil"
 
-#: src/main.cpp:448
+#: src/main.cpp:456
 msgid "translator-credits"
 msgstr "Mert Dirik <mertdirik@gmail.com>"
 
-#: src/main.cpp:450
+#: src/main.cpp:458
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License version 3, as published\n"
@@ -109,15 +114,15 @@ msgstr ""
 "Lisansı 3. versiyon şartları altında yeniden dağıtabilir ve / ya da "
 "değiştirebilirsiniz."
 
-#: src/main.cpp:486
+#: src/main.cpp:494
 msgid "<b>Encrypted folders:</b>"
 msgstr "<b>Şifrelenmiş Klasörler:</b>"
 
-#: src/main.cpp:534
+#: src/main.cpp:542
 msgid "Import EncFS folder"
 msgstr "Bir EncFS klasörünü içe aktar"
 
-#: src/main.cpp:538
+#: src/main.cpp:546
 msgid "New encrypted folder"
 msgstr "Yeni şifreli klasör"
 

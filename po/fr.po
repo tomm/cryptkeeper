@@ -141,7 +141,7 @@ msgstr "Préférences de Cryptkeeper"
 
 #: src/ConfigDialog.cpp:86
 msgid "General"
-msgstr ""
+msgstr "Géneral"
 
 #: src/ConfigDialog.cpp:93
 msgid "File browser:"
@@ -153,11 +153,11 @@ msgstr "Démonter en cas d'inactivité (minutes) :"
 
 #: src/ConfigDialog.cpp:112
 msgid "Do not delete mount point when unmounting"
-msgstr ""
+msgstr "Ne pas supprimer le point de montage lors du démontage du dossier"
 
 #: src/ConfigDialog.cpp:117
 msgid "Allow other users to access mounted folders"
-msgstr ""
+msgstr "Autoriser les autres utilisateurs à accéder aux dossiers montés"
 
 #: src/PasswordChangeDialog.cpp:55
 msgid "The new passwords do not match"
@@ -165,7 +165,7 @@ msgstr "Les nouveaux mots de passe ne concordent pas"
 
 #: src/PasswordChangeDialog.cpp:69
 msgid "Error setting password:"
-msgstr ""
+msgstr "Erreur de mot de passe"
 
 #: src/PasswordChangeDialog.cpp:81
 msgid "Password changed"
@@ -266,4 +266,4 @@ msgstr "Vous devez entrer un nom"
 
 #: src/PasswordEntryDialog.cpp:40
 msgid "Enter your password:"
-msgstr ""
+msgstr "Entrez votre mot de passe"

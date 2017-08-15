@@ -17,6 +17,12 @@ sudo modprobe fuse
 sudo addgroup <your username> fuse
 ```
 
+On Solus OS dependencies for building and running can be installed like this:
+
+```
+sudo eopkg install libgtk-2-devel gconf-devel encfs
+```
+
 Then you must log off and back on again.
 
 ## Release Information
